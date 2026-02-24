@@ -1,152 +1,150 @@
-# Skills — matched to SQL schema: skill_id, name, profile_count, created
-# The 'description' and 'category' fields don't exist in SQL; removed.
-
-- skill_id: 1
-  name: PHP Development
-  profile_count: 3
-  created: 1672531200
-
-- skill_id: 2
-  name: Python
-  profile_count: 4
-  created: 1672531200
-
-- skill_id: 3
-  name: JavaScript
-  profile_count: 3
-  created: 1672531200
-
-- skill_id: 4
-  name: Project Management
-  profile_count: 4
-  created: 1672531200
-
-- skill_id: 5
-  name: Financial Analysis
-  profile_count: 3
-  created: 1672531200
-
-- skill_id: 6
-  name: Machine Learning
-  profile_count: 4
-  created: 1672531200
-
-- skill_id: 7
-  name: Graphic Design
-  profile_count: 2
-  created: 1672531200
-
-- skill_id: 8
-  name: Public Speaking
-  profile_count: 5
-  created: 1672531200
-
-- skill_id: 9
-  name: Data Analysis
-  profile_count: 4
-  created: 1672531200
-
-- skill_id: 10
-  name: React / Vue.js
-  profile_count: 2
-  created: 1672531200
-
-- skill_id: 11
-  name: Cloud Architecture (AWS/GCP)
-  profile_count: 3
-  created: 1672531200
-
-- skill_id: 12
-  name: Cybersecurity
-  profile_count: 2
-  created: 1672531200
-
-- skill_id: 13
-  name: Research & Academic Writing
-  profile_count: 3
-  created: 1672531200
-
-- skill_id: 14
-  name: Investment & Portfolio Management
-  profile_count: 2
-  created: 1672531200
-
-- skill_id: 15
-  name: Corporate Law
-  profile_count: 1
-  created: 1672531200
-
-- skill_id: 16
-  name: Mergers & Acquisitions
-  profile_count: 1
-  created: 1672531200
-
-- skill_id: 17
-  name: UX / Product Design
-  profile_count: 2
-  created: 1672531200
-
-- skill_id: 18
-  name: Clinical Medicine
-  profile_count: 2
-  created: 1672531200
-
-- skill_id: 19
-  name: Epidemiology
-  profile_count: 1
-  created: 1672531200
-
-- skill_id: 20
-  name: Mechanical Engineering
-  profile_count: 2
-  created: 1672531200
-
-- skill_id: 21
-  name: Civil & Structural Engineering
-  profile_count: 1
-  created: 1672531200
-
-- skill_id: 22
-  name: Renewable Energy Systems
-  profile_count: 2
-  created: 1672531200
-
-- skill_id: 23
-  name: International Development
-  profile_count: 1
-  created: 1672531200
-
-- skill_id: 24
-  name: Investigative Journalism
-  profile_count: 1
-  created: 1672531200
-
-- skill_id: 25
-  name: Marketing Strategy
-  profile_count: 2
-  created: 1672531200
-
-- skill_id: 26
-  name: Brand Management
-  profile_count: 1
-  created: 1672531200
-
-- skill_id: 27
-  name: Environmental Consulting
-  profile_count: 1
-  created: 1672531200
-
-- skill_id: 28
-  name: Entrepreneurship
-  profile_count: 2
-  created: 1672531200
-
-- skill_id: 29
-  name: Behavioural Psychology
-  profile_count: 1
-  created: 1672531200
-
-- skill_id: 30
-  name: Sustainable Architecture
-  profile_count: 1
-  created: 1672531200
+-
+    skill_id: '1'
+    name: 'PHP Development'
+    profile_count: '3'
+    created: '1672531200'
+-
+    skill_id: '2'
+    name: Python
+    profile_count: '4'
+    created: '1672531200'
+-
+    skill_id: '3'
+    name: JavaScript
+    profile_count: '3'
+    created: '1672531200'
+-
+    skill_id: '4'
+    name: 'Project Management'
+    profile_count: '4'
+    created: '1672531200'
+-
+    skill_id: '5'
+    name: 'Financial Analysis'
+    profile_count: '3'
+    created: '1672531200'
+-
+    skill_id: '6'
+    name: 'Machine Learning'
+    profile_count: '4'
+    created: '1672531200'
+-
+    skill_id: '7'
+    name: 'Graphic Design'
+    profile_count: '2'
+    created: '1672531200'
+-
+    skill_id: '8'
+    name: 'Public Speaking'
+    profile_count: '5'
+    created: '1672531200'
+-
+    skill_id: '9'
+    name: 'Data Analysis'
+    profile_count: '4'
+    created: '1672531200'
+-
+    skill_id: '10'
+    name: 'React / Vue.js'
+    profile_count: '2'
+    created: '1672531200'
+-
+    skill_id: '11'
+    name: 'Cloud Architecture (AWS/GCP)'
+    profile_count: '3'
+    created: '1672531200'
+-
+    skill_id: '12'
+    name: Cybersecurity
+    profile_count: '2'
+    created: '1672531200'
+-
+    skill_id: '13'
+    name: 'Research & Academic Writing'
+    profile_count: '3'
+    created: '1672531200'
+-
+    skill_id: '14'
+    name: 'Investment & Portfolio Management'
+    profile_count: '2'
+    created: '1672531200'
+-
+    skill_id: '15'
+    name: 'Corporate Law'
+    profile_count: '1'
+    created: '1672531200'
+-
+    skill_id: '16'
+    name: 'Mergers & Acquisitions'
+    profile_count: '1'
+    created: '1672531200'
+-
+    skill_id: '17'
+    name: 'UX / Product Design'
+    profile_count: '2'
+    created: '1672531200'
+-
+    skill_id: '18'
+    name: 'Clinical Medicine'
+    profile_count: '2'
+    created: '1672531200'
+-
+    skill_id: '19'
+    name: Epidemiology
+    profile_count: '1'
+    created: '1672531200'
+-
+    skill_id: '20'
+    name: 'Mechanical Engineering'
+    profile_count: '2'
+    created: '1672531200'
+-
+    skill_id: '21'
+    name: 'Civil & Structural Engineering'
+    profile_count: '1'
+    created: '1672531200'
+-
+    skill_id: '22'
+    name: 'Renewable Energy Systems'
+    profile_count: '2'
+    created: '1672531200'
+-
+    skill_id: '23'
+    name: 'International Development'
+    profile_count: '1'
+    created: '1672531200'
+-
+    skill_id: '24'
+    name: 'Investigative Journalism'
+    profile_count: '1'
+    created: '1672531200'
+-
+    skill_id: '25'
+    name: 'Marketing Strategy'
+    profile_count: '2'
+    created: '1672531200'
+-
+    skill_id: '26'
+    name: 'Brand Management'
+    profile_count: '1'
+    created: '1672531200'
+-
+    skill_id: '27'
+    name: 'Environmental Consulting'
+    profile_count: '1'
+    created: '1672531200'
+-
+    skill_id: '28'
+    name: Entrepreneurship
+    profile_count: '2'
+    created: '1672531200'
+-
+    skill_id: '29'
+    name: 'Behavioural Psychology'
+    profile_count: '1'
+    created: '1672531200'
+-
+    skill_id: '30'
+    name: 'Sustainable Architecture'
+    profile_count: '1'
+    created: '1672531200'

@@ -1,189 +1,184 @@
-# Alumni Connections — matched to SQL schema: connection_id, requester_id, recipient_id, status, message, created, updated
-# SQL enum for status: 'pending','accepted','declined','blocked'
-# requester_id / recipient_id are profile_id values (not user_id)
-
-# Accepted connections
-- connection_id: 1
-  requester_id: 1
-  recipient_id: 2
-  status: accepted
-  message: Hi Bob, we graduated around the same time. Would love to connect!
-  created: 1675209600
-  updated: 1677888000
-
-- connection_id: 2
-  requester_id: 1
-  recipient_id: 3
-  status: accepted
-  message: Great to meet you at the last reunion, Carol!
-  created: 1677888000
-  updated: 1680566400
-
-- connection_id: 3
-  requester_id: 1
-  recipient_id: 9
-  status: accepted
-  message: Fellow software engineer — would love to share notes on ML engineering!
-  created: 1706832000
-  updated: 1709510400
-
-- connection_id: 4
-  requester_id: 1
-  recipient_id: 16
-  status: accepted
-  message: Patrick, your startup journey is really inspiring. Would love to chat.
-  created: 1706832000
-  updated: 1709510400
-
-- connection_id: 5
-  requester_id: 2
-  recipient_id: 4
-  status: pending
-  message: Hello David, I admire your work in renewable energy and its investment potential.
-  created: 1683244800
-  updated: 1683244800
-
-- connection_id: 6
-  requester_id: 2
-  recipient_id: 6
-  status: accepted
-  message: Frank, our work often overlaps — great to be connected.
-  created: 1706832000
-  updated: 1709510400
-
-- connection_id: 7
-  requester_id: 2
-  recipient_id: 10
-  status: accepted
-  message: James, always keen to connect with alumni at multinationals. Let's catch up.
-  created: 1706832000
-  updated: 1709510400
-
-- connection_id: 8
-  requester_id: 3
-  recipient_id: 4
-  status: accepted
-  message: Colleagues from the Healthcare Innovation conference!
-  created: 1680566400
-  updated: 1683244800
-
-- connection_id: 9
-  requester_id: 3
-  recipient_id: 7
-  status: accepted
-  message: Grace, love your public health work at the CDC. Would be great to connect.
-  created: 1706832000
-  updated: 1709510400
-
-- connection_id: 10
-  requester_id: 4
-  recipient_id: 8
-  status: accepted
-  message: Hector, your aerospace work intersects so nicely with renewable energy research!
-  created: 1706832000
-  updated: 1709510400
-
-- connection_id: 11
-  requester_id: 4
-  recipient_id: 12
-  status: accepted
-  message: Luis, your work on coastal resilience relates closely to my energy systems research.
-  created: 1706832000
-  updated: 1709510400
-
-- connection_id: 12
-  requester_id: 5
-  recipient_id: 17
-  status: accepted
-  message: Rachel, your work on decision-making is fascinating — love to exchange ideas on UX research.
-  created: 1706832000
-  updated: 1709510400
-
-- connection_id: 13
-  requester_id: 6
-  recipient_id: 14
-  status: accepted
-  message: Nathan, your tech policy coverage is excellent. Would love to connect.
-  created: 1706832000
-  updated: 1709510400
-
-- connection_id: 14
-  requester_id: 7
-  recipient_id: 11
-  status: accepted
-  message: Karen, biomedical devices and public health go hand in hand — great to be connected!
-  created: 1706832000
-  updated: 1709510400
-
-- connection_id: 15
-  requester_id: 8
-  recipient_id: 16
-  status: accepted
-  message: Patrick, I've been following your ventures. Huge fan of what you're building.
-  created: 1706832000
-  updated: 1709510400
-
-- connection_id: 16
-  requester_id: 9
-  recipient_id: 18
-  status: accepted
-  message: Samuel, cybersecurity and ML are increasingly converging — great to connect!
-  created: 1706832000
-  updated: 1709510400
-
-- connection_id: 17
-  requester_id: 10
-  recipient_id: 16
-  status: accepted
-  message: Patrick, love to connect with alumni founders — we may have distribution synergies.
-  created: 1706832000
-  updated: 1709510400
-
-- connection_id: 18
-  requester_id: 13
-  recipient_id: 15
-  status: accepted
-  message: Olivia, your environmental consulting work aligns well with our sustainable development goals.
-  created: 1706832000
-  updated: 1709510400
-
-- connection_id: 19
-  requester_id: 14
-  recipient_id: 17
-  status: accepted
-  message: Rachel, your behavioural economics lens would be great to apply to tech policy analysis!
-  created: 1706832000
-  updated: 1709510400
-
-- connection_id: 20
-  requester_id: 20
-  recipient_id: 12
-  status: accepted
-  message: Luis, fellow infrastructure professional here — lots of overlap between architecture and civil engineering!
-  created: 1706832000
-  updated: 1709510400
-
-# Pending connections
-- connection_id: 21
-  requester_id: 11
-  recipient_id: 1
-  status: pending
-  message: Alice, I'd love your advice on transitioning into the tech industry. Your career story is inspiring.
-  created: 1740268800
-  updated: 1740268800
-
-- connection_id: 22
-  requester_id: 15
-  recipient_id: 12
-  status: pending
-  message: Luis, your coastal resilience projects sound fascinating — would love to learn more.
-  created: 1740268800
-  updated: 1740268800
-
-- connection_id: 23
-  requester_id: 19
-  recipient_id: 2
-  status: pending
-  message: Bob, I'm early in my finance career and would love to connect with someone so experienced.
-  created: 1740268800
-  updated: 1740268800
+-
+    connection_id: '1'
+    requester_id: '1'
+    recipient_id: '2'
+    status: accepted
+    message: 'Hi Bob, we graduated around the same time. Would love to connect!'
+    created: '1675209600'
+    updated: '1677888000'
+-
+    connection_id: '2'
+    requester_id: '1'
+    recipient_id: '3'
+    status: accepted
+    message: 'Great to meet you at the last reunion, Carol!'
+    created: '1677888000'
+    updated: '1680566400'
+-
+    connection_id: '3'
+    requester_id: '1'
+    recipient_id: '9'
+    status: accepted
+    message: 'Fellow software engineer — would love to share notes on ML engineering!'
+    created: '1706832000'
+    updated: '1709510400'
+-
+    connection_id: '4'
+    requester_id: '1'
+    recipient_id: '16'
+    status: accepted
+    message: 'Patrick, your startup journey is really inspiring. Would love to chat.'
+    created: '1706832000'
+    updated: '1709510400'
+-
+    connection_id: '5'
+    requester_id: '2'
+    recipient_id: '4'
+    status: pending
+    message: 'Hello David, I admire your work in renewable energy and its investment potential.'
+    created: '1683244800'
+    updated: '1683244800'
+-
+    connection_id: '6'
+    requester_id: '2'
+    recipient_id: '6'
+    status: accepted
+    message: 'Frank, our work often overlaps — great to be connected.'
+    created: '1706832000'
+    updated: '1709510400'
+-
+    connection_id: '7'
+    requester_id: '2'
+    recipient_id: '10'
+    status: accepted
+    message: "James, always keen to connect with alumni at multinationals. Let's catch up."
+    created: '1706832000'
+    updated: '1709510400'
+-
+    connection_id: '8'
+    requester_id: '3'
+    recipient_id: '4'
+    status: accepted
+    message: 'Colleagues from the Healthcare Innovation conference!'
+    created: '1680566400'
+    updated: '1683244800'
+-
+    connection_id: '9'
+    requester_id: '3'
+    recipient_id: '7'
+    status: accepted
+    message: 'Grace, love your public health work at the CDC. Would be great to connect.'
+    created: '1706832000'
+    updated: '1709510400'
+-
+    connection_id: '10'
+    requester_id: '4'
+    recipient_id: '8'
+    status: accepted
+    message: 'Hector, your aerospace work intersects so nicely with renewable energy research!'
+    created: '1706832000'
+    updated: '1709510400'
+-
+    connection_id: '11'
+    requester_id: '4'
+    recipient_id: '12'
+    status: accepted
+    message: 'Luis, your work on coastal resilience relates closely to my energy systems research.'
+    created: '1706832000'
+    updated: '1709510400'
+-
+    connection_id: '12'
+    requester_id: '5'
+    recipient_id: '17'
+    status: accepted
+    message: 'Rachel, your work on decision-making is fascinating — love to exchange ideas on UX research.'
+    created: '1706832000'
+    updated: '1709510400'
+-
+    connection_id: '13'
+    requester_id: '6'
+    recipient_id: '14'
+    status: accepted
+    message: 'Nathan, your tech policy coverage is excellent. Would love to connect.'
+    created: '1706832000'
+    updated: '1709510400'
+-
+    connection_id: '14'
+    requester_id: '7'
+    recipient_id: '11'
+    status: accepted
+    message: 'Karen, biomedical devices and public health go hand in hand — great to be connected!'
+    created: '1706832000'
+    updated: '1709510400'
+-
+    connection_id: '15'
+    requester_id: '8'
+    recipient_id: '16'
+    status: accepted
+    message: "Patrick, I've been following your ventures. Huge fan of what you're building."
+    created: '1706832000'
+    updated: '1709510400'
+-
+    connection_id: '16'
+    requester_id: '9'
+    recipient_id: '18'
+    status: accepted
+    message: 'Samuel, cybersecurity and ML are increasingly converging — great to connect!'
+    created: '1706832000'
+    updated: '1709510400'
+-
+    connection_id: '17'
+    requester_id: '10'
+    recipient_id: '16'
+    status: accepted
+    message: 'Patrick, love to connect with alumni founders — we may have distribution synergies.'
+    created: '1706832000'
+    updated: '1709510400'
+-
+    connection_id: '18'
+    requester_id: '13'
+    recipient_id: '15'
+    status: accepted
+    message: 'Olivia, your environmental consulting work aligns well with our sustainable development goals.'
+    created: '1706832000'
+    updated: '1709510400'
+-
+    connection_id: '19'
+    requester_id: '14'
+    recipient_id: '17'
+    status: accepted
+    message: 'Rachel, your behavioural economics lens would be great to apply to tech policy analysis!'
+    created: '1706832000'
+    updated: '1709510400'
+-
+    connection_id: '20'
+    requester_id: '20'
+    recipient_id: '12'
+    status: accepted
+    message: 'Luis, fellow infrastructure professional here — lots of overlap between architecture and civil engineering!'
+    created: '1706832000'
+    updated: '1709510400'
+-
+    connection_id: '21'
+    requester_id: '11'
+    recipient_id: '1'
+    status: pending
+    message: "Alice, I'd love your advice on transitioning into the tech industry. Your career story is inspiring."
+    created: '1740268800'
+    updated: '1740268800'
+-
+    connection_id: '22'
+    requester_id: '15'
+    recipient_id: '12'
+    status: pending
+    message: 'Luis, your coastal resilience projects sound fascinating — would love to learn more.'
+    created: '1740268800'
+    updated: '1740268800'
+-
+    connection_id: '23'
+    requester_id: '19'
+    recipient_id: '2'
+    status: pending
+    message: "Bob, I'm early in my finance career and would love to connect with someone so experienced."
+    created: '1740268800'
+    updated: '1740268800'

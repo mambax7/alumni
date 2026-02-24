@@ -1,269 +1,304 @@
-# Profile-Skill links — 3-5 skills per profile across 20 profiles
-
-# Profile 1 — Alice Johnson (Software Engineer)
-- link_id: 1
-  profile_id: 1
-  skill_id: 1
-- link_id: 2
-  profile_id: 1
-  skill_id: 3
-- link_id: 3
-  profile_id: 1
-  skill_id: 6
-- link_id: 4
-  profile_id: 1
-  skill_id: 11
-- link_id: 5
-  profile_id: 1
-  skill_id: 8
-
-# Profile 2 — Bob Martinez (Investment Manager)
-- link_id: 6
-  profile_id: 2
-  skill_id: 4
-- link_id: 7
-  profile_id: 2
-  skill_id: 5
-- link_id: 8
-  profile_id: 2
-  skill_id: 14
-- link_id: 9
-  profile_id: 2
-  skill_id: 8
-
-# Profile 3 — Carol Williams (Physician)
-- link_id: 10
-  profile_id: 3
-  skill_id: 18
-- link_id: 11
-  profile_id: 3
-  skill_id: 8
-- link_id: 12
-  profile_id: 3
-  skill_id: 13
-
-# Profile 4 — David Chen (Professor, Electrical Engineering)
-- link_id: 13
-  profile_id: 4
-  skill_id: 2
-- link_id: 14
-  profile_id: 4
-  skill_id: 6
-- link_id: 15
-  profile_id: 4
-  skill_id: 22
-- link_id: 16
-  profile_id: 4
-  skill_id: 13
-- link_id: 17
-  profile_id: 4
-  skill_id: 8
-
-# Profile 5 — Emily Taylor (UX Designer)
-- link_id: 18
-  profile_id: 5
-  skill_id: 7
-- link_id: 19
-  profile_id: 5
-  skill_id: 17
-- link_id: 20
-  profile_id: 5
-  skill_id: 3
-
-# Profile 6 — Frank Okafor (Corporate Attorney)
-- link_id: 21
-  profile_id: 6
-  skill_id: 15
-- link_id: 22
-  profile_id: 6
-  skill_id: 16
-- link_id: 23
-  profile_id: 6
-  skill_id: 4
-- link_id: 24
-  profile_id: 6
-  skill_id: 8
-
-# Profile 7 — Grace Kim (Epidemiologist)
-- link_id: 25
-  profile_id: 7
-  skill_id: 19
-- link_id: 26
-  profile_id: 7
-  skill_id: 9
-- link_id: 27
-  profile_id: 7
-  skill_id: 18
-- link_id: 28
-  profile_id: 7
-  skill_id: 13
-
-# Profile 8 — Hector Rivera (Propulsion Engineer)
-- link_id: 29
-  profile_id: 8
-  skill_id: 20
-- link_id: 30
-  profile_id: 8
-  skill_id: 2
-- link_id: 31
-  profile_id: 8
-  skill_id: 22
-- link_id: 32
-  profile_id: 8
-  skill_id: 4
-
-# Profile 9 — Isabella Nguyen (ML Engineer)
-- link_id: 33
-  profile_id: 9
-  skill_id: 6
-- link_id: 34
-  profile_id: 9
-  skill_id: 2
-- link_id: 35
-  profile_id: 9
-  skill_id: 9
-- link_id: 36
-  profile_id: 9
-  skill_id: 11
-
-# Profile 10 — James Okonkwo (Brand Director)
-- link_id: 37
-  profile_id: 10
-  skill_id: 25
-- link_id: 38
-  profile_id: 10
-  skill_id: 26
-- link_id: 39
-  profile_id: 10
-  skill_id: 4
-- link_id: 40
-  profile_id: 10
-  skill_id: 8
-
-# Profile 11 — Karen Patel (Biomedical Engineer)
-- link_id: 41
-  profile_id: 11
-  skill_id: 20
-- link_id: 42
-  profile_id: 11
-  skill_id: 9
-- link_id: 43
-  profile_id: 11
-  skill_id: 2
-
-# Profile 12 — Luis Santos (Civil Engineer)
-- link_id: 44
-  profile_id: 12
-  skill_id: 21
-- link_id: 45
-  profile_id: 12
-  skill_id: 4
-- link_id: 46
-  profile_id: 12
-  skill_id: 27
-- link_id: 47
-  profile_id: 12
-  skill_id: 22
-
-# Profile 13 — Maria Fischer (UN Programme Officer)
-- link_id: 48
-  profile_id: 13
-  skill_id: 23
-- link_id: 49
-  profile_id: 13
-  skill_id: 4
-- link_id: 50
-  profile_id: 13
-  skill_id: 8
-- link_id: 51
-  profile_id: 13
-  skill_id: 13
-
-# Profile 14 — Nathan Brooks (Journalist)
-- link_id: 52
-  profile_id: 14
-  skill_id: 24
-- link_id: 53
-  profile_id: 14
-  skill_id: 9
-- link_id: 54
-  profile_id: 14
-  skill_id: 8
-
-# Profile 15 — Olivia Johansson (Environmental Consultant)
-- link_id: 55
-  profile_id: 15
-  skill_id: 27
-- link_id: 56
-  profile_id: 15
-  skill_id: 22
-- link_id: 57
-  profile_id: 15
-  skill_id: 9
-
-# Profile 16 — Patrick O'Brien (Tech CEO)
-- link_id: 58
-  profile_id: 16
-  skill_id: 28
-- link_id: 59
-  profile_id: 16
-  skill_id: 1
-- link_id: 60
-  profile_id: 16
-  skill_id: 11
-- link_id: 61
-  profile_id: 16
-  skill_id: 4
-- link_id: 62
-  profile_id: 16
-  skill_id: 8
-
-# Profile 17 — Rachel Goldstein (Psychology Professor)
-- link_id: 63
-  profile_id: 17
-  skill_id: 29
-- link_id: 64
-  profile_id: 17
-  skill_id: 13
-- link_id: 65
-  profile_id: 17
-  skill_id: 8
-- link_id: 66
-  profile_id: 17
-  skill_id: 5
-
-# Profile 18 — Samuel Adeyemi (Cybersecurity)
-- link_id: 67
-  profile_id: 18
-  skill_id: 12
-- link_id: 68
-  profile_id: 18
-  skill_id: 2
-- link_id: 69
-  profile_id: 18
-  skill_id: 9
-- link_id: 70
-  profile_id: 18
-  skill_id: 13
-
-# Profile 19 — Tanya Ivanova (Audit Associate)
-- link_id: 71
-  profile_id: 19
-  skill_id: 5
-- link_id: 72
-  profile_id: 19
-  skill_id: 9
-- link_id: 73
-  profile_id: 19
-  skill_id: 4
-
-# Profile 20 — Victor Moreau (Architect)
-- link_id: 74
-  profile_id: 20
-  skill_id: 30
-- link_id: 75
-  profile_id: 20
-  skill_id: 4
-- link_id: 76
-  profile_id: 20
-  skill_id: 8
+-
+    link_id: '1'
+    profile_id: '1'
+    skill_id: '1'
+-
+    link_id: '2'
+    profile_id: '1'
+    skill_id: '3'
+-
+    link_id: '3'
+    profile_id: '1'
+    skill_id: '6'
+-
+    link_id: '5'
+    profile_id: '1'
+    skill_id: '8'
+-
+    link_id: '4'
+    profile_id: '1'
+    skill_id: '11'
+-
+    link_id: '6'
+    profile_id: '2'
+    skill_id: '4'
+-
+    link_id: '7'
+    profile_id: '2'
+    skill_id: '5'
+-
+    link_id: '9'
+    profile_id: '2'
+    skill_id: '8'
+-
+    link_id: '8'
+    profile_id: '2'
+    skill_id: '14'
+-
+    link_id: '11'
+    profile_id: '3'
+    skill_id: '8'
+-
+    link_id: '12'
+    profile_id: '3'
+    skill_id: '13'
+-
+    link_id: '10'
+    profile_id: '3'
+    skill_id: '18'
+-
+    link_id: '13'
+    profile_id: '4'
+    skill_id: '2'
+-
+    link_id: '14'
+    profile_id: '4'
+    skill_id: '6'
+-
+    link_id: '17'
+    profile_id: '4'
+    skill_id: '8'
+-
+    link_id: '16'
+    profile_id: '4'
+    skill_id: '13'
+-
+    link_id: '15'
+    profile_id: '4'
+    skill_id: '22'
+-
+    link_id: '20'
+    profile_id: '5'
+    skill_id: '3'
+-
+    link_id: '18'
+    profile_id: '5'
+    skill_id: '7'
+-
+    link_id: '19'
+    profile_id: '5'
+    skill_id: '17'
+-
+    link_id: '23'
+    profile_id: '6'
+    skill_id: '4'
+-
+    link_id: '24'
+    profile_id: '6'
+    skill_id: '8'
+-
+    link_id: '21'
+    profile_id: '6'
+    skill_id: '15'
+-
+    link_id: '22'
+    profile_id: '6'
+    skill_id: '16'
+-
+    link_id: '26'
+    profile_id: '7'
+    skill_id: '9'
+-
+    link_id: '28'
+    profile_id: '7'
+    skill_id: '13'
+-
+    link_id: '27'
+    profile_id: '7'
+    skill_id: '18'
+-
+    link_id: '25'
+    profile_id: '7'
+    skill_id: '19'
+-
+    link_id: '30'
+    profile_id: '8'
+    skill_id: '2'
+-
+    link_id: '32'
+    profile_id: '8'
+    skill_id: '4'
+-
+    link_id: '29'
+    profile_id: '8'
+    skill_id: '20'
+-
+    link_id: '31'
+    profile_id: '8'
+    skill_id: '22'
+-
+    link_id: '34'
+    profile_id: '9'
+    skill_id: '2'
+-
+    link_id: '33'
+    profile_id: '9'
+    skill_id: '6'
+-
+    link_id: '35'
+    profile_id: '9'
+    skill_id: '9'
+-
+    link_id: '36'
+    profile_id: '9'
+    skill_id: '11'
+-
+    link_id: '39'
+    profile_id: '10'
+    skill_id: '4'
+-
+    link_id: '40'
+    profile_id: '10'
+    skill_id: '8'
+-
+    link_id: '37'
+    profile_id: '10'
+    skill_id: '25'
+-
+    link_id: '38'
+    profile_id: '10'
+    skill_id: '26'
+-
+    link_id: '43'
+    profile_id: '11'
+    skill_id: '2'
+-
+    link_id: '42'
+    profile_id: '11'
+    skill_id: '9'
+-
+    link_id: '41'
+    profile_id: '11'
+    skill_id: '20'
+-
+    link_id: '45'
+    profile_id: '12'
+    skill_id: '4'
+-
+    link_id: '44'
+    profile_id: '12'
+    skill_id: '21'
+-
+    link_id: '47'
+    profile_id: '12'
+    skill_id: '22'
+-
+    link_id: '46'
+    profile_id: '12'
+    skill_id: '27'
+-
+    link_id: '49'
+    profile_id: '13'
+    skill_id: '4'
+-
+    link_id: '50'
+    profile_id: '13'
+    skill_id: '8'
+-
+    link_id: '51'
+    profile_id: '13'
+    skill_id: '13'
+-
+    link_id: '48'
+    profile_id: '13'
+    skill_id: '23'
+-
+    link_id: '54'
+    profile_id: '14'
+    skill_id: '8'
+-
+    link_id: '53'
+    profile_id: '14'
+    skill_id: '9'
+-
+    link_id: '52'
+    profile_id: '14'
+    skill_id: '24'
+-
+    link_id: '57'
+    profile_id: '15'
+    skill_id: '9'
+-
+    link_id: '56'
+    profile_id: '15'
+    skill_id: '22'
+-
+    link_id: '55'
+    profile_id: '15'
+    skill_id: '27'
+-
+    link_id: '59'
+    profile_id: '16'
+    skill_id: '1'
+-
+    link_id: '61'
+    profile_id: '16'
+    skill_id: '4'
+-
+    link_id: '62'
+    profile_id: '16'
+    skill_id: '8'
+-
+    link_id: '60'
+    profile_id: '16'
+    skill_id: '11'
+-
+    link_id: '58'
+    profile_id: '16'
+    skill_id: '28'
+-
+    link_id: '66'
+    profile_id: '17'
+    skill_id: '5'
+-
+    link_id: '65'
+    profile_id: '17'
+    skill_id: '8'
+-
+    link_id: '64'
+    profile_id: '17'
+    skill_id: '13'
+-
+    link_id: '63'
+    profile_id: '17'
+    skill_id: '29'
+-
+    link_id: '68'
+    profile_id: '18'
+    skill_id: '2'
+-
+    link_id: '69'
+    profile_id: '18'
+    skill_id: '9'
+-
+    link_id: '67'
+    profile_id: '18'
+    skill_id: '12'
+-
+    link_id: '70'
+    profile_id: '18'
+    skill_id: '13'
+-
+    link_id: '73'
+    profile_id: '19'
+    skill_id: '4'
+-
+    link_id: '71'
+    profile_id: '19'
+    skill_id: '5'
+-
+    link_id: '72'
+    profile_id: '19'
+    skill_id: '9'
+-
+    link_id: '75'
+    profile_id: '20'
+    skill_id: '4'
+-
+    link_id: '76'
+    profile_id: '20'
+    skill_id: '8'
+-
+    link_id: '74'
+    profile_id: '20'
+    skill_id: '30'

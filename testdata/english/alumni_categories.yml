@@ -1,109 +1,110 @@
-- category_id: 1
-  name: Business & Entrepreneurship
-  description: Alumni working in business, finance, and entrepreneurship
-  image: ''
-  type: general
-  display_order: 10
-  event_count: 0
-  created: 1672531200
-  updated: 0
-
-- category_id: 2
-  name: Technology & Engineering
-  description: Alumni in software, hardware, and engineering fields
-  image: ''
-  type: general
-  display_order: 20
-  event_count: 0
-  created: 1672531200
-  updated: 0
-
-- category_id: 3
-  name: Healthcare & Medicine
-  description: Alumni in medical, healthcare, and life sciences
-  image: ''
-  type: general
-  display_order: 30
-  event_count: 0
-  created: 1672531200
-  updated: 0
-
-- category_id: 4
-  name: Education & Research
-  description: Alumni working in academia and research institutions
-  image: ''
-  type: general
-  display_order: 40
-  event_count: 0
-  created: 1672531200
-  updated: 0
-
-- category_id: 5
-  name: Arts & Creative Industries
-  description: Alumni in creative fields, design, and the arts
-  image: ''
-  type: general
-  display_order: 50
-  event_count: 0
-  created: 1672531200
-  updated: 0
-
-- category_id: 6
-  name: Law & Government
-  description: Alumni in legal practice, public policy, and civil service
-  image: ''
-  type: general
-  display_order: 60
-  event_count: 0
-  created: 1672531200
-  updated: 0
-
-- category_id: 7
-  name: Non-Profit & Social Impact
-  description: Alumni in charities, NGOs, and social enterprises
-  image: ''
-  type: general
-  display_order: 70
-  event_count: 0
-  created: 1672531200
-  updated: 0
-
-- category_id: 8
-  name: Annual Reunions
-  description: Annual and milestone alumni reunion events
-  image: ''
-  type: event
-  display_order: 10
-  event_count: 0
-  created: 1672531200
-  updated: 0
-
-- category_id: 9
-  name: Networking Events
-  description: Professional networking and career development events
-  image: ''
-  type: event
-  display_order: 20
-  event_count: 0
-  created: 1672531200
-  updated: 0
-
-- category_id: 10
-  name: Workshops & Seminars
-  description: Educational workshops, seminars, and panel discussions
-  image: ''
-  type: event
-  display_order: 30
-  event_count: 0
-  created: 1672531200
-  updated: 0
-
-- category_id: 11
-  name: Online Events
-  description: Virtual events, webinars, and online meetups
-  image: ''
-  type: event
-  display_order: 40
-  event_count: 0
-  created: 1672531200
-  updated: 0
+-
+    category_id: '1'
+    name: 'Business & Entrepreneurship'
+    description: 'Alumni working in business, finance, and entrepreneurship'
+    image: ''
+    type: general
+    display_order: '10'
+    event_count: '0'
+    created: '1672531200'
+    updated: '0'
+-
+    category_id: '2'
+    name: 'Technology & Engineering'
+    description: 'Alumni in software, hardware, and engineering fields'
+    image: ''
+    type: general
+    display_order: '20'
+    event_count: '0'
+    created: '1672531200'
+    updated: '0'
+-
+    category_id: '3'
+    name: 'Healthcare & Medicine'
+    description: 'Alumni in medical, healthcare, and life sciences'
+    image: ''
+    type: general
+    display_order: '30'
+    event_count: '0'
+    created: '1672531200'
+    updated: '0'
+-
+    category_id: '4'
+    name: 'Education & Research'
+    description: 'Alumni working in academia and research institutions'
+    image: ''
+    type: general
+    display_order: '40'
+    event_count: '0'
+    created: '1672531200'
+    updated: '0'
+-
+    category_id: '5'
+    name: 'Arts & Creative Industries'
+    description: 'Alumni in creative fields, design, and the arts'
+    image: ''
+    type: general
+    display_order: '50'
+    event_count: '0'
+    created: '1672531200'
+    updated: '0'
+-
+    category_id: '6'
+    name: 'Law & Government'
+    description: 'Alumni in legal practice, public policy, and civil service'
+    image: ''
+    type: general
+    display_order: '60'
+    event_count: '0'
+    created: '1672531200'
+    updated: '0'
+-
+    category_id: '7'
+    name: 'Non-Profit & Social Impact'
+    description: 'Alumni in charities, NGOs, and social enterprises'
+    image: ''
+    type: general
+    display_order: '70'
+    event_count: '0'
+    created: '1672531200'
+    updated: '0'
+-
+    category_id: '8'
+    name: 'Annual Reunions'
+    description: 'Annual and milestone alumni reunion events'
+    image: ''
+    type: event
+    display_order: '10'
+    event_count: '0'
+    created: '1672531200'
+    updated: '0'
+-
+    category_id: '9'
+    name: 'Networking Events'
+    description: 'Professional networking and career development events'
+    image: ''
+    type: event
+    display_order: '20'
+    event_count: '0'
+    created: '1672531200'
+    updated: '0'
+-
+    category_id: '10'
+    name: 'Workshops & Seminars'
+    description: 'Educational workshops, seminars, and panel discussions'
+    image: ''
+    type: event
+    display_order: '30'
+    event_count: '0'
+    created: '1672531200'
+    updated: '0'
+-
+    category_id: '11'
+    name: 'Online Events'
+    description: 'Virtual events, webinars, and online meetups'
+    image: ''
+    type: event
+    display_order: '40'
+    event_count: '0'
+    created: '1672531200'
+    updated: '0'

@@ -1,251 +1,240 @@
-# Alumni Events — comprehensive sample data
-# SQL enum for event_type: 'online','physical','hybrid'
-# SQL enum for status: 'active','cancelled','completed','draft'
-# start_date / end_date are Unix timestamps (UTC)
-# Future events use 2026 dates; past events use 2025 dates
-
-# --- PAST / COMPLETED EVENTS ---
-
-- event_id: 1
-  category_id: 8
-  title: Annual Alumni Reunion 2025
-  description: Our annual gathering of alumni from all graduating years. Enjoyed a wonderful evening reconnecting with classmates, hearing inspiring talks from notable graduates, and celebrating the university's 75th anniversary.
-  image: ''
-  location: Grand Ballroom, Alumni Center
-  venue: 123 University Drive
-  start_date: 1732060800
-  end_date: 1732147200
-  registration_deadline: 1731456000
-  max_attendees: 500
-  rsvp_count: 423
-  event_type: physical
-  meeting_url: ''
-  contact_name: Alumni Relations Office
-  contact_email: alumni@university.edu
-  contact_phone: '555-0100'
-  status: completed
-  featured: 0
-  views: 892
-  created_by: 2
-  created: 1719792000
-  updated: 1732147200
-
-- event_id: 2
-  category_id: 10
-  title: 'Webinar: AI in the Workplace — Opportunities and Challenges'
-  description: A 90-minute online panel discussion exploring how artificial intelligence is transforming industries. Featured four alumni panellists from technology, healthcare, finance, and law who shared their front-line experiences.
-  image: ''
-  location: Online
-  venue: Zoom Webinar
-  start_date: 1736524800
-  end_date: 1736530200
-  registration_deadline: 1736438400
-  max_attendees: 1000
-  rsvp_count: 347
-  event_type: online
-  meeting_url: 'https://zoom.example.com/alumni-ai-webinar'
-  contact_name: Dr. Rachel Goldstein
-  contact_email: rachel.goldstein@example.com
-  contact_phone: ''
-  status: completed
-  featured: 0
-  views: 561
-  created_by: 17
-  created: 1727740800
-  updated: 1736530200
-
-# --- UPCOMING / ACTIVE EVENTS ---
-
-- event_id: 3
-  category_id: 8
-  title: Annual Alumni Reunion 2026
-  description: Join us for our flagship annual alumni reunion! Network with fellow graduates from every era, hear keynote addresses from distinguished alumni, enjoy the alumni awards ceremony, and celebrate our community's achievements over the past year. Dinner and entertainment included.
-  image: ''
-  location: 'Grand Ballroom, Alumni Center, 123 University Drive'
-  venue: Alumni Center
-  start_date: 1763510400
-  end_date: 1763596800
-  registration_deadline: 1762905600
-  max_attendees: 600
-  rsvp_count: 112
-  event_type: physical
-  meeting_url: ''
-  contact_name: Alumni Relations Office
-  contact_email: alumni@university.edu
-  contact_phone: '555-0100'
-  status: active
-  featured: 1
-  views: 341
-  created_by: 2
-  created: 1738368000
-  updated: 1740268800
-
-- event_id: 4
-  category_id: 9
-  title: Tech Alumni Networking Night — Silicon Valley
-  description: An evening dedicated to alumni working in the technology sector in the Bay Area and beyond. Meet your peers, swap career stories, hear a lightning talk from a successful founder, and explore new opportunities. Open bar and canapés provided.
-  image: ''
-  location: 'Innovation Hub, 500 Howard Street, San Francisco'
-  venue: Innovation Hub
-  start_date: 1751155200
-  end_date: 1751169600
-  registration_deadline: 1750636800
-  max_attendees: 150
-  rsvp_count: 67
-  event_type: physical
-  meeting_url: ''
-  contact_name: Alice Johnson
-  contact_email: alice.johnson@example.com
-  contact_phone: ''
-  status: active
-  featured: 1
-  views: 218
-  created_by: 2
-  created: 1738368000
-  updated: 1740268800
-
-- event_id: 5
-  category_id: 10
-  title: 'Workshop: From Employee to Entrepreneur — Your Startup Roadmap'
-  description: 'A hands-on full-day workshop covering the essentials of launching a startup: identifying a market opportunity, building a founding team, creating an MVP, pitching investors, and navigating early growth. Led by three alumni founders.'
-  image: ''
-  location: 'Business School, Room 201'
-  venue: Business School
-  start_date: 1753747200
-  end_date: 1753783200
-  registration_deadline: 1753228800
-  max_attendees: 50
-  rsvp_count: 38
-  event_type: physical
-  meeting_url: ''
-  contact_name: Patrick O'Brien
-  contact_email: patrick.obrien@example.com
-  contact_phone: '555-0116'
-  status: active
-  featured: 0
-  views: 179
-  created_by: 16
-  created: 1738368000
-  updated: 1740268800
-
-- event_id: 6
-  category_id: 10
-  title: Healthcare Innovation Forum
-  description: A half-day seminar exploring AI in diagnostics, telehealth expansion, and the future of primary care. Features panel discussions with alumni physicians, biomedical engineers, and health tech entrepreneurs. CME credits available for eligible attendees.
-  image: ''
-  location: Medical School Auditorium
-  venue: Medical School
-  start_date: 1756425600
-  end_date: 1756454400
-  registration_deadline: 1755820800
-  max_attendees: 200
-  rsvp_count: 54
-  event_type: physical
-  meeting_url: ''
-  contact_name: Grace Kim
-  contact_email: grace.kim@example.com
-  contact_phone: ''
-  status: active
-  featured: 0
-  views: 143
-  created_by: 7
-  created: 1738368000
-  updated: 1740268800
-
-- event_id: 7
-  category_id: 11
-  title: 'Online Career Clinic: CV, LinkedIn & Interview Skills'
-  description: A virtual workshop for recent graduates and alumni transitioning careers. Covers writing a standout CV, optimising your LinkedIn profile, and practising behavioural interview techniques. Small group format; maximum 30 participants for personalised feedback.
-  image: ''
-  location: Online
-  venue: Zoom
-  start_date: 1748995200
-  end_date: 1749002400
-  registration_deadline: 1748908800
-  max_attendees: 30
-  rsvp_count: 28
-  event_type: online
-  meeting_url: 'https://zoom.example.com/alumni-career-clinic'
-  contact_name: Alumni Careers Team
-  contact_email: careers@university.edu
-  contact_phone: ''
-  status: active
-  featured: 0
-  views: 97
-  created_by: 2
-  created: 1738368000
-  updated: 1740268800
-
-- event_id: 8
-  category_id: 9
-  title: Finance & Fintech Mixer — New York City
-  description: An informal networking evening for alumni working in banking, finance, insurance, and financial technology in the New York metro area. No agenda — just great conversations, refreshments, and reconnecting with your network.
-  image: ''
-  location: 'The Yale Club, 50 Vanderbilt Ave, New York'
-  venue: The Yale Club
-  start_date: 1755734400
-  end_date: 1755748800
-  registration_deadline: 1755302400
-  max_attendees: 100
-  rsvp_count: 42
-  event_type: physical
-  meeting_url: ''
-  contact_name: Bob Martinez
-  contact_email: bob.martinez@example.com
-  contact_phone: ''
-  status: active
-  featured: 0
-  views: 88
-  created_by: 2
-  created: 1738368000
-  updated: 1740268800
-
-- event_id: 9
-  category_id: 10
-  title: 'Panel: Careers in International Development & the UN System'
-  description: Three alumni currently working at international organisations — the UN, World Bank, and an international NGO — share their journeys, discuss day-to-day realities, and answer questions from students and recent graduates considering these career paths.
-  image: ''
-  location: Online
-  venue: Teams Webinar
-  start_date: 1759276800
-  end_date: 1759284000
-  registration_deadline: 1759190400
-  max_attendees: 500
-  rsvp_count: 89
-  event_type: online
-  meeting_url: 'https://teams.example.com/alumni-intdev-panel'
-  contact_name: Maria Fischer
-  contact_email: maria.fischer@example.com
-  contact_phone: ''
-  status: active
-  featured: 0
-  views: 134
-  created_by: 13
-  created: 1738368000
-  updated: 1740268800
-
-# --- DRAFT EVENT ---
-
-- event_id: 10
-  category_id: 9
-  title: 'Law & Policy Lunch — Washington D.C.'
-  description: An intimate networking lunch for alumni in law, public policy, government, and journalism in the Washington D.C. area. Guest speaker TBC. Venue and final details to follow.
-  image: ''
-  location: Washington D.C. — venue TBC
-  venue: ''
-  start_date: 1762300800
-  end_date: 1762308000
-  registration_deadline: 1761782400
-  max_attendees: 40
-  rsvp_count: 0
-  event_type: physical
-  meeting_url: ''
-  contact_name: Frank Okafor
-  contact_email: frank.okafor@example.com
-  contact_phone: ''
-  status: draft
-  featured: 0
-  views: 12
-  created_by: 6
-  created: 1740268800
-  updated: 1740268800
+-
+    event_id: '1'
+    category_id: '8'
+    title: 'Annual Alumni Reunion 2025'
+    description: "Our annual gathering of alumni from all graduating years. Enjoyed a wonderful evening reconnecting with classmates, hearing inspiring talks from notable graduates, and celebrating the university's 75th anniversary."
+    image: ''
+    location: 'Grand Ballroom, Alumni Center'
+    venue: '123 University Drive'
+    start_date: '1763596800'
+    end_date: '1763683200'
+    registration_deadline: '1731456000'
+    max_attendees: '500'
+    rsvp_count: '423'
+    event_type: physical
+    meeting_url: ''
+    contact_name: 'Alumni Relations Office'
+    contact_email: alumni@university.edu
+    contact_phone: 555-0100
+    status: active
+    featured: '0'
+    views: '892'
+    created_by: '2'
+    created: '1719792000'
+    updated: '1732147200'
+-
+    event_id: '2'
+    category_id: '10'
+    title: 'Webinar: AI in the Workplace — Opportunities and Challenges'
+    description: 'A 90-minute online panel discussion exploring how artificial intelligence is transforming industries. Featured four alumni panellists from technology, healthcare, finance, and law who shared their front-line experiences.'
+    image: ''
+    location: Online
+    venue: 'Zoom Webinar'
+    start_date: '1768060800'
+    end_date: '1768066200'
+    registration_deadline: '1736438400'
+    max_attendees: '1000'
+    rsvp_count: '347'
+    event_type: online
+    meeting_url: 'https://zoom.example.com/alumni-ai-webinar'
+    contact_name: 'Dr. Rachel Goldstein'
+    contact_email: rachel.goldstein@example.com
+    contact_phone: ''
+    status: active
+    featured: '0'
+    views: '561'
+    created_by: '17'
+    created: '1727740800'
+    updated: '1736530200'
+-
+    event_id: '3'
+    category_id: '8'
+    title: 'Annual Alumni Reunion 2026'
+    description: "Join us for our flagship annual alumni reunion! Network with fellow graduates from every era, hear keynote addresses from distinguished alumni, enjoy the alumni awards ceremony, and celebrate our community's achievements over the past year. Dinner and entertainment included."
+    image: ''
+    location: 'Grand Ballroom, Alumni Center, 123 University Drive'
+    venue: 'Alumni Center'
+    start_date: '1795046400'
+    end_date: '1795132800'
+    registration_deadline: '1762905600'
+    max_attendees: '600'
+    rsvp_count: '112'
+    event_type: physical
+    meeting_url: ''
+    contact_name: 'Alumni Relations Office'
+    contact_email: alumni@university.edu
+    contact_phone: 555-0100
+    status: active
+    featured: '1'
+    views: '341'
+    created_by: '2'
+    created: '1738368000'
+    updated: '1740268800'
+-
+    event_id: '4'
+    category_id: '9'
+    title: 'Tech Alumni Networking Night — Silicon Valley'
+    description: 'An evening dedicated to alumni working in the technology sector in the Bay Area and beyond. Meet your peers, swap career stories, hear a lightning talk from a successful founder, and explore new opportunities. Open bar and canapés provided.'
+    image: ''
+    location: 'Innovation Hub, 500 Howard Street, San Francisco'
+    venue: 'Innovation Hub'
+    start_date: '1782691200'
+    end_date: '1782705600'
+    registration_deadline: '1750636800'
+    max_attendees: '150'
+    rsvp_count: '67'
+    event_type: physical
+    meeting_url: ''
+    contact_name: 'Alice Johnson'
+    contact_email: alice.johnson@example.com
+    contact_phone: ''
+    status: active
+    featured: '1'
+    views: '218'
+    created_by: '2'
+    created: '1738368000'
+    updated: '1740268800'
+-
+    event_id: '5'
+    category_id: '10'
+    title: 'Workshop: From Employee to Entrepreneur — Your Startup Roadmap'
+    description: 'A hands-on full-day workshop covering the essentials of launching a startup: identifying a market opportunity, building a founding team, creating an MVP, pitching investors, and navigating early growth. Led by three alumni founders.'
+    image: ''
+    location: 'Business School, Room 201'
+    venue: 'Business School'
+    start_date: '1785283200'
+    end_date: '1785319200'
+    registration_deadline: '1753228800'
+    max_attendees: '50'
+    rsvp_count: '38'
+    event_type: physical
+    meeting_url: ''
+    contact_name: "Patrick O'Brien"
+    contact_email: patrick.obrien@example.com
+    contact_phone: 555-0116
+    status: active
+    featured: '0'
+    views: '179'
+    created_by: '16'
+    created: '1738368000'
+    updated: '1740268800'
+-
+    event_id: '6'
+    category_id: '10'
+    title: 'Healthcare Innovation Forum'
+    description: 'A half-day seminar exploring AI in diagnostics, telehealth expansion, and the future of primary care. Features panel discussions with alumni physicians, biomedical engineers, and health tech entrepreneurs. CME credits available for eligible attendees.'
+    image: ''
+    location: 'Medical School Auditorium'
+    venue: 'Medical School'
+    start_date: '1787961600'
+    end_date: '1787990400'
+    registration_deadline: '1755820800'
+    max_attendees: '200'
+    rsvp_count: '54'
+    event_type: physical
+    meeting_url: ''
+    contact_name: 'Grace Kim'
+    contact_email: grace.kim@example.com
+    contact_phone: ''
+    status: active
+    featured: '0'
+    views: '143'
+    created_by: '7'
+    created: '1738368000'
+    updated: '1740268800'
+-
+    event_id: '7'
+    category_id: '11'
+    title: 'Online Career Clinic: CV, LinkedIn & Interview Skills'
+    description: 'A virtual workshop for recent graduates and alumni transitioning careers. Covers writing a standout CV, optimising your LinkedIn profile, and practising behavioural interview techniques. Small group format; maximum 30 participants for personalised feedback.'
+    image: ''
+    location: Online
+    venue: Zoom
+    start_date: '1780531200'
+    end_date: '1780538400'
+    registration_deadline: '1748908800'
+    max_attendees: '30'
+    rsvp_count: '28'
+    event_type: online
+    meeting_url: 'https://zoom.example.com/alumni-career-clinic'
+    contact_name: 'Alumni Careers Team'
+    contact_email: careers@university.edu
+    contact_phone: ''
+    status: active
+    featured: '0'
+    views: '98'
+    created_by: '2'
+    created: '1738368000'
+    updated: '1740268800'
+-
+    event_id: '8'
+    category_id: '9'
+    title: 'Finance & Fintech Mixer — New York City'
+    description: 'An informal networking evening for alumni working in banking, finance, insurance, and financial technology in the New York metro area. No agenda — just great conversations, refreshments, and reconnecting with your network.'
+    image: ''
+    location: 'The Yale Club, 50 Vanderbilt Ave, New York'
+    venue: 'The Yale Club'
+    start_date: '1787270400'
+    end_date: '1787284800'
+    registration_deadline: '1755302400'
+    max_attendees: '100'
+    rsvp_count: '42'
+    event_type: physical
+    meeting_url: ''
+    contact_name: 'Bob Martinez'
+    contact_email: bob.martinez@example.com
+    contact_phone: ''
+    status: active
+    featured: '0'
+    views: '88'
+    created_by: '2'
+    created: '1738368000'
+    updated: '1740268800'
+-
+    event_id: '9'
+    category_id: '10'
+    title: 'Panel: Careers in International Development & the UN System'
+    description: 'Three alumni currently working at international organisations — the UN, World Bank, and an international NGO — share their journeys, discuss day-to-day realities, and answer questions from students and recent graduates considering these career paths.'
+    image: ''
+    location: Online
+    venue: 'Teams Webinar'
+    start_date: '1790812800'
+    end_date: '1790820000'
+    registration_deadline: '1759190400'
+    max_attendees: '500'
+    rsvp_count: '89'
+    event_type: online
+    meeting_url: 'https://teams.example.com/alumni-intdev-panel'
+    contact_name: 'Maria Fischer'
+    contact_email: maria.fischer@example.com
+    contact_phone: ''
+    status: active
+    featured: '0'
+    views: '134'
+    created_by: '13'
+    created: '1738368000'
+    updated: '1740268800'
+-
+    event_id: '10'
+    category_id: '9'
+    title: 'Law & Policy Lunch — Washington D.C.'
+    description: 'An intimate networking lunch for alumni in law, public policy, government, and journalism in the Washington D.C. area. Guest speaker TBC. Venue and final details to follow.'
+    image: ''
+    location: 'Washington D.C. — venue TBC'
+    venue: ''
+    start_date: '1793836800'
+    end_date: '1793844000'
+    registration_deadline: '1761782400'
+    max_attendees: '40'
+    rsvp_count: '0'
+    event_type: physical
+    meeting_url: ''
+    contact_name: 'Frank Okafor'
+    contact_email: frank.okafor@example.com
+    contact_phone: ''
+    status: active
+    featured: '0'
+    views: '12'
+    created_by: '6'
+    created: '1740268800'
+    updated: '1740268800'

@@ -1,683 +1,680 @@
-# Alumni Profiles — comprehensive sample data
-# user_id values 2-21 (user_id 1 = XOOPS admin, test users start at 2)
-# All timestamps use Unix epoch (UTC)
-
-- profile_id: 1
-  user_id: 2
-  first_name: Alice
-  last_name: Johnson
-  photo: ''
-  graduation_year: 2015
-  degree: Bachelor of Science
-  major: Computer Science
-  department: School of Engineering
-  current_company: TechCorp Solutions
-  current_position: Senior Software Engineer
-  industry: Technology
-  location: 'San Francisco, California, USA'
-  city: San Francisco
-  country: United States
-  bio: Passionate software engineer with 8+ years building scalable web applications. Open-source advocate and mentor for women in tech. Speaker at several regional developer conferences.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: alice.johnson@example.com
-  phone: ''
-  privacy_profile: public
-  privacy_email: alumni
-  privacy_phone: private
-  allow_mentorship: 1
-  allow_networking: 1
-  status: active
-  featured: 1
-  views: 248
-  connections_count: 4
-  created: 1672531200
-  updated: 1706832000
-
-- profile_id: 2
-  user_id: 3
-  first_name: Bob
-  last_name: Martinez
-  photo: ''
-  graduation_year: 2012
-  degree: Master of Business Administration
-  major: Finance
-  department: Business School
-  current_company: Global Finance Partners
-  current_position: Investment Manager
-  industry: Finance
-  location: 'New York, New York, USA'
-  city: New York
-  country: United States
-  bio: Finance professional specialising in emerging markets and sustainable investment strategies. Previously at Goldman Sachs. Passionate about ESG investing and financial literacy education.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: bob.martinez@example.com
-  phone: ''
-  privacy_profile: public
-  privacy_email: alumni
-  privacy_phone: private
-  allow_mentorship: 1
-  allow_networking: 1
-  status: active
-  featured: 0
-  views: 134
-  connections_count: 3
-  created: 1675209600
-  updated: 1706832000
-
-- profile_id: 3
-  user_id: 4
-  first_name: Carol
-  last_name: Williams
-  photo: ''
-  graduation_year: 2018
-  degree: Doctor of Medicine
-  major: Medicine
-  department: School of Medicine
-  current_company: City General Hospital
-  current_position: Resident Physician — Internal Medicine
-  industry: Healthcare
-  location: 'Chicago, Illinois, USA'
-  city: Chicago
-  country: United States
-  bio: Dedicated physician committed to improving patient outcomes through evidence-based medicine and health equity advocacy. Volunteering with mobile health clinics serving underserved communities on weekends.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: carol.williams@example.com
-  phone: ''
-  privacy_profile: public
-  privacy_email: alumni
-  privacy_phone: private
-  allow_mentorship: 0
-  allow_networking: 1
-  status: active
-  featured: 1
-  views: 97
-  connections_count: 2
-  created: 1677888000
-  updated: 1706832000
-
-- profile_id: 4
-  user_id: 5
-  first_name: David
-  last_name: Chen
-  photo: ''
-  graduation_year: 2010
-  degree: PhD
-  major: Electrical Engineering
-  department: School of Engineering
-  current_company: State University
-  current_position: Associate Professor of Electrical Engineering
-  industry: Education
-  location: 'Boston, Massachusetts, USA'
-  city: Boston
-  country: United States
-  bio: Researcher and educator focused on renewable energy systems, smart grids, and power electronics. Published 35+ peer-reviewed papers. NSF CAREER Award recipient 2022.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: david.chen@example.com
-  phone: ''
-  privacy_profile: alumni
-  privacy_email: alumni
-  privacy_phone: private
-  allow_mentorship: 1
-  allow_networking: 1
-  status: active
-  featured: 1
-  views: 89
-  connections_count: 3
-  created: 1680566400
-  updated: 1706832000
-
-- profile_id: 5
-  user_id: 6
-  first_name: Emily
-  last_name: Taylor
-  photo: ''
-  graduation_year: 2020
-  degree: Bachelor of Fine Arts
-  major: Graphic Design
-  department: School of Arts
-  current_company: Creative Studio X
-  current_position: Lead UX Designer
-  industry: Design
-  location: 'Los Angeles, California, USA'
-  city: Los Angeles
-  country: United States
-  bio: Creative designer passionate about brand identity and user experience design. Transitioned from print design into product design with the help of alumni mentors. Now leading a 6-person design team.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: emily.taylor@example.com
-  phone: ''
-  privacy_profile: public
-  privacy_email: public
-  privacy_phone: private
-  allow_mentorship: 0
-  allow_networking: 1
-  status: active
-  featured: 0
-  views: 58
-  connections_count: 2
-  created: 1683244800
-  updated: 1706832000
-
-- profile_id: 6
-  user_id: 7
-  first_name: Frank
-  last_name: Okafor
-  photo: ''
-  graduation_year: 2014
-  degree: Bachelor of Laws
-  major: Corporate Law
-  department: Faculty of Law
-  current_company: Okafor & Associates LLP
-  current_position: Partner
-  industry: Law
-  location: 'Houston, Texas, USA'
-  city: Houston
-  country: United States
-  bio: Corporate attorney specialising in mergers & acquisitions and cross-border transactions. Founded his boutique law firm in 2020 after 6 years at a Big Law firm. Mentors first-generation law students.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: frank.okafor@example.com
-  phone: ''
-  privacy_profile: public
-  privacy_email: alumni
-  privacy_phone: private
-  allow_mentorship: 1
-  allow_networking: 1
-  status: active
-  featured: 0
-  views: 73
-  connections_count: 2
-  created: 1672531200
-  updated: 1706832000
-
-- profile_id: 7
-  user_id: 8
-  first_name: Grace
-  last_name: Kim
-  photo: ''
-  graduation_year: 2016
-  degree: Master of Public Health
-  major: Epidemiology
-  department: School of Public Health
-  current_company: Centers for Disease Control and Prevention
-  current_position: Epidemiologist
-  industry: Healthcare
-  location: 'Atlanta, Georgia, USA'
-  city: Atlanta
-  country: United States
-  bio: Epidemiologist at the CDC working on infectious disease surveillance and outbreak response. Led field teams during the COVID-19 response. Advocates for data-driven public health policy.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: grace.kim@example.com
-  phone: ''
-  privacy_profile: public
-  privacy_email: alumni
-  privacy_phone: private
-  allow_mentorship: 1
-  allow_networking: 1
-  status: active
-  featured: 1
-  views: 112
-  connections_count: 2
-  created: 1675209600
-  updated: 1706832000
-
-- profile_id: 8
-  user_id: 9
-  first_name: Hector
-  last_name: Rivera
-  photo: ''
-  graduation_year: 2008
-  degree: Bachelor of Science
-  major: Mechanical Engineering
-  department: School of Engineering
-  current_company: SpaceX
-  current_position: Senior Propulsion Engineer
-  industry: Aerospace
-  location: 'Hawthorne, California, USA'
-  city: Hawthorne
-  country: United States
-  bio: Propulsion engineer with 15 years in aerospace, contributing to multiple rocket engine programmes. Former NASA contractor. Passionate about democratising access to space exploration.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: hector.rivera@example.com
-  phone: ''
-  privacy_profile: public
-  privacy_email: alumni
-  privacy_phone: private
-  allow_mentorship: 1
-  allow_networking: 1
-  status: active
-  featured: 0
-  views: 201
-  connections_count: 2
-  created: 1672531200
-  updated: 1706832000
-
-- profile_id: 9
-  user_id: 10
-  first_name: Isabella
-  last_name: Nguyen
-  photo: ''
-  graduation_year: 2019
-  degree: Master of Science
-  major: Data Science
-  department: School of Engineering
-  current_company: Stripe
-  current_position: Machine Learning Engineer
-  industry: Technology
-  location: 'Seattle, Washington, USA'
-  city: Seattle
-  country: United States
-  bio: ML engineer building fraud detection models at Stripe. Previously a research assistant in NLP at the university AI lab. Contributor to several open-source ML frameworks. Loves hiking in the Pacific Northwest.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: isabella.nguyen@example.com
-  phone: ''
-  privacy_profile: public
-  privacy_email: alumni
-  privacy_phone: private
-  allow_mentorship: 0
-  allow_networking: 1
-  status: active
-  featured: 0
-  views: 77
-  connections_count: 1
-  created: 1677888000
-  updated: 1706832000
-
-- profile_id: 10
-  user_id: 11
-  first_name: James
-  last_name: Okonkwo
-  photo: ''
-  graduation_year: 2013
-  degree: Master of Business Administration
-  major: Marketing
-  department: Business School
-  current_company: Unilever
-  current_position: Global Brand Director
-  industry: Consumer Goods
-  location: 'London, England, UK'
-  city: London
-  country: United Kingdom
-  bio: Brand strategist with a decade of experience in FMCG. Led the global relaunch of two major Unilever household brands across 40+ markets. Passionate about sustainable packaging and ethical supply chains.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: james.okonkwo@example.com
-  phone: ''
-  privacy_profile: public
-  privacy_email: alumni
-  privacy_phone: private
-  allow_mentorship: 1
-  allow_networking: 1
-  status: active
-  featured: 0
-  views: 66
-  connections_count: 2
-  created: 1680566400
-  updated: 1706832000
-
-- profile_id: 11
-  user_id: 12
-  first_name: Karen
-  last_name: Patel
-  photo: ''
-  graduation_year: 2021
-  degree: Bachelor of Science
-  major: Biomedical Engineering
-  department: School of Engineering
-  current_company: Medtronic
-  current_position: Product Development Engineer
-  industry: Medical Devices
-  location: 'Minneapolis, Minnesota, USA'
-  city: Minneapolis
-  country: United States
-  bio: Biomedical engineer developing next-generation cardiac monitoring devices. Recent graduate still exploring her career path. Looking for mentors in both clinical research and product management tracks.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: karen.patel@example.com
-  phone: ''
-  privacy_profile: public
-  privacy_email: public
-  privacy_phone: private
-  allow_mentorship: 0
-  allow_networking: 1
-  status: active
-  featured: 0
-  views: 34
-  connections_count: 1
-  created: 1683244800
-  updated: 1706832000
-
-- profile_id: 12
-  user_id: 13
-  first_name: Luis
-  last_name: Santos
-  photo: ''
-  graduation_year: 2011
-  degree: Bachelor of Science
-  major: Civil Engineering
-  department: School of Engineering
-  current_company: AECOM
-  current_position: Principal Civil Engineer
-  industry: Construction & Infrastructure
-  location: 'Miami, Florida, USA'
-  city: Miami
-  country: United States
-  bio: Infrastructure engineer with expertise in coastal resilience and climate adaptation projects. Led design of several hurricane-hardening projects across South Florida. Volunteer with Engineering Without Borders.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: luis.santos@example.com
-  phone: ''
-  privacy_profile: public
-  privacy_email: alumni
-  privacy_phone: private
-  allow_mentorship: 1
-  allow_networking: 1
-  status: active
-  featured: 0
-  views: 45
-  connections_count: 1
-  created: 1672531200
-  updated: 1706832000
-
-- profile_id: 13
-  user_id: 14
-  first_name: Maria
-  last_name: Fischer
-  photo: ''
-  graduation_year: 2017
-  degree: Master of Arts
-  major: International Relations
-  department: School of Social Sciences
-  current_company: United Nations Development Programme
-  current_position: Programme Officer
-  industry: Non-Profit & International Development
-  location: 'Geneva, Switzerland'
-  city: Geneva
-  country: Switzerland
-  bio: Development professional working on governance and rule-of-law programmes in Sub-Saharan Africa. Former Fulbright Scholar. Speaks five languages. Passionate about inclusive economic growth.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: maria.fischer@example.com
-  phone: ''
-  privacy_profile: public
-  privacy_email: alumni
-  privacy_phone: private
-  allow_mentorship: 1
-  allow_networking: 1
-  status: active
-  featured: 1
-  views: 93
-  connections_count: 2
-  created: 1675209600
-  updated: 1706832000
-
-- profile_id: 14
-  user_id: 15
-  first_name: Nathan
-  last_name: Brooks
-  photo: ''
-  graduation_year: 2009
-  degree: Bachelor of Arts
-  major: Journalism
-  department: School of Communication
-  current_company: The Washington Post
-  current_position: Investigative Reporter
-  industry: Media & Journalism
-  location: 'Washington D.C., USA'
-  city: Washington D.C.
-  country: United States
-  bio: Award-winning investigative journalist covering technology policy, AI regulation, and government surveillance. Pulitzer Prize finalist 2024. Teaches data journalism workshops for student media organisations.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: nathan.brooks@example.com
-  phone: ''
-  privacy_profile: public
-  privacy_email: public
-  privacy_phone: private
-  allow_mentorship: 1
-  allow_networking: 1
-  status: active
-  featured: 0
-  views: 155
-  connections_count: 2
-  created: 1677888000
-  updated: 1706832000
-
-- profile_id: 15
-  user_id: 16
-  first_name: Olivia
-  last_name: Johansson
-  photo: ''
-  graduation_year: 2022
-  degree: Bachelor of Science
-  major: Environmental Science
-  department: School of Natural Sciences
-  current_company: GreenPath Consulting
-  current_position: Junior Environmental Consultant
-  industry: Environmental Services
-  location: 'Portland, Oregon, USA'
-  city: Portland
-  country: United States
-  bio: Recent graduate conducting environmental impact assessments for renewable energy projects. Passionate about climate policy and just transition frameworks. Looking to connect with experienced consultants and policymakers.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: olivia.johansson@example.com
-  phone: ''
-  privacy_profile: public
-  privacy_email: public
-  privacy_phone: private
-  allow_mentorship: 0
-  allow_networking: 1
-  status: active
-  featured: 0
-  views: 21
-  connections_count: 1
-  created: 1683244800
-  updated: 1706832000
-
-- profile_id: 16
-  user_id: 17
-  first_name: Patrick
-  last_name: O'Brien
-  photo: ''
-  graduation_year: 2007
-  degree: Master of Science
-  major: Computer Science
-  department: School of Engineering
-  current_company: O''Brien Technology Ventures
-  current_position: Founder & CEO
-  industry: Technology
-  location: 'Austin, Texas, USA'
-  city: Austin
-  country: United States
-  bio: Serial entrepreneur with three successful exits. Founded a SaaS startup acquired by Salesforce in 2019. Now running an AI-powered supply chain analytics company. Active angel investor in early-stage tech.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: patrick.obrien@example.com
-  phone: ''
-  privacy_profile: public
-  privacy_email: alumni
-  privacy_phone: private
-  allow_mentorship: 1
-  allow_networking: 1
-  status: active
-  featured: 1
-  views: 317
-  connections_count: 3
-  created: 1672531200
-  updated: 1706832000
-
-- profile_id: 17
-  user_id: 18
-  first_name: Rachel
-  last_name: Goldstein
-  photo: ''
-  graduation_year: 2014
-  degree: Doctor of Philosophy
-  major: Psychology
-  department: School of Social Sciences
-  current_company: Stanford University
-  current_position: Assistant Professor of Psychology
-  industry: Education
-  location: 'Palo Alto, California, USA'
-  city: Palo Alto
-  country: United States
-  bio: Cognitive psychologist researching decision-making under uncertainty and behavioural economics. Author of two books on consumer behaviour. Regular contributor to Harvard Business Review.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: rachel.goldstein@example.com
-  phone: ''
-  privacy_profile: public
-  privacy_email: alumni
-  privacy_phone: private
-  allow_mentorship: 1
-  allow_networking: 1
-  status: active
-  featured: 0
-  views: 108
-  connections_count: 2
-  created: 1675209600
-  updated: 1706832000
-
-- profile_id: 18
-  user_id: 19
-  first_name: Samuel
-  last_name: Adeyemi
-  photo: ''
-  graduation_year: 2016
-  degree: Master of Science
-  major: Cybersecurity
-  department: School of Engineering
-  current_company: CrowdStrike
-  current_position: Threat Intelligence Analyst
-  industry: Cybersecurity
-  location: 'Sunnyvale, California, USA'
-  city: Sunnyvale
-  country: United States
-  bio: Cybersecurity professional specialising in threat intelligence, malware analysis, and incident response. Runs a popular cybersecurity blog and contributes to open-source threat intelligence feeds.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: samuel.adeyemi@example.com
-  phone: ''
-  privacy_profile: public
-  privacy_email: alumni
-  privacy_phone: private
-  allow_mentorship: 1
-  allow_networking: 1
-  status: active
-  featured: 0
-  views: 142
-  connections_count: 2
-  created: 1677888000
-  updated: 1706832000
-
-- profile_id: 19
-  user_id: 20
-  first_name: Tanya
-  last_name: Ivanova
-  photo: ''
-  graduation_year: 2023
-  degree: Bachelor of Business Administration
-  major: Accounting
-  department: Business School
-  current_company: Deloitte
-  current_position: Audit Associate
-  industry: Accounting & Auditing
-  location: 'Chicago, Illinois, USA'
-  city: Chicago
-  country: United States
-  bio: Recent graduate working in audit at a Big Four firm. Pursuing CPA certification. Very active in the alumni network and keen to connect with other recent graduates and experienced finance professionals.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: tanya.ivanova@example.com
-  phone: ''
-  privacy_profile: public
-  privacy_email: public
-  privacy_phone: private
-  allow_mentorship: 0
-  allow_networking: 1
-  status: active
-  featured: 0
-  views: 18
-  connections_count: 1
-  created: 1685577600
-  updated: 1706832000
-
-- profile_id: 20
-  user_id: 21
-  first_name: Victor
-  last_name: Moreau
-  photo: ''
-  graduation_year: 2005
-  degree: Master of Architecture
-  major: Architecture
-  department: School of Design
-  current_company: Moreau Studio
-  current_position: Principal Architect
-  industry: Architecture & Real Estate
-  location: 'Chicago, Illinois, USA'
-  city: Chicago
-  country: United States
-  bio: Award-winning architect whose firm specialises in sustainable urban design and adaptive reuse of historic buildings. Received AIA Young Architect award. Frequent guest critic at architecture schools.
-  linkedin_url: ''
-  twitter_url: ''
-  facebook_url: ''
-  website_url: ''
-  email: victor.moreau@example.com
-  phone: ''
-  privacy_profile: public
-  privacy_email: alumni
-  privacy_phone: private
-  allow_mentorship: 1
-  allow_networking: 1
-  status: active
-  featured: 0
-  views: 87
-  connections_count: 2
-  created: 1672531200
-  updated: 1706832000
+-
+    profile_id: '1'
+    user_id: '2'
+    first_name: Alice
+    last_name: Johnson
+    photo: female_1.jpg
+    graduation_year: '2015'
+    degree: 'Bachelor of Science'
+    major: 'Computer Science'
+    department: 'School of Engineering'
+    current_company: 'TechCorp Solutions'
+    current_position: 'Senior Software Engineer'
+    industry: Technology
+    location: 'San Francisco, California, USA'
+    city: 'San Francisco'
+    country: 'United States'
+    bio: 'Passionate software engineer with 8+ years building scalable web applications. Open-source advocate and mentor for women in tech. Speaker at several regional developer conferences.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: alice.johnson@example.com
+    phone: ''
+    privacy_profile: public
+    privacy_email: alumni
+    privacy_phone: private
+    allow_mentorship: '1'
+    allow_networking: '1'
+    status: active
+    featured: '1'
+    views: '259'
+    connections_count: '4'
+    created: '1672531200'
+    updated: '1706832000'
+-
+    profile_id: '2'
+    user_id: '3'
+    first_name: Bob
+    last_name: Martinez
+    photo: male_1.jpg
+    graduation_year: '2012'
+    degree: 'Master of Business Administration'
+    major: Finance
+    department: 'Business School'
+    current_company: 'Global Finance Partners'
+    current_position: 'Investment Manager'
+    industry: Finance
+    location: 'New York, New York, USA'
+    city: 'New York'
+    country: 'United States'
+    bio: 'Finance professional specialising in emerging markets and sustainable investment strategies. Previously at Goldman Sachs. Passionate about ESG investing and financial literacy education.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: bob.martinez@example.com
+    phone: ''
+    privacy_profile: public
+    privacy_email: alumni
+    privacy_phone: private
+    allow_mentorship: '1'
+    allow_networking: '1'
+    status: active
+    featured: '0'
+    views: '134'
+    connections_count: '3'
+    created: '1675209600'
+    updated: '1706832000'
+-
+    profile_id: '3'
+    user_id: '4'
+    first_name: Carol
+    last_name: Williams
+    photo: female_2.jpg
+    graduation_year: '2018'
+    degree: 'Doctor of Medicine'
+    major: Medicine
+    department: 'School of Medicine'
+    current_company: 'City General Hospital'
+    current_position: 'Resident Physician — Internal Medicine'
+    industry: Healthcare
+    location: 'Chicago, Illinois, USA'
+    city: Chicago
+    country: 'United States'
+    bio: 'Dedicated physician committed to improving patient outcomes through evidence-based medicine and health equity advocacy. Volunteering with mobile health clinics serving underserved communities on weekends.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: carol.williams@example.com
+    phone: ''
+    privacy_profile: public
+    privacy_email: alumni
+    privacy_phone: private
+    allow_mentorship: '0'
+    allow_networking: '1'
+    status: active
+    featured: '1'
+    views: '97'
+    connections_count: '2'
+    created: '1677888000'
+    updated: '1706832000'
+-
+    profile_id: '4'
+    user_id: '5'
+    first_name: David
+    last_name: Chen
+    photo: male_2.jpg
+    graduation_year: '2010'
+    degree: PhD
+    major: 'Electrical Engineering'
+    department: 'School of Engineering'
+    current_company: 'State University'
+    current_position: 'Associate Professor of Electrical Engineering'
+    industry: Education
+    location: 'Boston, Massachusetts, USA'
+    city: Boston
+    country: 'United States'
+    bio: 'Researcher and educator focused on renewable energy systems, smart grids, and power electronics. Published 35+ peer-reviewed papers. NSF CAREER Award recipient 2022.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: david.chen@example.com
+    phone: ''
+    privacy_profile: alumni
+    privacy_email: alumni
+    privacy_phone: private
+    allow_mentorship: '1'
+    allow_networking: '1'
+    status: active
+    featured: '1'
+    views: '89'
+    connections_count: '3'
+    created: '1680566400'
+    updated: '1706832000'
+-
+    profile_id: '5'
+    user_id: '6'
+    first_name: Emily
+    last_name: Taylor
+    photo: female_3.jpg
+    graduation_year: '2020'
+    degree: 'Bachelor of Fine Arts'
+    major: 'Graphic Design'
+    department: 'School of Arts'
+    current_company: 'Creative Studio X'
+    current_position: 'Lead UX Designer'
+    industry: Design
+    location: 'Los Angeles, California, USA'
+    city: 'Los Angeles'
+    country: 'United States'
+    bio: 'Creative designer passionate about brand identity and user experience design. Transitioned from print design into product design with the help of alumni mentors. Now leading a 6-person design team.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: emily.taylor@example.com
+    phone: ''
+    privacy_profile: public
+    privacy_email: public
+    privacy_phone: private
+    allow_mentorship: '0'
+    allow_networking: '1'
+    status: active
+    featured: '0'
+    views: '58'
+    connections_count: '2'
+    created: '1683244800'
+    updated: '1706832000'
+-
+    profile_id: '6'
+    user_id: '7'
+    first_name: Frank
+    last_name: Okafor
+    photo: male_3.jpg
+    graduation_year: '2014'
+    degree: 'Bachelor of Laws'
+    major: 'Corporate Law'
+    department: 'Faculty of Law'
+    current_company: 'Okafor & Associates LLP'
+    current_position: Partner
+    industry: Law
+    location: 'Houston, Texas, USA'
+    city: Houston
+    country: 'United States'
+    bio: 'Corporate attorney specialising in mergers & acquisitions and cross-border transactions. Founded his boutique law firm in 2020 after 6 years at a Big Law firm. Mentors first-generation law students.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: frank.okafor@example.com
+    phone: ''
+    privacy_profile: public
+    privacy_email: alumni
+    privacy_phone: private
+    allow_mentorship: '1'
+    allow_networking: '1'
+    status: active
+    featured: '0'
+    views: '74'
+    connections_count: '2'
+    created: '1672531200'
+    updated: '1706832000'
+-
+    profile_id: '7'
+    user_id: '8'
+    first_name: Grace
+    last_name: Kim
+    photo: female_4.jpg
+    graduation_year: '2016'
+    degree: 'Master of Public Health'
+    major: Epidemiology
+    department: 'School of Public Health'
+    current_company: 'Centers for Disease Control and Prevention'
+    current_position: Epidemiologist
+    industry: Healthcare
+    location: 'Atlanta, Georgia, USA'
+    city: Atlanta
+    country: 'United States'
+    bio: 'Epidemiologist at the CDC working on infectious disease surveillance and outbreak response. Led field teams during the COVID-19 response. Advocates for data-driven public health policy.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: grace.kim@example.com
+    phone: ''
+    privacy_profile: public
+    privacy_email: alumni
+    privacy_phone: private
+    allow_mentorship: '1'
+    allow_networking: '1'
+    status: active
+    featured: '1'
+    views: '115'
+    connections_count: '2'
+    created: '1675209600'
+    updated: '1706832000'
+-
+    profile_id: '8'
+    user_id: '9'
+    first_name: Hector
+    last_name: Rivera
+    photo: male_4.jpg
+    graduation_year: '2008'
+    degree: 'Bachelor of Science'
+    major: 'Mechanical Engineering'
+    department: 'School of Engineering'
+    current_company: SpaceX
+    current_position: 'Senior Propulsion Engineer'
+    industry: Aerospace
+    location: 'Hawthorne, California, USA'
+    city: Hawthorne
+    country: 'United States'
+    bio: 'Propulsion engineer with 15 years in aerospace, contributing to multiple rocket engine programmes. Former NASA contractor. Passionate about democratising access to space exploration.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: hector.rivera@example.com
+    phone: ''
+    privacy_profile: public
+    privacy_email: alumni
+    privacy_phone: private
+    allow_mentorship: '1'
+    allow_networking: '1'
+    status: active
+    featured: '0'
+    views: '201'
+    connections_count: '2'
+    created: '1672531200'
+    updated: '1706832000'
+-
+    profile_id: '9'
+    user_id: '10'
+    first_name: Isabella
+    last_name: Nguyen
+    photo: female_5.jpg
+    graduation_year: '2019'
+    degree: 'Master of Science'
+    major: 'Data Science'
+    department: 'School of Engineering'
+    current_company: Stripe
+    current_position: 'Machine Learning Engineer'
+    industry: Technology
+    location: 'Seattle, Washington, USA'
+    city: Seattle
+    country: 'United States'
+    bio: 'ML engineer building fraud detection models at Stripe. Previously a research assistant in NLP at the university AI lab. Contributor to several open-source ML frameworks. Loves hiking in the Pacific Northwest.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: isabella.nguyen@example.com
+    phone: ''
+    privacy_profile: public
+    privacy_email: alumni
+    privacy_phone: private
+    allow_mentorship: '0'
+    allow_networking: '1'
+    status: active
+    featured: '0'
+    views: '77'
+    connections_count: '1'
+    created: '1677888000'
+    updated: '1706832000'
+-
+    profile_id: '10'
+    user_id: '11'
+    first_name: James
+    last_name: Okonkwo
+    photo: male_5.jpg
+    graduation_year: '2013'
+    degree: 'Master of Business Administration'
+    major: Marketing
+    department: 'Business School'
+    current_company: Unilever
+    current_position: 'Global Brand Director'
+    industry: 'Consumer Goods'
+    location: 'London, England, UK'
+    city: London
+    country: 'United Kingdom'
+    bio: 'Brand strategist with a decade of experience in FMCG. Led the global relaunch of two major Unilever household brands across 40+ markets. Passionate about sustainable packaging and ethical supply chains.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: james.okonkwo@example.com
+    phone: ''
+    privacy_profile: public
+    privacy_email: alumni
+    privacy_phone: private
+    allow_mentorship: '1'
+    allow_networking: '1'
+    status: active
+    featured: '0'
+    views: '66'
+    connections_count: '2'
+    created: '1680566400'
+    updated: '1706832000'
+-
+    profile_id: '11'
+    user_id: '12'
+    first_name: Karen
+    last_name: Patel
+    photo: female_6.jpg
+    graduation_year: '2021'
+    degree: 'Bachelor of Science'
+    major: 'Biomedical Engineering'
+    department: 'School of Engineering'
+    current_company: Medtronic
+    current_position: 'Product Development Engineer'
+    industry: 'Medical Devices'
+    location: 'Minneapolis, Minnesota, USA'
+    city: Minneapolis
+    country: 'United States'
+    bio: 'Biomedical engineer developing next-generation cardiac monitoring devices. Recent graduate still exploring her career path. Looking for mentors in both clinical research and product management tracks.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: karen.patel@example.com
+    phone: ''
+    privacy_profile: public
+    privacy_email: public
+    privacy_phone: private
+    allow_mentorship: '0'
+    allow_networking: '1'
+    status: active
+    featured: '0'
+    views: '34'
+    connections_count: '1'
+    created: '1683244800'
+    updated: '1706832000'
+-
+    profile_id: '12'
+    user_id: '13'
+    first_name: Luis
+    last_name: Santos
+    photo: male_6.jpg
+    graduation_year: '2011'
+    degree: 'Bachelor of Science'
+    major: 'Civil Engineering'
+    department: 'School of Engineering'
+    current_company: AECOM
+    current_position: 'Principal Civil Engineer'
+    industry: 'Construction & Infrastructure'
+    location: 'Miami, Florida, USA'
+    city: Miami
+    country: 'United States'
+    bio: 'Infrastructure engineer with expertise in coastal resilience and climate adaptation projects. Led design of several hurricane-hardening projects across South Florida. Volunteer with Engineering Without Borders.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: luis.santos@example.com
+    phone: ''
+    privacy_profile: public
+    privacy_email: alumni
+    privacy_phone: private
+    allow_mentorship: '1'
+    allow_networking: '1'
+    status: active
+    featured: '0'
+    views: '45'
+    connections_count: '1'
+    created: '1672531200'
+    updated: '1706832000'
+-
+    profile_id: '13'
+    user_id: '14'
+    first_name: Maria
+    last_name: Fischer
+    photo: female_7.jpg
+    graduation_year: '2017'
+    degree: 'Master of Arts'
+    major: 'International Relations'
+    department: 'School of Social Sciences'
+    current_company: 'United Nations Development Programme'
+    current_position: 'Programme Officer'
+    industry: 'Non-Profit & International Development'
+    location: 'Geneva, Switzerland'
+    city: Geneva
+    country: Switzerland
+    bio: 'Development professional working on governance and rule-of-law programmes in Sub-Saharan Africa. Former Fulbright Scholar. Speaks five languages. Passionate about inclusive economic growth.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: maria.fischer@example.com
+    phone: ''
+    privacy_profile: public
+    privacy_email: alumni
+    privacy_phone: private
+    allow_mentorship: '1'
+    allow_networking: '1'
+    status: active
+    featured: '1'
+    views: '93'
+    connections_count: '2'
+    created: '1675209600'
+    updated: '1706832000'
+-
+    profile_id: '14'
+    user_id: '15'
+    first_name: Nathan
+    last_name: Brooks
+    photo: male_7.jpg
+    graduation_year: '2009'
+    degree: 'Bachelor of Arts'
+    major: Journalism
+    department: 'School of Communication'
+    current_company: 'The Washington Post'
+    current_position: 'Investigative Reporter'
+    industry: 'Media & Journalism'
+    location: 'Washington D.C., USA'
+    city: 'Washington D.C.'
+    country: 'United States'
+    bio: 'Award-winning investigative journalist covering technology policy, AI regulation, and government surveillance. Pulitzer Prize finalist 2024. Teaches data journalism workshops for student media organisations.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: nathan.brooks@example.com
+    phone: ''
+    privacy_profile: public
+    privacy_email: public
+    privacy_phone: private
+    allow_mentorship: '1'
+    allow_networking: '1'
+    status: active
+    featured: '0'
+    views: '155'
+    connections_count: '2'
+    created: '1677888000'
+    updated: '1706832000'
+-
+    profile_id: '15'
+    user_id: '16'
+    first_name: Olivia
+    last_name: Johansson
+    photo: female_8.jpg
+    graduation_year: '2022'
+    degree: 'Bachelor of Science'
+    major: 'Environmental Science'
+    department: 'School of Natural Sciences'
+    current_company: 'GreenPath Consulting'
+    current_position: 'Junior Environmental Consultant'
+    industry: 'Environmental Services'
+    location: 'Portland, Oregon, USA'
+    city: Portland
+    country: 'United States'
+    bio: 'Recent graduate conducting environmental impact assessments for renewable energy projects. Passionate about climate policy and just transition frameworks. Looking to connect with experienced consultants and policymakers.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: olivia.johansson@example.com
+    phone: ''
+    privacy_profile: public
+    privacy_email: public
+    privacy_phone: private
+    allow_mentorship: '0'
+    allow_networking: '1'
+    status: active
+    featured: '0'
+    views: '21'
+    connections_count: '1'
+    created: '1683244800'
+    updated: '1706832000'
+-
+    profile_id: '16'
+    user_id: '17'
+    first_name: Patrick
+    last_name: "O'Brien"
+    photo: male_8.jpg
+    graduation_year: '2007'
+    degree: 'Master of Science'
+    major: 'Computer Science'
+    department: 'School of Engineering'
+    current_company: "O''Brien Technology Ventures"
+    current_position: 'Founder & CEO'
+    industry: Technology
+    location: 'Austin, Texas, USA'
+    city: Austin
+    country: 'United States'
+    bio: 'Serial entrepreneur with three successful exits. Founded a SaaS startup acquired by Salesforce in 2019. Now running an AI-powered supply chain analytics company. Active angel investor in early-stage tech.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: patrick.obrien@example.com
+    phone: ''
+    privacy_profile: public
+    privacy_email: alumni
+    privacy_phone: private
+    allow_mentorship: '1'
+    allow_networking: '1'
+    status: active
+    featured: '1'
+    views: '318'
+    connections_count: '3'
+    created: '1672531200'
+    updated: '1706832000'
+-
+    profile_id: '17'
+    user_id: '18'
+    first_name: Rachel
+    last_name: Goldstein
+    photo: female_9.jpg
+    graduation_year: '2014'
+    degree: 'Doctor of Philosophy'
+    major: Psychology
+    department: 'School of Social Sciences'
+    current_company: 'Stanford University'
+    current_position: 'Assistant Professor of Psychology'
+    industry: Education
+    location: 'Palo Alto, California, USA'
+    city: 'Palo Alto'
+    country: 'United States'
+    bio: 'Cognitive psychologist researching decision-making under uncertainty and behavioural economics. Author of two books on consumer behaviour. Regular contributor to Harvard Business Review.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: rachel.goldstein@example.com
+    phone: ''
+    privacy_profile: public
+    privacy_email: alumni
+    privacy_phone: private
+    allow_mentorship: '1'
+    allow_networking: '1'
+    status: active
+    featured: '0'
+    views: '108'
+    connections_count: '2'
+    created: '1675209600'
+    updated: '1706832000'
+-
+    profile_id: '18'
+    user_id: '19'
+    first_name: Samuel
+    last_name: Adeyemi
+    photo: male_9.jpg
+    graduation_year: '2016'
+    degree: 'Master of Science'
+    major: Cybersecurity
+    department: 'School of Engineering'
+    current_company: CrowdStrike
+    current_position: 'Threat Intelligence Analyst'
+    industry: Cybersecurity
+    location: 'Sunnyvale, California, USA'
+    city: Sunnyvale
+    country: 'United States'
+    bio: 'Cybersecurity professional specialising in threat intelligence, malware analysis, and incident response. Runs a popular cybersecurity blog and contributes to open-source threat intelligence feeds.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: samuel.adeyemi@example.com
+    phone: ''
+    privacy_profile: public
+    privacy_email: alumni
+    privacy_phone: private
+    allow_mentorship: '1'
+    allow_networking: '1'
+    status: active
+    featured: '0'
+    views: '142'
+    connections_count: '2'
+    created: '1677888000'
+    updated: '1706832000'
+-
+    profile_id: '19'
+    user_id: '20'
+    first_name: Tanya
+    last_name: Ivanova
+    photo: female_10.jpg
+    graduation_year: '2023'
+    degree: 'Bachelor of Business Administration'
+    major: Accounting
+    department: 'Business School'
+    current_company: Deloitte
+    current_position: 'Audit Associate'
+    industry: 'Accounting & Auditing'
+    location: 'Chicago, Illinois, USA'
+    city: Chicago
+    country: 'United States'
+    bio: 'Recent graduate working in audit at a Big Four firm. Pursuing CPA certification. Very active in the alumni network and keen to connect with other recent graduates and experienced finance professionals.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: tanya.ivanova@example.com
+    phone: ''
+    privacy_profile: public
+    privacy_email: public
+    privacy_phone: private
+    allow_mentorship: '0'
+    allow_networking: '1'
+    status: active
+    featured: '0'
+    views: '18'
+    connections_count: '1'
+    created: '1685577600'
+    updated: '1706832000'
+-
+    profile_id: '20'
+    user_id: '21'
+    first_name: Victor
+    last_name: Moreau
+    photo: male_10.jpg
+    graduation_year: '2005'
+    degree: 'Master of Architecture'
+    major: Architecture
+    department: 'School of Design'
+    current_company: 'Moreau Studio'
+    current_position: 'Principal Architect'
+    industry: 'Architecture & Real Estate'
+    location: 'Chicago, Illinois, USA'
+    city: Chicago
+    country: 'United States'
+    bio: 'Award-winning architect whose firm specialises in sustainable urban design and adaptive reuse of historic buildings. Received AIA Young Architect award. Frequent guest critic at architecture schools.'
+    linkedin_url: ''
+    twitter_url: ''
+    facebook_url: ''
+    website_url: ''
+    email: victor.moreau@example.com
+    phone: ''
+    privacy_profile: public
+    privacy_email: alumni
+    privacy_phone: private
+    allow_mentorship: '1'
+    allow_networking: '1'
+    status: active
+    featured: '0'
+    views: '87'
+    connections_count: '2'
+    created: '1672531200'
+    updated: '1706832000'
