@@ -1,0 +1,144 @@
+# Alumni Comments — matched to SQL schema: comment_id, item_id, item_type, user_id, comment, status, created
+# SQL enum for item_type: 'profile','event'
+# SQL enum for status: 'active','pending','spam'
+# user_id = the commenter's XOOPS user_id (matches profile.user_id)
+
+# --- Comments on Profiles ---
+
+- comment_id: 1
+  item_id: 1
+  item_type: profile
+  user_id: 3
+  comment: Great to see Alice doing so well at TechCorp! We worked together on the capstone project in our final year. Always knew she'd go far.
+  status: active
+  created: 1677888000
+
+- comment_id: 2
+  item_id: 3
+  item_type: profile
+  user_id: 2
+  comment: Dr. Williams was always one of the most dedicated students in the year. Huge congratulations on your residency — patients are lucky to have you.
+  status: active
+  created: 1680566400
+
+- comment_id: 3
+  item_id: 4
+  item_type: profile
+  user_id: 3
+  comment: Professor Chen's work on renewable energy storage is genuinely groundbreaking. Well-deserved recognition from the NSF — keep pushing the field forward!
+  status: active
+  created: 1683244800
+
+- comment_id: 4
+  item_id: 8
+  item_type: profile
+  user_id: 2
+  comment: Hector, your work at SpaceX is absolutely awe-inspiring. We're all rooting for a successful launch! Incredibly proud to be a fellow alumnus.
+  status: active
+  created: 1706832000
+
+- comment_id: 5
+  item_id: 16
+  item_type: profile
+  user_id: 4
+  comment: Patrick has been such an inspiration to the whole alumni community. From student entrepreneur to successful founder and investor — a true role model.
+  status: active
+  created: 1706832000
+
+- comment_id: 6
+  item_id: 7
+  item_type: profile
+  user_id: 4
+  comment: Grace, your COVID-19 response work is something the whole university community is incredibly proud of. Thank you for what you do every day.
+  status: active
+  created: 1706832000
+
+- comment_id: 7
+  item_id: 13
+  item_type: profile
+  user_id: 7
+  comment: Maria's work at the UNDP is remarkable. She's a true advocate for communities that rarely get a seat at the table. Such an inspiring career path.
+  status: active
+  created: 1706832000
+
+- comment_id: 8
+  item_id: 14
+  item_type: profile
+  user_id: 9
+  comment: Nathan's investigative work on AI regulation has been essential reading for anyone in the tech industry. His Pulitzer nomination was very well deserved.
+  status: active
+  created: 1706832000
+
+- comment_id: 9
+  item_id: 9
+  item_type: profile
+  user_id: 2
+  comment: Isabella's research contributions to open-source ML frameworks have benefited thousands of practitioners. A quiet legend in the field!
+  status: active
+  created: 1709510400
+
+- comment_id: 10
+  item_id: 17
+  item_type: profile
+  user_id: 5
+  comment: Professor Goldstein's book on consumer decision-making completely changed how I think about user research and design. A must-read for any UX designer.
+  status: active
+  created: 1709510400
+
+- comment_id: 11
+  item_id: 20
+  item_type: profile
+  user_id: 13
+  comment: Victor's sustainable urban design work in Chicago is exactly the kind of human-centred, climate-conscious architecture that cities around the world need more of.
+  status: active
+  created: 1709510400
+
+# --- Comments on Events ---
+
+- comment_id: 12
+  item_id: 3
+  item_type: event
+  user_id: 3
+  comment: Absolutely cannot wait for the 2026 reunion. Last year was the best one yet — the keynote from Dr. Chen was outstanding. Already bought my tickets!
+  status: active
+  created: 1740268800
+
+- comment_id: 13
+  item_id: 3
+  item_type: event
+  user_id: 5
+  comment: Will the reunion have a dedicated table for the 2020 cohort again? We had such a great group at the last one — hoping to reconnect!
+  status: active
+  created: 1740268800
+
+- comment_id: 14
+  item_id: 4
+  item_type: event
+  user_id: 9
+  comment: This is exactly what the Bay Area alumni community has needed for a long time. Really well organised — thank you to the committee for making it happen!
+  status: active
+  created: 1740268800
+
+- comment_id: 15
+  item_id: 5
+  item_type: event
+  user_id: 12
+  comment: Patrick, Luis, and the other founders leading this workshop bring such real-world depth. This isn't a generic "how to start a company" session — really practical and honest.
+  status: active
+  created: 1740268800
+
+- comment_id: 16
+  item_id: 6
+  item_type: event
+  user_id: 4
+  comment: Will there be any sessions specifically on AI diagnostics in radiology? Would love to connect with alumni working in that space during the networking portion.
+  status: active
+  created: 1740268800
+
+- comment_id: 17
+  item_id: 9
+  item_type: event
+  user_id: 16
+  comment: Maria is an exceptional speaker and has a rare ability to explain complex geopolitical situations clearly. This panel will be unmissable for anyone considering international careers.
+  status: active
+  created: 1740268800

@@ -1,0 +1,534 @@
+================================================================================
+  ALUMNI NETWORK MANAGEMENT SYSTEM - INSTALLATION GUIDE
+  Version 1.0.0 for XOOPS 2.5.12
+================================================================================
+
+TABLE OF CONTENTS
+-----------------
+1. System Requirements
+2. Pre-Installation Checklist
+3. Installation Steps
+4. Post-Installation Configuration
+5. Sample Data
+6. Directory Permissions
+7. Troubleshooting Common Issues
+8. Upgrading from Previous Versions
+9. Support Information
+
+================================================================================
+1. SYSTEM REQUIREMENTS
+================================================================================
+
+MINIMUM REQUIREMENTS:
+---------------------
+- XOOPS: 2.5.11 or higher
+- PHP: 7.4.0 or higher
+- MySQL: 5.5 or higher
+- Web Server: Apache 2.2+ or Nginx 1.10+
+- PHP Memory Limit: 128M
+- Upload Max Filesize: 8M
+- Post Max Size: 8M
+
+RECOMMENDED REQUIREMENTS:
+-------------------------
+- XOOPS: 2.5.12
+- PHP: 8.0 or higher
+- MySQL: 5.7+ or 8.0+
+- Web Server: Apache 2.4+ or Nginx 1.18+
+- PHP Memory Limit: 256M
+- Upload Max Filesize: 16M
+- Post Max Size: 16M
+
+REQUIRED PHP EXTENSIONS:
+------------------------
+- mysqli or pdo_mysql (for database)
+- gd or imagick (for image processing)
+- mbstring (for multibyte strings)
+- json (for data handling)
+- fileinfo (for file uploads)
+- session (for user sessions)
+- curl (optional, for external integrations)
+
+================================================================================
+2. PRE-INSTALLATION CHECKLIST
+================================================================================
+
+BEFORE YOU BEGIN:
+-----------------
+[ ] Backup your existing XOOPS database
+[ ] Backup your XOOPS files
+[ ] Verify PHP version meets requirements
+[ ] Check available disk space (minimum 50MB)
+[ ] Ensure write permissions on uploads directory
+[ ] Test database connection
+[ ] Verify XOOPS is working properly
+
+DOWNLOAD AND VERIFY:
+--------------------
+[ ] Download Alumni module package (alumni-1.0.0.zip)
+[ ] Verify package integrity (check file size, MD5 if available)
+[ ] Extract package to temporary location
+[ ] Review included files and directories
+
+================================================================================
+3. INSTALLATION STEPS
+================================================================================
+
+STEP 1: UPLOAD MODULE FILES
+----------------------------
+1. Extract the alumni-1.0.0.zip package
+2. Upload the entire 'alumni' folder to your XOOPS modules directory
+
+   Location: /modules/alumni/
+
+   Resulting structure:
+   /modules/alumni/
+   ├── admin/
+   ├── assets/
+   ├── class/
+   ├── include/
+   ├── language/
+   ├── preloads/
+   ├── sql/
+   ├── templates/
+   ├── xoops_version.php
+   └── [other files]
+
+STEP 2: SET DIRECTORY PERMISSIONS
+----------------------------------
+Set the following permissions:
+
+Linux/Unix:
+-----------
+chmod 755 /modules/alumni
+chmod 755 /modules/alumni/uploads
+chmod -R 755 /uploads/alumni
+chmod 755 /uploads/alumni/photos
+chmod 755 /uploads/alumni/events
+
+Windows:
+--------
+Right-click on each folder:
+- Properties → Security
+- Grant "Modify" permission to IIS_IUSRS or Apache user
+- Apply to all subdirectories
+
+Directories requiring write permission:
+- /uploads/alumni/photos/
+- /uploads/alumni/events/
+- /xoops_data/caches/
+
+STEP 3: INSTALL VIA XOOPS ADMIN
+--------------------------------
+1. Login to your XOOPS Administration panel
+   URL: http://yoursite.com/admin.php
+
+2. Navigate to: System → Modules
+
+3. Locate "Alumni Network" in the uninstalled modules list
+
+4. Click the "Install" icon (usually a wrench or plus sign)
+
+5. Installation wizard will:
+   - Check system requirements
+   - Create 9 database tables
+   - Insert sample data (optional, but recommended)
+   - Create upload directories
+   - Register templates and blocks
+
+6. Review installation log for any errors
+
+7. Click "Return to modules administration"
+
+STEP 4: VERIFY INSTALLATION
+----------------------------
+Check the following:
+
+[ ] Module appears in installed modules list
+[ ] Module version shows: 1.0.0
+[ ] Status shows: Active
+[ ] 9 database tables created (see list below)
+[ ] Templates registered (16 templates)
+[ ] Blocks available (4 blocks)
+
+Database Tables Created:
+-------------------------
+- alumni_profiles
+- alumni_categories
+- alumni_events
+- alumni_rsvps
+- alumni_connections
+- alumni_mentorship
+- alumni_skills
+- alumni_profile_skill_link
+- alumni_comments
+
+To verify tables:
+phpMyAdmin → Select Database → Check tables with prefix 'alumni_'
+
+================================================================================
+4. POST-INSTALLATION CONFIGURATION
+================================================================================
+
+STEP 1: CONFIGURE MODULE PREFERENCES
+-------------------------------------
+Navigate to: System → Modules → Alumni Network → Preferences
+
+RECOMMENDED SETTINGS:
+---------------------
+Display Settings:
+- Profiles Per Page: 20
+- Events Per Page: 10
+
+Approval Workflow:
+- Enable Approval: Yes (recommended for quality control)
+- Auto-Approve Members: No (recommended for security)
+
+Photo Settings:
+- Max Photo Size: 2097152 (2 MB)
+- Allowed Extensions: jpg,jpeg,png,gif
+- Max Width: 800
+- Max Height: 800
+
+Event Image Settings:
+- Max Image Size: 3145728 (3 MB)
+- Allowed Extensions: jpg,jpeg,png,gif
+
+Feature Toggles:
+- Enable Mentorship: Yes
+- Enable Connections: Yes
+- Enable Events: Yes
+- Enable Comments: Yes (if you want profile comments)
+
+Privacy Defaults:
+- Email Privacy: Alumni Only
+- Phone Privacy: Private
+- Profile Privacy: Alumni Only
+
+Notification Settings:
+- Enable all notifications (recommended)
+
+STEP 2: SET GROUP PERMISSIONS
+------------------------------
+Navigate to: System → Groups
+
+FOR ANONYMOUS USERS:
+- Access Rights: Yes (to view public content)
+- Module Admin Rights: No
+- Block Access Rights: Yes (for blocks)
+
+FOR REGISTERED USERS:
+- Access Rights: Yes
+- Module Admin Rights: No
+- Block Access Rights: Yes
+
+FOR WEBMASTERS/ADMINISTRATORS:
+- Access Rights: Yes
+- Module Admin Rights: Yes
+- Block Access Rights: Yes
+
+STEP 3: CONFIGURE BLOCKS
+-------------------------
+Navigate to: System → Blocks → Alumni blocks
+
+Available Blocks:
+1. Recent Alumni Profiles
+2. Upcoming Events
+3. Quick Search
+4. Alumni Statistics
+
+For each block:
+1. Click "Edit"
+2. Set display options (limit, sort order)
+3. Choose position (Left, Right, Center, etc.)
+4. Select pages to display on
+5. Set visibility (All users, Registered only, etc.)
+6. Save
+
+RECOMMENDED BLOCK PLACEMENT:
+----------------------------
+- Recent Alumni: Center-Left or Right sidebar
+- Upcoming Events: Center-Center or Right sidebar
+- Quick Search: Right sidebar (top)
+- Statistics: Center-Bottom or Left sidebar
+
+STEP 4: CREATE MAIN MENU LINKS (OPTIONAL)
+------------------------------------------
+Navigate to: System → Blocks → Main Menu
+
+Add menu items:
+1. Alumni Directory → modules/alumni/index.php
+2. Events → modules/alumni/events.php
+3. Search Alumni → modules/alumni/search.php
+4. My Dashboard → modules/alumni/dashboard.php
+
+================================================================================
+5. SAMPLE DATA
+================================================================================
+
+The installation includes sample data for testing:
+
+SAMPLE PROFILES: 10 alumni
+---------------------------
+- Diverse graduation years (2010-2023)
+- Various industries (Technology, Healthcare, Education, etc.)
+- Different locations
+- Mix of mentorship availability
+
+SAMPLE EVENTS: 5 events
+-----------------------
+- Mix of physical, online, and hybrid events
+- Various categories (reunion, networking, career fair)
+- Different dates (past and upcoming)
+
+SAMPLE CATEGORIES: 5 categories
+-------------------------------
+- Reunion
+- Networking
+- Career Fair
+- Workshop
+- Social
+
+SAMPLE SKILLS: 15 skills
+------------------------
+- Technical skills (JavaScript, Python, etc.)
+- Soft skills (Leadership, Communication)
+- Industry-specific skills
+
+REMOVING SAMPLE DATA:
+---------------------
+If you want to remove sample data after testing:
+
+1. Go to Admin → Profiles → Select all sample profiles → Delete
+2. Go to Admin → Events → Select all sample events → Delete
+3. Go to Admin → Categories → Edit to remove if desired
+4. Go to Admin → Skills → Edit to remove if desired
+
+Or use SQL:
+-----------
+TRUNCATE TABLE xoops_alumni_profiles;
+TRUNCATE TABLE xoops_alumni_events;
+TRUNCATE TABLE xoops_alumni_rsvps;
+TRUNCATE TABLE xoops_alumni_connections;
+TRUNCATE TABLE xoops_alumni_mentorship;
+
+(Replace 'xoops_' with your database prefix)
+
+================================================================================
+6. DIRECTORY PERMISSIONS
+================================================================================
+
+CRITICAL DIRECTORIES:
+---------------------
+These directories MUST be writable:
+
+/uploads/alumni/photos/         - Profile photos
+/uploads/alumni/events/         - Event images
+/xoops_data/caches/             - XOOPS cache
+/xoops_data/caches/smarty_*     - Smarty cache
+
+Linux/Unix Commands:
+--------------------
+cd /path/to/xoops
+mkdir -p uploads/alumni/photos
+mkdir -p uploads/alumni/events
+chmod 755 uploads/alumni
+chmod 755 uploads/alumni/photos
+chmod 755 uploads/alumni/events
+chown -R www-data:www-data uploads/alumni
+
+(Replace 'www-data' with your web server user)
+
+Windows Instructions:
+---------------------
+1. Create directories:
+   C:\path\to\xoops\uploads\alumni\photos
+   C:\path\to\xoops\uploads\alumni\events
+
+2. Set permissions:
+   - Right-click folder → Properties → Security
+   - Click "Edit"
+   - Add "IIS_IUSRS" or "IUSR" or Apache service user
+   - Grant "Modify" permission
+   - Click "Apply"
+   - Check "Replace all child object permissions"
+   - Click "OK"
+
+VERIFYING PERMISSIONS:
+----------------------
+Create test file: uploads/alumni/photos/test.txt
+If you can create/write, permissions are correct.
+
+================================================================================
+7. TROUBLESHOOTING COMMON ISSUES
+================================================================================
+
+ISSUE: Installation fails with "Cannot create table"
+-----------------------------------------------------
+SOLUTION:
+- Check database user has CREATE TABLE permissions
+- Verify database connection in mainfile.php
+- Check MySQL version (must be 5.5+)
+- Try manual SQL: import sql/mysql.sql via phpMyAdmin
+
+ISSUE: Upload errors "Failed to move uploaded file"
+----------------------------------------------------
+SOLUTION:
+- Check directory permissions (must be 755 or 777)
+- Verify upload directories exist
+- Check PHP upload_max_filesize and post_max_size
+- Check disk space available
+
+ISSUE: Templates not displaying correctly
+------------------------------------------
+SOLUTION:
+- Clear Smarty cache:
+  rm -rf xoops_data/caches/smarty_cache/*
+  rm -rf xoops_data/caches/smarty_compile/*
+- Go to System → Modules → Alumni → Update
+- Check templates registered in database
+- Verify theme compatibility
+
+ISSUE: "Page not found" or 404 errors
+--------------------------------------
+SOLUTION:
+- Check .htaccess if using Apache
+- Verify module files uploaded correctly
+- Check file permissions (should be 644 for .php files)
+- Verify XOOPS URL in mainfile.php
+
+ISSUE: Photos not displaying
+-----------------------------
+SOLUTION:
+- Check uploads/alumni/photos/ exists and is writable
+- Verify photo file extensions allowed in preferences
+- Check image processing (GD or Imagick installed)
+- Verify file uploaded successfully (check filesystem)
+
+ISSUE: Search returns no results
+---------------------------------
+SOLUTION:
+- Check profiles are "active" status
+- Verify FULLTEXT index on database:
+  SHOW INDEX FROM xoops_alumni_profiles;
+- Try rebuilding search index:
+  Go to Admin → Profiles → Update all profiles
+- Check privacy settings (search respects privacy)
+
+ISSUE: Admin pages show "Access Denied"
+----------------------------------------
+SOLUTION:
+- Verify you're logged in as administrator
+- Check group permissions: System → Groups → Webmasters
+- Grant "Module Admin Rights" for Alumni module
+- Clear browser cookies and cache
+- Check XOOPS admin permissions
+
+ISSUE: JavaScript functions not working
+----------------------------------------
+SOLUTION:
+- Check browser console for errors (F12)
+- Verify jQuery loaded (XOOPS should load it)
+- Check assets/js/alumni.js loaded correctly
+- Verify no JavaScript conflicts with theme
+- Try different browser to isolate issue
+
+ISSUE: Email notifications not sending
+---------------------------------------
+SOLUTION:
+- Check XOOPS mail configuration: System → Preferences → Mail
+- Verify PHP mail() function works on server
+- Test with different email address
+- Check server mail logs
+- Try SMTP instead of PHP mail()
+
+================================================================================
+8. UPGRADING FROM PREVIOUS VERSIONS
+================================================================================
+
+IMPORTANT: No previous versions exist for this module (v1.0.0 is first release)
+
+For future upgrades:
+--------------------
+1. Backup database and files FIRST
+2. Upload new module files (overwrite old)
+3. Go to System → Modules → Alumni
+4. Click "Update" button
+5. Review update log
+6. Clear all caches
+7. Test functionality
+
+The onupdate.php file handles database schema changes automatically.
+
+================================================================================
+9. SUPPORT INFORMATION
+================================================================================
+
+DOCUMENTATION:
+--------------
+- README.md: Complete user and administrator guide
+- CLAUDE.md: Developer guide for customization
+- TEMPLATES_COMPLETE.md: Template documentation
+- ADMIN_FILES_SUMMARY.md: Admin interface guide
+- FRONTEND_PAGES.md: Frontend functionality guide
+
+GETTING HELP:
+-------------
+- XOOPS Forums: https://xoops.org/modules/newbb/
+- Module Support: (Your support site/forum)
+- Email Support: support@yourdomain.com
+- Commercial Support: Available for customization
+
+REPORTING BUGS:
+---------------
+When reporting bugs, include:
+1. XOOPS version
+2. PHP version
+3. MySQL version
+4. Module version
+5. Steps to reproduce
+6. Expected behavior
+7. Actual behavior
+8. Error messages
+9. Screenshots if applicable
+
+CONTRIBUTING:
+-------------
+Contributions welcome! See project repository for guidelines.
+
+SECURITY ISSUES:
+----------------
+Report security vulnerabilities privately to: security@yourdomain.com
+Do NOT post security issues in public forums.
+
+================================================================================
+
+QUICK START SUMMARY:
+--------------------
+1. Upload to /modules/alumni/
+2. Set permissions (755 on upload directories)
+3. Install via System → Modules
+4. Configure preferences
+5. Set group permissions
+6. Add blocks to pages
+7. Test with sample data
+8. Clear cache if issues
+9. Read README.md for usage
+
+Need help? Check TROUBLESHOOTING section above or contact support.
+
+================================================================================
+MODULE INFORMATION:
+-------------------
+Name: Alumni Network Management System
+Version: 1.0.0
+Release Date: 2026-02-16
+XOOPS Version: 2.5.11+
+License: GNU GPL 2.0 or later
+Author: XOOPS Development Team
+Website: https://xoops.org
+
+Copyright (C) 2026 XOOPS Development Team
+================================================================================
+
+END OF INSTALLATION GUIDE

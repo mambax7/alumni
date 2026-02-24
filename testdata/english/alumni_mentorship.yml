@@ -1,0 +1,127 @@
+# Alumni Mentorship — matched to SQL schema: mentorship_id, mentor_id, mentee_id, status, subject, message, start_date, end_date, created, updated
+# SQL enum for status: 'pending','active','completed','declined'
+# mentor_id / mentee_id are profile_id values
+
+# Active mentorships
+- mentorship_id: 1
+  mentor_id: 1
+  mentee_id: 5
+  status: active
+  subject: Transitioning from Design to Product Management
+  message: Help Emily understand the skills gap between UX design and product management, introduce her to product frameworks, and connect her with PM professionals in her network.
+  start_date: 1680566400
+  end_date: 0
+  created: 1680566400
+  updated: 1706832000
+
+- mentorship_id: 2
+  mentor_id: 4
+  mentee_id: 11
+  status: active
+  subject: PhD Application Strategy — Engineering
+  message: Guide Karen through selecting PhD programmes, writing her personal statement, and preparing for admissions interviews for top biomedical engineering programmes.
+  start_date: 1706832000
+  end_date: 0
+  created: 1706832000
+  updated: 1709510400
+
+- mentorship_id: 3
+  mentor_id: 16
+  mentee_id: 1
+  status: active
+  subject: From Senior Engineer to Founder — Building a Tech Company
+  message: Alice wants to explore starting her own company. Patrick will share his experience going from engineer to CEO, covering fundraising, team building, and product strategy.
+  start_date: 1706832000
+  end_date: 0
+  created: 1706832000
+  updated: 1709510400
+
+- mentorship_id: 4
+  mentor_id: 6
+  mentee_id: 14
+  status: active
+  subject: Tech Policy and Law — Navigating Both Worlds
+  message: Frank mentors Nathan on how legal knowledge can enhance investigative journalism on regulatory topics, and explores whether pursuing a law degree might benefit Nathan's career.
+  start_date: 1706832000
+  end_date: 0
+  created: 1706832000
+  updated: 1709510400
+
+- mentorship_id: 5
+  mentor_id: 7
+  mentee_id: 15
+  status: active
+  subject: Building a Career in Environmental Public Health
+  message: Grace helps Olivia understand the overlap between environmental science and public health policy, and how to position her consulting experience for a government or NGO role.
+  start_date: 1706832000
+  end_date: 0
+  created: 1706832000
+  updated: 1709510400
+
+- mentorship_id: 6
+  mentor_id: 13
+  mentee_id: 15
+  status: active
+  subject: Breaking into International Development — Getting That First Role
+  message: Maria advises Olivia on tailoring her environmental background for international development organisations, including networking, cover letters, and competitive programmes to apply for.
+  start_date: 1709510400
+  end_date: 0
+  created: 1709510400
+  updated: 1712188800
+
+# Completed mentorships
+- mentorship_id: 7
+  mentor_id: 2
+  mentee_id: 1
+  status: completed
+  subject: Personal Finance and Investment Planning for Tech Professionals
+  message: Bob helped Alice build a basic investment portfolio, understand retirement planning, and navigate equity compensation at her tech employer.
+  start_date: 1648771200
+  end_date: 1672531200
+  created: 1648771200
+  updated: 1672531200
+
+- mentorship_id: 8
+  mentor_id: 4
+  mentee_id: 5
+  status: completed
+  subject: Applying to Graduate School in Design Research
+  message: David guided Emily through researching HCI and design programmes, structuring her research proposal, and preparing for interviews. Emily was ultimately accepted to two programmes but chose to continue in industry.
+  start_date: 1683244800
+  end_date: 1703980800
+  created: 1683244800
+  updated: 1703980800
+
+- mentorship_id: 9
+  mentor_id: 17
+  mentee_id: 10
+  status: completed
+  subject: Applying Behavioural Insights to Brand Strategy
+  message: Rachel shared her research on consumer decision-making and how behavioural economics principles can be applied to brand positioning. James used these insights on a major relaunch campaign.
+  start_date: 1690848000
+  end_date: 1719792000
+  created: 1690848000
+  updated: 1719792000
+
+# Pending mentorship requests
+- mentorship_id: 10
+  mentor_id: 8
+  mentee_id: 11
+  status: pending
+  subject: Career Paths in Aerospace vs Medical Devices Engineering
+  message: Karen is weighing a potential career pivot towards aerospace. She would love Hector's perspective on the skills transferability between biomedical engineering and propulsion engineering.
+  start_date: 0
+  end_date: 0
+  created: 1740268800
+  updated: 1740268800
+
+- mentorship_id: 11
+  mentor_id: 2
+  mentee_id: 19
+  status: pending
+  subject: Growing a Finance Career — From Audit to Investment Management
+  message: Tanya is interested in eventually moving from Big Four audit into investment management. She would love Bob's advice on how to make that transition and what qualifications to pursue.
+  start_date: 0
+  end_date: 0
+  created: 1740268800
+  updated: 1740268800

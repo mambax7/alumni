@@ -1,0 +1,19 @@
+# language: php
+build:
+  environment:
+    php: 8.1
+  nodes:
+    tests: true
+    analysis:
+      dependencies:
+        after:
+        # Install the most recent XOOPS CMS version
+        - git clone --depth=1 https://github.com/XOOPS/XoopsCore25
+      project_setup:
+        override: true
+      tests:
+        override:
+          - php-scrutinizer-run --enable-security-analysis
+filter:
+  dependency_paths:
+    - XoopsCore25/*

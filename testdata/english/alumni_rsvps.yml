@@ -1,0 +1,289 @@
+# Alumni RSVPs — matched to SQL schema: rsvp_id, event_id, user_id, status, guests, comment, created, updated
+# SQL enum for status: 'attending','maybe','declined'
+# user_id values correspond to profiles (profile user_id)
+
+# --- Event 3: Annual Alumni Reunion 2026 ---
+- rsvp_id: 1
+  event_id: 3
+  user_id: 3
+  status: attending
+  guests: 1
+  comment: Looking forward to seeing everyone!
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 2
+  event_id: 3
+  user_id: 4
+  status: attending
+  guests: 2
+  comment: Bringing my partner. Can't wait!
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 3
+  event_id: 3
+  user_id: 5
+  status: maybe
+  guests: 1
+  comment: Will confirm closer to the date — travel schedules uncertain.
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 4
+  event_id: 3
+  user_id: 8
+  status: attending
+  guests: 0
+  comment: ''
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 5
+  event_id: 3
+  user_id: 10
+  status: attending
+  guests: 1
+  comment: Flying in from London especially for this — wouldn't miss it!
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 6
+  event_id: 3
+  user_id: 13
+  status: maybe
+  guests: 0
+  comment: Depends on my assignment in Nairobi. Hoping to make it.
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 7
+  event_id: 3
+  user_id: 14
+  status: attending
+  guests: 0
+  comment: ''
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 8
+  event_id: 3
+  user_id: 16
+  status: attending
+  guests: 1
+  comment: Looking forward to connecting with the 2007 cohort!
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 9
+  event_id: 3
+  user_id: 18
+  status: declined
+  guests: 0
+  comment: Away at a conference that weekend — really sorry to miss it.
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 10
+  event_id: 3
+  user_id: 21
+  status: attending
+  guests: 0
+  comment: ''
+  created: 1740268800
+  updated: 1740268800
+
+# --- Event 4: Tech Alumni Networking Night ---
+- rsvp_id: 11
+  event_id: 4
+  user_id: 2
+  status: attending
+  guests: 0
+  comment: ''
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 12
+  event_id: 4
+  user_id: 9
+  status: attending
+  guests: 0
+  comment: Great initiative — much needed for Bay Area alumni!
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 13
+  event_id: 4
+  user_id: 17
+  status: attending
+  guests: 0
+  comment: ''
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 14
+  event_id: 4
+  user_id: 5
+  status: declined
+  guests: 0
+  comment: Prior commitment. Save a seat for next time!
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 15
+  event_id: 4
+  user_id: 19
+  status: attending
+  guests: 0
+  comment: Looking forward to meeting founders and engineers.
+  created: 1740268800
+  updated: 1740268800
+
+# --- Event 5: Startup Workshop ---
+- rsvp_id: 16
+  event_id: 5
+  user_id: 2
+  status: attending
+  guests: 0
+  comment: Very excited about this workshop — exactly what I needed.
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 17
+  event_id: 5
+  user_id: 3
+  status: attending
+  guests: 0
+  comment: ''
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 18
+  event_id: 5
+  user_id: 12
+  status: attending
+  guests: 0
+  comment: Looking at starting a climate tech company — this is perfect timing.
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 19
+  event_id: 5
+  user_id: 20
+  status: maybe
+  guests: 0
+  comment: Interested but need to check visa situation for travel.
+  created: 1740268800
+  updated: 1740268800
+
+# --- Event 6: Healthcare Innovation Forum ---
+- rsvp_id: 20
+  event_id: 6
+  user_id: 4
+  status: attending
+  guests: 0
+  comment: Really looking forward to the AI diagnostics session.
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 21
+  event_id: 6
+  user_id: 12
+  status: attending
+  guests: 0
+  comment: ''
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 22
+  event_id: 6
+  user_id: 8
+  status: attending
+  guests: 0
+  comment: Excellent line-up of speakers.
+  created: 1740268800
+  updated: 1740268800
+
+# --- Event 7: Career Clinic (Online) ---
+- rsvp_id: 23
+  event_id: 7
+  user_id: 12
+  status: attending
+  guests: 0
+  comment: ''
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 24
+  event_id: 7
+  user_id: 16
+  status: attending
+  guests: 0
+  comment: ''
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 25
+  event_id: 7
+  user_id: 20
+  status: attending
+  guests: 0
+  comment: Perfect for my current job search!
+  created: 1740268800
+  updated: 1740268800
+
+# --- Event 8: Finance Mixer NYC ---
+- rsvp_id: 26
+  event_id: 8
+  user_id: 3
+  status: attending
+  guests: 0
+  comment: ''
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 27
+  event_id: 8
+  user_id: 6
+  status: attending
+  guests: 0
+  comment: Great to have a NYC finance event!
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 28
+  event_id: 8
+  user_id: 15
+  status: attending
+  guests: 0
+  comment: ''
+  created: 1740268800
+  updated: 1740268800
+
+# --- Event 9: International Development Panel (Online) ---
+- rsvp_id: 29
+  event_id: 9
+  user_id: 14
+  status: attending
+  guests: 0
+  comment: Great topic — will share with our incoming MA students.
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 30
+  event_id: 9
+  user_id: 16
+  status: attending
+  guests: 0
+  comment: ''
+  created: 1740268800
+  updated: 1740268800
+
+- rsvp_id: 31
+  event_id: 9
+  user_id: 2
+  status: maybe
+  guests: 0
+  comment: ''
+  created: 1740268800
+  updated: 1740268800

@@ -1,0 +1,40 @@
+<svg width="92" height="52" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define gradient to match logoBlank.png -->
+  <defs>
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4db8ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0088cc;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded rectangle with gradient blue background -->
+  <rect x="1" y="1" width="90" height="24" rx="4" ry="4" fill="url(#blueGradient)"/>
+
+  <!-- White bottom section with rounded bottom corners -->
+  <rect x="1" y="25" width="90" height="26" rx="0" ry="0" fill="#FFFFFF"/>
+  <rect x="1" y="25" width="90" height="22" fill="#FFFFFF"/>
+  <path d="M 1 47 Q 1 50 4 50 L 87 50 Q 90 50 90 47 L 90 25 L 1 25 Z" fill="#FFFFFF"/>
+
+  <!-- Alumni network icon - three connected people silhouettes in white -->
+  <!-- Left person -->
+  <circle cx="23" cy="10" r="2.5" fill="#FFFFFF"/>
+  <path d="M 20 13 Q 20 15 23 15 Q 26 15 26 13" fill="#FFFFFF"/>
+
+  <!-- Center person (slightly larger/forward) -->
+  <circle cx="46" cy="9" r="3" fill="#FFFFFF"/>
+  <path d="M 42 13 Q 42 16 46 16 Q 50 16 50 13" fill="#FFFFFF"/>
+
+  <!-- Right person -->
+  <circle cx="69" cy="10" r="2.5" fill="#FFFFFF"/>
+  <path d="M 66 13 Q 66 15 69 15 Q 72 15 72 13" fill="#FFFFFF"/>
+
+  <!-- Connection lines between people -->
+  <line x1="26" y1="14" x2="42" y2="14" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7"/>
+  <line x1="50" y1="14" x2="66" y2="14" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7"/>
+
+  <!-- ALUMNI text in bold black -->
+  <text x="46" y="42" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#000000" text-anchor="middle" letter-spacing="0.5">ALUMNI</text>
+
+  <!-- Black border around entire logo -->
+  <rect x="0.5" y="0.5" width="91" height="51" rx="4" ry="4" fill="none" stroke="#000000" stroke-width="1"/>
+</svg>

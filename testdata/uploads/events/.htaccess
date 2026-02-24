@@ -1,0 +1,6 @@
+Options -Indexes
+# Deny everything by default, then allow only image files (Apache 2.4)
+Require all denied
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|svg)$">
+    Require all granted
+</FilesMatch>

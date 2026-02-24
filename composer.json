@@ -1,0 +1,90 @@
+{
+    "name": "xoops/alumni",
+    "description": "Alumni Network Management System for XOOPS CMS",
+    "type": "xoops-module",
+    "keywords": [
+        "xoops",
+        "module",
+        "alumni",
+        "network"
+    ],
+    "homepage": "https://github.com/XoopsModules25x/alumni",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "XOOPS Development Team",
+            "email": "dev@xoops.org",
+            "homepage": "https://xoops.org",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/XoopsModules25x/alumni/issues",
+        "source": "https://github.com/XoopsModules25x/alumni"
+    },
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.40",
+        "phpstan/phpstan": "^1.10",
+        "phpstan/phpstan-deprecation-rules": "^1.1",
+        "phpstan/phpstan-strict-rules": "^1.5",
+        "phpunit/phpunit": "^9.6",
+        "rector/rector": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "XoopsModules\\Alumni\\": "class/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "XoopsModules\\Alumni\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:unit": "phpunit --testsuite=Unit",
+        "test:coverage": "php -d xdebug.mode=coverage vendor/bin/phpunit --coverage-html=coverage --coverage-text",
+        "analyse": "phpstan analyse --memory-limit=512M",
+        "analyse:baseline": "phpstan analyse --generate-baseline",
+        "cs:check": "php-cs-fixer fix --dry-run --diff --verbose",
+        "cs:fix": "php-cs-fixer fix --verbose",
+        "rector": "rector process",
+        "rector:dry": "rector process --dry-run",
+        "qa": [
+            "@cs:check",
+            "@analyse",
+            "@test"
+        ],
+        "qa:fix": [
+            "@cs:fix",
+            "@rector",
+            "@analyse"
+        ]
+    },
+    "scripts-descriptions": {
+        "test": "Run all PHPUnit tests",
+        "test:unit": "Run unit tests only",
+        "test:coverage": "Run tests with code coverage report",
+        "analyse": "Run PHPStan static analysis",
+        "analyse:baseline": "Generate PHPStan baseline for existing errors",
+        "cs:check": "Check code style without making changes",
+        "cs:fix": "Fix code style issues automatically",
+        "rector": "Run Rector automated refactoring",
+        "rector:dry": "Preview Rector changes without applying",
+        "qa": "Run all quality assurance checks",
+        "qa:fix": "Fix code style, run Rector, and analyse"
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
