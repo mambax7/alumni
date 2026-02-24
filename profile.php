@@ -1,15 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Alumni Management System - Profile View/Edit
+ * Alumni Management System - Profile View/Edit.
  *
  * @copyright   XOOPS Project (https://xoops.org)
  * @license     GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @author      XOOPS Development Team
+ *
  * @version     1.0.0
  */
 
-use XoopsModules\Alumni\{Helper, Utility};
+use XoopsModules\Alumni\Helper;
+use XoopsModules\Alumni\Utility;
 
 require_once __DIR__ . '/../../mainfile.php';
 require_once __DIR__ . '/include/common.php';
@@ -19,10 +23,10 @@ $profileHandler = $helper->getHandler('profile');
 $skillHandler = $helper->getHandler('skill');
 $connectionHandler = $helper->getHandler('connection');
 
-$op = isset($_REQUEST['op']) ? $_REQUEST['op'] : 'view';
-$profileId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+$op = $_REQUEST['op'] ?? 'view';
+$profileId = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
-$currentUserId =Utility::getCurrentUserId();
+$currentUserId = Utility::getCurrentUserId();
 
 switch ($op) {
     case 'view':
@@ -31,7 +35,7 @@ switch ($op) {
             if (Utility::isUserLoggedIn()) {
                 // Redirect logged-in user to their own profile, or prompt to create one
                 $ownProfile = $profileHandler->getProfileByUserId($currentUserId);
-                if ($ownProfile && !$ownProfile->isNew()) {
+                if ($ownProfile && ! $ownProfile->isNew()) {
                     redirect_header('profile.php?id=' . $ownProfile->getVar('profile_id'), 0, '');
                 } else {
                     redirect_header('profile.php?op=edit', 3, _MD_ALUMNI_CREATE_PROFILE);
@@ -45,19 +49,19 @@ switch ($op) {
         // Get profile object
         $profile = $profileHandler->get($profileId);
 
-        if (!$profile || $profile->isNew()) {
+        if (! $profile || $profile->isNew()) {
             redirect_header('index.php', 3, _MD_ALUMNI_ERROR_PROFILE_NOT_FOUND);
             exit();
         }
 
         // Check viewing permission
-        if (!Utility::canViewProfile($profile, $currentUserId)) {
+        if (! Utility::canViewProfile($profile, $currentUserId)) {
             redirect_header('index.php', 3, _MD_ALUMNI_ERROR_NO_PERMISSION);
             exit();
         }
 
         // Increment views (if not viewing own profile)
-        if ($profile->getVar('user_id') != $currentUserId) {
+        if ($profile->getVar('user_id') !== $currentUserId) {
             $profile->setVar('views', $profile->getVar('views') + 1);
             $profileHandler->insert($profile, true);
         }
@@ -77,7 +81,7 @@ switch ($op) {
         $connectionStatus = 'none';
         $canConnect = false;
 
-        if ($currentUserId > 0 && $profile->getVar('user_id') != $currentUserId) {
+        if ($currentUserId > 0 && $profile->getVar('user_id') !== $currentUserId) {
             // getConnection() checks both directions (requester/recipient)
             $connection = $connectionHandler->getConnection($currentUserId, $profile->getVar('user_id'));
             if ($connection !== null) {
@@ -95,9 +99,9 @@ switch ($op) {
         $profileData = Utility::formatProfileData($profile);
 
         // Merge in data that requires runtime context
-        $isOwner = ($profile->getVar('user_id') == $currentUserId);
-        $profileData['is_owner']    = $isOwner;
-        $profileData['skills']      = array_column($skillsArray, 'name'); // flat list for badge display
+        $isOwner = ($profile->getVar('user_id') === $currentUserId);
+        $profileData['is_owner'] = $isOwner;
+        $profileData['skills'] = array_column($skillsArray, 'name'); // flat list for badge display
 
         // Assign data to template
         $xoopsTpl->assign('profile', $profileData);
@@ -111,11 +115,11 @@ switch ($op) {
         $xoopsTpl->assign('xoops_pagetitle', $profileData['full_name'] . ' - ' . $xoopsConfig['sitename']);
 
         require_once XOOPS_ROOT_PATH . '/footer.php';
-        break;
 
+        break;
     case 'edit':
         // Must be logged in
-        if (!Utility::isUserLoggedIn()) {
+        if (! Utility::isUserLoggedIn()) {
             redirect_header('user.php', 3, _MD_ALUMNI_ERROR_LOGIN_REQUIRED);
             exit();
         }
@@ -128,11 +132,11 @@ switch ($op) {
             $criteria = new CriteriaCompo();
             $criteria->add(new Criteria('user_id', $currentUserId));
             $profiles = $profileHandler->getObjects($criteria);
-            $profile = !empty($profiles) ? $profiles[0] : $profileHandler->create();
+            $profile = ! empty($profiles) ? $profiles[0] : $profileHandler->create();
         }
 
         // Check edit permission
-        if (!Utility::canEditProfile($profile, $currentUserId)) {
+        if (! Utility::canEditProfile($profile, $currentUserId)) {
             redirect_header('index.php', 3, _MD_ALUMNI_ERROR_NO_PERMISSION);
             exit();
         }
@@ -151,7 +155,7 @@ switch ($op) {
         $industries = Utility::getIndustryOptions();
 
         // Get privacy options
-        $privacyOptions =Utility::getPrivacyOptions();
+        $privacyOptions = Utility::getPrivacyOptions();
 
         // Assign to template
         $xoopsTpl->assign('profile', $profileData);
@@ -164,23 +168,23 @@ switch ($op) {
         $xoopsTpl->assign('xoops_pagetitle', _MD_ALUMNI_EDIT_PROFILE . ' - ' . $xoopsConfig['sitename']);
 
         require_once XOOPS_ROOT_PATH . '/footer.php';
-        break;
 
+        break;
     case 'save':
         // Must be logged in
-        if (!Utility::isUserLoggedIn()) {
+        if (! Utility::isUserLoggedIn()) {
             redirect_header('user.php', 3, _MD_ALUMNI_ERROR_LOGIN_REQUIRED);
             exit();
         }
 
         // CSRF check
-        if (!$GLOBALS['xoopsSecurity']->check()) {
+        if (! $GLOBALS['xoopsSecurity']->check()) {
             redirect_header('profile.php?op=edit', 3, _MD_ALUMNI_ERROR_SECURITY);
             exit();
         }
 
         // Get profile
-        $profileId = isset($_POST['profile_id']) ? (int)$_POST['profile_id'] : 0;
+        $profileId = isset($_POST['profile_id']) ? (int) $_POST['profile_id'] : 0;
 
         if ($profileId > 0) {
             $profile = $profileHandler->get($profileId);
@@ -191,7 +195,7 @@ switch ($op) {
         }
 
         // Check edit permission
-        if (!Utility::canEditProfile($profile, $currentUserId)) {
+        if (! Utility::canEditProfile($profile, $currentUserId)) {
             redirect_header('index.php', 3, _MD_ALUMNI_ERROR_NO_PERMISSION);
             exit();
         }
@@ -199,7 +203,7 @@ switch ($op) {
         // Get form data
         $profile->setVar('first_name', $_POST['first_name']);
         $profile->setVar('last_name', $_POST['last_name']);
-        $profile->setVar('graduation_year', (int)$_POST['graduation_year']);
+        $profile->setVar('graduation_year', (int) $_POST['graduation_year']);
         $profile->setVar('degree', $_POST['degree']);
         $profile->setVar('major', $_POST['major']);
         $profile->setVar('department', $_POST['department']);
@@ -228,7 +232,7 @@ switch ($op) {
             $uploadDir = ALUMNI_UPLOAD_PATH . '/photos';
 
             // Create directory if it doesn't exist
-            if (!is_dir($uploadDir)) {
+            if (! is_dir($uploadDir)) {
                 mkdir($uploadDir, 0755, true);
             }
 
@@ -244,7 +248,7 @@ switch ($op) {
 
             if ($uploadResult['success']) {
                 // Delete old photo
-                if (!$profile->isNew() && !empty($profile->getVar('photo'))) {
+                if (! $profile->isNew() && ! empty($profile->getVar('photo'))) {
                     $oldPhoto = $uploadDir . '/' . $profile->getVar('photo');
                     if (file_exists($oldPhoto)) {
                         unlink($oldPhoto);
@@ -265,5 +269,6 @@ switch ($op) {
             redirect_header('profile.php?op=edit', 3, _MD_ALUMNI_ERROR_SAVE_FAILED);
         }
         exit();
+
         break;
 }

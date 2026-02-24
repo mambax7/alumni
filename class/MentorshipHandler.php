@@ -1,23 +1,36 @@
-<?php namespace XoopsModules\Alumni;
+<?php
+
+declare(strict_types=1);
+
+namespace XoopsModules\Alumni;
+
+use Criteria;
+use CriteriaCompo;
+use XoopsDatabase;
+use XoopsObject;
+use XoopsPersistableObjectHandler;
+
+use function defined;
 
 /**
- * Alumni Management System - Mentorship Handler
+ * Alumni Management System - Mentorship Handler.
  *
  * @copyright   XOOPS Project (https://xoops.org)
  * @license     GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @author      XOOPS Development Team
+ *
  * @version     1.0.0
  */
 
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
 /**
- * Class Mentorship
+ * Class Mentorship.
  */
-class Mentorship extends \XoopsObject
+class Mentorship extends XoopsObject
 {
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -37,34 +50,35 @@ class Mentorship extends \XoopsObject
 }
 
 /**
- * Class MentorshipHandler
+ * Class MentorshipHandler.
  */
-class MentorshipHandler extends \XoopsPersistableObjectHandler
+class MentorshipHandler extends XoopsPersistableObjectHandler
 {
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param \XoopsDatabase|null $db Database connection
+     * @param XoopsDatabase|null $db Database connection
      * @param Helper|null $helper Helper instance
      */
-    public function __construct(?\XoopsDatabase $db = null, ?Helper $helper = null)
+    public function __construct(?XoopsDatabase $db = null, ?Helper $helper = null)
     {
         parent::__construct($db, 'alumni_mentorship', Mentorship::class, 'mentorship_id', 'mentorship_id');
     }
 
     /**
-     * Get mentorship requests received by mentor
+     * Get mentorship requests received by mentor.
      *
-     * @param int    $mentorId Mentor user ID
-     * @param string $status   Status filter
+     * @param int $mentorId Mentor user ID
+     * @param string $status Status filter
+     *
      * @return array Array of mentorship objects
      */
     public function getMentorRequests($mentorId, $status = '')
     {
-        $criteria = new \Criteria('mentor_id', (int)$mentorId);
+        $criteria = new Criteria('mentor_id', (int) $mentorId);
 
-        if (!empty($status)) {
-            $criteria->add(new \Criteria('status', $status));
+        if (! empty($status)) {
+            $criteria->add(new Criteria('status', $status));
         }
 
         $criteria->setSort('created');
@@ -74,18 +88,19 @@ class MentorshipHandler extends \XoopsPersistableObjectHandler
     }
 
     /**
-     * Get mentorship requests sent by mentee
+     * Get mentorship requests sent by mentee.
      *
-     * @param int    $menteeId Mentee user ID
-     * @param string $status   Status filter
+     * @param int $menteeId Mentee user ID
+     * @param string $status Status filter
+     *
      * @return array Array of mentorship objects
      */
     public function getMenteeRequests($menteeId, $status = '')
     {
-        $criteria = new \Criteria('mentee_id', (int)$menteeId);
+        $criteria = new Criteria('mentee_id', (int) $menteeId);
 
-        if (!empty($status)) {
-            $criteria->add(new \Criteria('status', $status));
+        if (! empty($status)) {
+            $criteria->add(new Criteria('status', $status));
         }
 
         $criteria->setSort('created');
@@ -95,21 +110,22 @@ class MentorshipHandler extends \XoopsPersistableObjectHandler
     }
 
     /**
-     * Get active mentorships for user (as mentor or mentee)
+     * Get active mentorships for user (as mentor or mentee).
      *
      * @param int $userId User ID
+     *
      * @return array Array of mentorship objects
      */
     public function getActiveMentorships($userId)
     {
-        $criteria = new \CriteriaCompo();
+        $criteria = new CriteriaCompo();
 
-        $userCriteria = new \CriteriaCompo();
-        $userCriteria->add(new \Criteria('mentor_id', (int)$userId), 'OR');
-        $userCriteria->add(new \Criteria('mentee_id', (int)$userId), 'OR');
+        $userCriteria = new CriteriaCompo();
+        $userCriteria->add(new Criteria('mentor_id', (int) $userId), 'OR');
+        $userCriteria->add(new Criteria('mentee_id', (int) $userId), 'OR');
 
         $criteria->add($userCriteria);
-        $criteria->add(new \Criteria('status', 'active'));
+        $criteria->add(new Criteria('status', 'active'));
         $criteria->setSort('start_date');
         $criteria->setOrder('DESC');
 
@@ -117,19 +133,21 @@ class MentorshipHandler extends \XoopsPersistableObjectHandler
     }
 
     /**
-     * Check if mentorship exists between two users
+     * Check if mentorship exists between two users.
      *
      * @param int $mentorId Mentor user ID
      * @param int $menteeId Mentee user ID
+     *
      * @return Mentorship|null Mentorship object or null
      */
     public function getMentorship($mentorId, $menteeId)
     {
-        $criteria = new \CriteriaCompo();
-        $criteria->add(new \Criteria('mentor_id', (int)$mentorId));
-        $criteria->add(new \Criteria('mentee_id', (int)$menteeId));
+        $criteria = new CriteriaCompo();
+        $criteria->add(new Criteria('mentor_id', (int) $mentorId));
+        $criteria->add(new Criteria('mentee_id', (int) $menteeId));
 
         $mentorships = $this->getObjects($criteria);
-        return !empty($mentorships) ? $mentorships[0] : null;
+
+        return ! empty($mentorships) ? $mentorships[0] : null;
     }
 }

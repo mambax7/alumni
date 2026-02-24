@@ -1,15 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Alumni Management System - Events Listing
+ * Alumni Management System - Events Listing.
  *
  * @copyright   XOOPS Project (https://xoops.org)
  * @license     GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @author      XOOPS Development Team
+ *
  * @version     1.0.0
  */
 
-use XoopsModules\Alumni\{Helper, Utility};
+use XoopsModules\Alumni\Helper;
+use XoopsModules\Alumni\Utility;
 
 require_once __DIR__ . '/../../mainfile.php';
 require_once __DIR__ . '/include/common.php';
@@ -20,13 +24,13 @@ $categoryHandler = $helper->getHandler('category');
 
 // Pagination
 $limit = Utility::config('per_page') ?: 20;
-$start = isset($_GET['start']) ? (int)$_GET['start'] : 0;
+$start = isset($_GET['start']) ? (int) $_GET['start'] : 0;
 
 // Get filters from request
-$categoryId = isset($_GET['cat']) ? (int)$_GET['cat'] : 0;
+$categoryId = isset($_GET['cat']) ? (int) $_GET['cat'] : 0;
 $eventType = isset($_GET['type']) ? trim($_GET['type']) : '';
 $timeFilter = isset($_GET['time']) ? trim($_GET['time']) : 'upcoming'; // upcoming, past, all
-$featured = isset($_GET['featured']) ? (int)$_GET['featured'] : 0;
+$featured = isset($_GET['featured']) ? (int) $_GET['featured'] : 0;
 $keyword = isset($_GET['keyword']) ? trim($_GET['keyword']) : '';
 
 // Build search criteria
@@ -37,11 +41,11 @@ if ($categoryId > 0) {
     $criteria->add(new Criteria('category_id', $categoryId));
 }
 
-if (!empty($eventType)) {
+if (! empty($eventType)) {
     $criteria->add(new Criteria('event_type', $eventType));
 }
 
-if (!empty($keyword)) {
+if (! empty($keyword)) {
     $keywordCriteria = new CriteriaCompo();
     $keywordCriteria->add(new Criteria('title', '%' . $keyword . '%', 'LIKE'), 'OR');
     $keywordCriteria->add(new Criteria('description', '%' . $keyword . '%', 'LIKE'), 'OR');
@@ -58,9 +62,11 @@ $currentTime = time();
 switch ($timeFilter) {
     case 'upcoming':
         $criteria->add(new Criteria('start_date', $currentTime, '>='));
+
         break;
     case 'past':
         $criteria->add(new Criteria('start_date', $currentTime, '<'));
+
         break;
     case 'all':
     default:
@@ -97,10 +103,10 @@ foreach ($events as $event) {
         $rsvpHandler = $helper->getHandler('rsvp');
         $rsvpCriteria = new CriteriaCompo();
         $rsvpCriteria->add(new Criteria('event_id', $event->getVar('event_id')));
-        $rsvpCriteria->add(new Criteria('user_id',Utility::getCurrentUserId()));
+        $rsvpCriteria->add(new Criteria('user_id', Utility::getCurrentUserId()));
         $rsvps = $rsvpHandler->getObjects($rsvpCriteria);
 
-        if (!empty($rsvps)) {
+        if (! empty($rsvps)) {
             $eventData['user_rsvp_status'] = $rsvps[0]->getVar('status');
             $eventData['has_rsvp'] = true;
         } else {
@@ -123,7 +129,7 @@ foreach ($events as $event) {
 
 // Get featured events (if not already filtering)
 $featuredEventsArray = [];
-if (empty($keyword) && !$featured) {
+if (empty($keyword) && ! $featured) {
     $featuredCriteria = new CriteriaCompo();
     $featuredCriteria->add(new Criteria('status', 'active'));
     $featuredCriteria->add(new Criteria('featured', 1));

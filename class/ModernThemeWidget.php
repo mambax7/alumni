@@ -1,6 +1,8 @@
 <?php
+
+declare(strict_types=1);
 /**
- * Modern Theme Widget for Alumni
+ * Modern Theme Widget for Alumni.
  *
  * Dashboard statistics: active profiles, pending profiles,
  * total connections, and 5 most recent alumni registrations.
@@ -28,34 +30,34 @@ class AlumniModernThemeWidget implements ModernThemeWidgetInterface
         $pending = 0;
 
         $result = $xoopsDB->query(
-            "SELECT COUNT(*) FROM `$table` WHERE `status` = 'active'"
+            "SELECT COUNT(*) FROM `{$table}` WHERE `status` = 'active'"
         );
         if ($result) {
-            list($active) = $xoopsDB->fetchRow($result);
+            [$active] = $xoopsDB->fetchRow($result);
         }
 
         $result = $xoopsDB->query(
-            "SELECT COUNT(*) FROM `$table` WHERE `status` = 'pending'"
+            "SELECT COUNT(*) FROM `{$table}` WHERE `status` = 'pending'"
         );
         if ($result) {
-            list($pending) = $xoopsDB->fetchRow($result);
+            [$pending] = $xoopsDB->fetchRow($result);
         }
 
         // Total connections
         $connections = 0;
         $result = $xoopsDB->query(
-            "SELECT COUNT(*) FROM " . $xoopsDB->prefix('alumni_connections')
+            'SELECT COUNT(*) FROM ' . $xoopsDB->prefix('alumni_connections')
         );
         if ($result) {
-            list($connections) = $xoopsDB->fetchRow($result);
+            [$connections] = $xoopsDB->fetchRow($result);
         }
 
         // Recent alumni profiles
         $recent = [];
         $result = $xoopsDB->query(
-            "SELECT `profile_id`, `first_name`, `last_name`, `status`,"
-            . " `graduation_year`, `created`"
-            . " FROM `$table` ORDER BY `created` DESC LIMIT 5"
+            'SELECT `profile_id`, `first_name`, `last_name`, `status`,'
+            . ' `graduation_year`, `created`'
+            . " FROM `{$table}` ORDER BY `created` DESC LIMIT 5"
         );
         if ($result) {
             while ($row = $xoopsDB->fetchArray($result)) {
@@ -72,9 +74,9 @@ class AlumniModernThemeWidget implements ModernThemeWidgetInterface
         }
 
         return [
-            'title'     => 'Alumni',
-            'icon'      => '🎓',
-            'stats'     => [
+            'title' => 'Alumni',
+            'icon'  => '🎓',
+            'stats' => [
                 'active'      => (int) $active,
                 'pending'     => (int) $pending,
                 'connections' => (int) $connections,

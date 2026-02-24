@@ -1,15 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
- * Alumni Network Management System
+ * Alumni Network Management System.
  *
  * @copyright   XOOPS Project (https://xoops.org)
  * @license     GNU GPL 2 or later (https://www.gnu.org/licenses/gpl-2.0.html)
- * @package     alumni
  * @author      XOOPS Development Team
+ *
  * @version     1.0.0
  */
 
-$moduleDirName      = basename(__DIR__);
+$moduleDirName = basename(__DIR__);
 $moduleDirNameUpper = mb_strtoupper($moduleDirName);
 
 $modversion = [
@@ -87,17 +89,15 @@ $modversion['tables'] = [
     'alumni_comments',
 ];
 
-
-
 // Main menu
-//$modversion['hasMain'] = 1;
+// $modversion['hasMain'] = 1;
 
 // Sub-menu
 $modversion['sub'] = [
-//    [
-//        'name' => _MI_ALUMNI_MENU_HOME,
-//        'url'  => 'index.php',
-//    ],
+    //    [
+    //        'name' => _MI_ALUMNI_MENU_HOME,
+    //        'url'  => 'index.php',
+    //    ],
     [
         'name' => _MI_ALUMNI_MENU_EVENTS,
         'url'  => 'events.php',
@@ -414,12 +414,12 @@ $modversion['config'] = [
 ];
 
 // Search
-$modversion['hasSearch']      = 1;
+$modversion['hasSearch'] = 1;
 $modversion['search']['file'] = 'include/search.inc.php';
 $modversion['search']['func'] = 'alumni_search';
 
 // Comments
-$modversion['hasComments']          = 1;
+$modversion['hasComments'] = 1;
 $modversion['comments']['pageName'] = 'profile.php';
 $modversion['comments']['itemName'] = 'profile_id';
 

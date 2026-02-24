@@ -13,18 +13,18 @@ declare(strict_types=1);
  */
 
 /**
- * Alumni Module v2.0.0 - About Page
+ * Alumni Module v2.0.0 - About Page.
  *
  * Standard XOOPS module "About" page rendered via Xmf\Module\Admin.
  * Displays module metadata (version, author, credits, license, links)
  * as defined in xoops_version.php, plus an optional PayPal donate button
  * and changelog information.
  *
- * @package         XoopsModules\Alumni
  * @copyright       Copyright (c) 2004-2026 James Cotton
  * @copyright       {@link https://xoops.org/ XOOPS Project}
  * @license         {@link https://www.gnu.org/licenses/gpl-2.0.html GNU GPL 2.0 or later}
  * @author          XOOPS Module Dev Team
+ *
  * @since           2.0.0
  */
 

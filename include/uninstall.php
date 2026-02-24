@@ -1,8 +1,9 @@
 <?php
+
+declare(strict_types=1);
 /**
- * Alumni Module - Uninstallation Handler
+ * Alumni Module - Uninstallation Handler.
  *
- * @package   Alumni
  * @author    XOOPS Development Team
  * @copyright (c) 2025 XOOPS Project
  * @license   GPL 2.0 or later
@@ -11,9 +12,10 @@
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
 /**
- * Uninstallation handler for Alumni module
+ * Uninstallation handler for Alumni module.
  *
  * @param XoopsModule $module
+ *
  * @return bool
  */
 function xoops_module_uninstall_alumni(XoopsModule $module)
@@ -45,7 +47,7 @@ function xoops_module_uninstall_alumni(XoopsModule $module)
     }
 
     // Report results
-    if (!empty($errors)) {
+    if (! empty($errors)) {
         error_log('Alumni module uninstallation warnings: ' . implode('; ', $errors));
     }
 
@@ -53,14 +55,15 @@ function xoops_module_uninstall_alumni(XoopsModule $module)
 }
 
 /**
- * Recursively delete a directory and its contents
+ * Recursively delete a directory and its contents.
  *
  * @param string $dir Directory path
+ *
  * @return bool
  */
 function deleteDirectory($dir)
 {
-    if (!is_dir($dir)) {
+    if (! is_dir($dir)) {
         return true;
     }
 
@@ -72,13 +75,13 @@ function deleteDirectory($dir)
         if (is_dir($path)) {
             deleteDirectory($path);
         } else {
-            if (!unlink($path)) {
+            if (! unlink($path)) {
                 throw new Exception('Cannot delete file: ' . $path);
             }
         }
     }
 
-    if (!rmdir($dir)) {
+    if (! rmdir($dir)) {
         throw new Exception('Cannot delete directory: ' . $dir);
     }
 

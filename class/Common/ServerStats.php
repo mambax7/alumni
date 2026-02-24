@@ -1,6 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace XoopsModules\Alumni\Common;
+
+use function constant;
+use function dirname;
+use function function_exists;
+use function ini_get;
 
 /*
  You may not change or alter any portion of this comment or credits
@@ -13,50 +20,51 @@ namespace XoopsModules\Alumni\Common;
  */
 
 /**
-GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
+ * GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html).
+ *
  * @author      mamba <mambax7@gmail.com>
  */
 trait ServerStats
 {
     /**
-     * serverStats()
+     * serverStats().
      *
      * @return string
      */
     public static function getServerStats()
     {
-        $moduleDirName      = \basename(\dirname(__DIR__, 2));
-        $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
-        \xoops_loadLanguage('common', $moduleDirName);
+        $moduleDirName = basename(dirname(__DIR__, 2));
+        $moduleDirNameUpper = mb_strtoupper($moduleDirName);
+        xoops_loadLanguage('common', $moduleDirName);
         $html = '';
         $html .= '<fieldset>';
-        $html .= "<legend style='font-weight: bold; color: #900;'>" . \constant('_CO_' . $moduleDirNameUpper . '_IMAGEINFO') . '</legend>';
+        $html .= "<legend style='font-weight: bold; color: #900;'>" . constant('_CO_' . $moduleDirNameUpper . '_IMAGEINFO') . '</legend>';
         $html .= "<div style='padding: 8px;'>";
-        $html .= '<div>' . \constant('_CO_' . $moduleDirNameUpper . '_SPHPINI') . '</div>';
+        $html .= '<div>' . constant('_CO_' . $moduleDirNameUpper . '_SPHPINI') . '</div>';
         $html .= '<ul>';
 
-        if (\function_exists('gd_info')) {
-            $html  .= '<li>' . \constant('_CO_' . $moduleDirNameUpper . '_GDLIBSTATUS') . '<span style="color: #008000;">' . \constant('_CO_' . $moduleDirNameUpper . '_GDON') . '</span>';
-            $gdlib = \gd_info();
-            if (!empty(($gdlib))) {
-                $html .= '<li>' . \constant('_CO_' . $moduleDirNameUpper . '_GDLIBVERSION') . '<b>' . $gdlib['GD Version'] . '</b>';
+        if (function_exists('gd_info')) {
+            $html .= '<li>' . constant('_CO_' . $moduleDirNameUpper . '_GDLIBSTATUS') . '<span style="color: #008000;">' . constant('_CO_' . $moduleDirNameUpper . '_GDON') . '</span>';
+            $gdlib = gd_info();
+            if (! empty(($gdlib))) {
+                $html .= '<li>' . constant('_CO_' . $moduleDirNameUpper . '_GDLIBVERSION') . '<b>' . $gdlib['GD Version'] . '</b>';
             }
         } else {
-            $html .= '<li>' . \constant('_CO_' . $moduleDirNameUpper . '_GDLIBSTATUS') . '<span style="color: #ff0000;">' . \constant('_CO_' . $moduleDirNameUpper . '_GDOFF') . '</span>';
+            $html .= '<li>' . constant('_CO_' . $moduleDirNameUpper . '_GDLIBSTATUS') . '<span style="color: #ff0000;">' . constant('_CO_' . $moduleDirNameUpper . '_GDOFF') . '</span>';
         }
 
-        $downloads = \ini_get('file_uploads') ? '<span style="color: #008000;">' . \constant('_CO_' . $moduleDirNameUpper . '_ON') . '</span>' : '<span style="color: #ff0000;">' . \constant('_CO_' . $moduleDirNameUpper . '_OFF') . '</span>';
-        $html .= '<li>' . \constant('_CO_' . $moduleDirNameUpper . '_SERVERUPLOADSTATUS') . $downloads;
+        $downloads = ini_get('file_uploads') ? '<span style="color: #008000;">' . constant('_CO_' . $moduleDirNameUpper . '_ON') . '</span>' : '<span style="color: #ff0000;">' . constant('_CO_' . $moduleDirNameUpper . '_OFF') . '</span>';
+        $html .= '<li>' . constant('_CO_' . $moduleDirNameUpper . '_SERVERUPLOADSTATUS') . $downloads;
 
-        $html .= '<li>' . \constant('_CO_' . $moduleDirNameUpper . '_MAXUPLOADSIZE') . ' <b><span style="color: #0000ff;">' . \ini_get('upload_max_filesize') . '</span></b>';
-        $html .= '<li>' . \constant('_CO_' . $moduleDirNameUpper . '_MAXPOSTSIZE') . ' <b><span style="color: #0000ff;">' . \ini_get('post_max_size') . '</span></b>';
-        $html .= '<li>' . \constant('_CO_' . $moduleDirNameUpper . '_MEMORYLIMIT') . ' <b><span style="color: #0000ff;">' . \ini_get('memory_limit') . '</span></b>';
+        $html .= '<li>' . constant('_CO_' . $moduleDirNameUpper . '_MAXUPLOADSIZE') . ' <b><span style="color: #0000ff;">' . ini_get('upload_max_filesize') . '</span></b>';
+        $html .= '<li>' . constant('_CO_' . $moduleDirNameUpper . '_MAXPOSTSIZE') . ' <b><span style="color: #0000ff;">' . ini_get('post_max_size') . '</span></b>';
+        $html .= '<li>' . constant('_CO_' . $moduleDirNameUpper . '_MEMORYLIMIT') . ' <b><span style="color: #0000ff;">' . ini_get('memory_limit') . '</span></b>';
         $html .= '</ul>';
         $html .= '<ul>';
-        $html .= '<li>' . \constant('_CO_' . $moduleDirNameUpper . '_SERVERPATH') . ' <b>' . XOOPS_ROOT_PATH . '</b>';
+        $html .= '<li>' . constant('_CO_' . $moduleDirNameUpper . '_SERVERPATH') . ' <b>' . XOOPS_ROOT_PATH . '</b>';
         $html .= '</ul>';
         $html .= '<br>';
-        $html .= \constant('_CO_' . $moduleDirNameUpper . '_UPLOADPATHDSC') . '';
+        $html .= constant('_CO_' . $moduleDirNameUpper . '_UPLOADPATHDSC') . '';
         $html .= '</div>';
         $html .= '</fieldset><br>';
 

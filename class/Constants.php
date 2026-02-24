@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace XoopsModules\Alumni;
 
+use function define;
+use function defined;
+
 /**
  * Constants — defines all module-level PHP constants.
  *
@@ -28,10 +31,10 @@ class Constants
      */
     public static function define(): void
     {
-        defined('ALUMNI_DIRNAME')     || define('ALUMNI_DIRNAME',     self::DIRNAME);
-        defined('ALUMNI_URL')         || define('ALUMNI_URL',         XOOPS_URL         . '/modules/' . self::DIRNAME);
-        defined('ALUMNI_ROOT_PATH')   || define('ALUMNI_ROOT_PATH',   XOOPS_ROOT_PATH   . '/modules/' . self::DIRNAME);
+        defined('ALUMNI_DIRNAME') || define('ALUMNI_DIRNAME', self::DIRNAME);
+        defined('ALUMNI_URL') || define('ALUMNI_URL', XOOPS_URL . '/modules/' . self::DIRNAME);
+        defined('ALUMNI_ROOT_PATH') || define('ALUMNI_ROOT_PATH', XOOPS_ROOT_PATH . '/modules/' . self::DIRNAME);
         defined('ALUMNI_UPLOAD_PATH') || define('ALUMNI_UPLOAD_PATH', XOOPS_UPLOAD_PATH . '/' . self::DIRNAME);
-        defined('ALUMNI_UPLOAD_URL')  || define('ALUMNI_UPLOAD_URL',  XOOPS_UPLOAD_URL  . '/' . self::DIRNAME);
+        defined('ALUMNI_UPLOAD_URL') || define('ALUMNI_UPLOAD_URL', XOOPS_UPLOAD_URL . '/' . self::DIRNAME);
     }
 }

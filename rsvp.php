@@ -1,15 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Alumni Management System - RSVP Handler (AJAX)
+ * Alumni Management System - RSVP Handler (AJAX).
  *
  * @copyright   XOOPS Project (https://xoops.org)
  * @license     GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @author      XOOPS Development Team
+ *
  * @version     1.0.0
  */
 
-use XoopsModules\Alumni\{Helper, Utility};
+use XoopsModules\Alumni\Helper;
+use XoopsModules\Alumni\Utility;
 
 require_once __DIR__ . '/../../mainfile.php';
 require_once __DIR__ . '/include/common.php';
@@ -17,10 +21,10 @@ require_once __DIR__ . '/include/common.php';
 header('Content-Type: application/json');
 
 // Must be logged in
-if (!Utility::isUserLoggedIn()) {
+if (! Utility::isUserLoggedIn()) {
     echo json_encode([
         'success' => false,
-        'error'   => _MD_ALUMNI_ERROR_LOGIN_REQUIRED
+        'error'   => _MD_ALUMNI_ERROR_LOGIN_REQUIRED,
     ]);
     exit();
 }
@@ -29,16 +33,16 @@ if (!Utility::isUserLoggedIn()) {
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode([
         'success' => false,
-        'error'   => _MD_ALUMNI_ERROR_INVALID_REQUEST
+        'error'   => _MD_ALUMNI_ERROR_INVALID_REQUEST,
     ]);
     exit();
 }
 
 // CSRF check
-if (!$GLOBALS['xoopsSecurity']->check()) {
+if (! $GLOBALS['xoopsSecurity']->check()) {
     echo json_encode([
         'success' => false,
-        'error'   => _MD_ALUMNI_ERROR_SECURITY
+        'error'   => _MD_ALUMNI_ERROR_SECURITY,
     ]);
     exit();
 }
@@ -47,25 +51,25 @@ $helper = Helper::getInstance();
 $rsvpHandler = $helper->getHandler('rsvp');
 $eventHandler = $helper->getHandler('event');
 
-$op = isset($_POST['op']) ? $_POST['op'] : '';
-$eventId = isset($_POST['event_id']) ? (int)$_POST['event_id'] : 0;
-$currentUserId =Utility::getCurrentUserId();
+$op = $_POST['op'] ?? '';
+$eventId = isset($_POST['event_id']) ? (int) $_POST['event_id'] : 0;
+$currentUserId = Utility::getCurrentUserId();
 
 // Validate event
 if ($eventId === 0) {
     echo json_encode([
         'success' => false,
-        'error'   => _MD_ALUMNI_ERROR_INVALID_EVENT
+        'error'   => _MD_ALUMNI_ERROR_INVALID_EVENT,
     ]);
     exit();
 }
 
 $event = $eventHandler->get($eventId);
 
-if (!$event || $event->isNew() || $event->getVar('status') !== 'active') {
+if (! $event || $event->isNew() || $event->getVar('status') !== 'active') {
     echo json_encode([
         'success' => false,
-        'error'   => _MD_ALUMNI_ERROR_EVENT_NOT_FOUND
+        'error'   => _MD_ALUMNI_ERROR_EVENT_NOT_FOUND,
     ]);
     exit();
 }
@@ -76,7 +80,7 @@ switch ($op) {
         if ($event->getVar('registration_deadline') > 0 && $event->getVar('registration_deadline') < time()) {
             echo json_encode([
                 'success' => false,
-                'error'   => _MD_ALUMNI_ERROR_REGISTRATION_CLOSED
+                'error'   => _MD_ALUMNI_ERROR_REGISTRATION_CLOSED,
             ]);
             exit();
         }
@@ -85,7 +89,7 @@ switch ($op) {
         if ($event->getVar('max_attendees') > 0 && $event->getVar('rsvp_count') >= $event->getVar('max_attendees')) {
             echo json_encode([
                 'success' => false,
-                'error'   => _MD_ALUMNI_ERROR_EVENT_FULL
+                'error'   => _MD_ALUMNI_ERROR_EVENT_FULL,
             ]);
             exit();
         }
@@ -96,19 +100,19 @@ switch ($op) {
         $criteria->add(new Criteria('user_id', $currentUserId));
         $existingRsvps = $rsvpHandler->getObjects($criteria);
 
-        if (!empty($existingRsvps)) {
+        if (! empty($existingRsvps)) {
             echo json_encode([
                 'success' => false,
-                'error'   => _MD_ALUMNI_ERROR_ALREADY_RSVP
+                'error'   => _MD_ALUMNI_ERROR_ALREADY_RSVP,
             ]);
             exit();
         }
 
-        $status = isset($_POST['status']) ? $_POST['status'] : 'attending';
-        $guests = isset($_POST['guests']) ? (int)$_POST['guests'] : 0;
+        $status = $_POST['status'] ?? 'attending';
+        $guests = isset($_POST['guests']) ? (int) $_POST['guests'] : 0;
 
         // Validate status
-        if (!in_array($status, ['attending', 'maybe', 'not_attending'])) {
+        if (! in_array($status, ['attending', 'maybe', 'not_attending'], true)) {
             $status = 'attending';
         }
 
@@ -131,16 +135,16 @@ switch ($op) {
                 'success' => true,
                 'message' => _MD_ALUMNI_RSVP_SUCCESS,
                 'rsvp_id' => $rsvp->getVar('rsvp_id'),
-                'status'  => $status
+                'status'  => $status,
             ]);
         } else {
             echo json_encode([
                 'success' => false,
-                'error'   => _MD_ALUMNI_ERROR_SAVE_FAILED
+                'error'   => _MD_ALUMNI_ERROR_SAVE_FAILED,
             ]);
         }
-        break;
 
+        break;
     case 'update':
         // Get existing RSVP
         $criteria = new CriteriaCompo();
@@ -151,22 +155,22 @@ switch ($op) {
         if (empty($rsvps)) {
             echo json_encode([
                 'success' => false,
-                'error'   => _MD_ALUMNI_ERROR_RSVP_NOT_FOUND
+                'error'   => _MD_ALUMNI_ERROR_RSVP_NOT_FOUND,
             ]);
             exit();
         }
 
         $rsvp = $rsvps[0];
         $oldStatus = $rsvp->getVar('status');
-        $newStatus = isset($_POST['status']) ? $_POST['status'] : 'attending';
+        $newStatus = $_POST['status'] ?? 'attending';
 
         // Validate status
-        if (!in_array($newStatus, ['attending', 'maybe', 'not_attending'])) {
+        if (! in_array($newStatus, ['attending', 'maybe', 'not_attending'], true)) {
             $newStatus = 'attending';
         }
 
         $rsvp->setVar('status', $newStatus);
-        $rsvp->setVar('guests', isset($_POST['guests']) ? (int)$_POST['guests'] : $rsvp->getVar('guests'));
+        $rsvp->setVar('guests', isset($_POST['guests']) ? (int) $_POST['guests'] : $rsvp->getVar('guests'));
 
         if ($rsvpHandler->insert($rsvp)) {
             // Update event RSVP count
@@ -181,16 +185,16 @@ switch ($op) {
             echo json_encode([
                 'success' => true,
                 'message' => _MD_ALUMNI_RSVP_UPDATED,
-                'status'  => $newStatus
+                'status'  => $newStatus,
             ]);
         } else {
             echo json_encode([
                 'success' => false,
-                'error'   => _MD_ALUMNI_ERROR_SAVE_FAILED
+                'error'   => _MD_ALUMNI_ERROR_SAVE_FAILED,
             ]);
         }
-        break;
 
+        break;
     case 'delete':
         // Get existing RSVP
         $criteria = new CriteriaCompo();
@@ -201,7 +205,7 @@ switch ($op) {
         if (empty($rsvps)) {
             echo json_encode([
                 'success' => false,
-                'error'   => _MD_ALUMNI_ERROR_RSVP_NOT_FOUND
+                'error'   => _MD_ALUMNI_ERROR_RSVP_NOT_FOUND,
             ]);
             exit();
         }
@@ -218,21 +222,22 @@ switch ($op) {
 
             echo json_encode([
                 'success' => true,
-                'message' => _MD_ALUMNI_RSVP_DELETED
+                'message' => _MD_ALUMNI_RSVP_DELETED,
             ]);
         } else {
             echo json_encode([
                 'success' => false,
-                'error'   => _MD_ALUMNI_ERROR_DELETE_FAILED
+                'error'   => _MD_ALUMNI_ERROR_DELETE_FAILED,
             ]);
         }
-        break;
 
+        break;
     default:
         echo json_encode([
             'success' => false,
-            'error'   => _MD_ALUMNI_ERROR_INVALID_OPERATION
+            'error'   => _MD_ALUMNI_ERROR_INVALID_OPERATION,
         ]);
+
         break;
 }
 

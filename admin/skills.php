@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
- * Alumni Management System - Skill Management
+ * Alumni Management System - Skill Management.
  *
  * @copyright   XOOPS Project (https://xoops.org)
  * @license     GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @author      XOOPS Development Team
  */
 
-use XoopsModules\Alumni\{Helper, Utility};
+use XoopsModules\Alumni\Helper;
+use XoopsModules\Alumni\Utility;
 
-$GLOBALS['xoopsOption']['template_main'] = 'file:' . \dirname(__DIR__) . '/templates/admin/alumni_admin_skills.tpl';
+$GLOBALS['xoopsOption']['template_main'] = 'file:' . dirname(__DIR__) . '/templates/admin/alumni_admin_skills.tpl';
 
 require __DIR__ . '/admin_header.php';
 
@@ -17,12 +20,12 @@ xoops_cp_header();
 Utility::addAdminAssets();
 
 // Get handler
-$helper       = Helper::getInstance();
+$helper = Helper::getInstance();
 $skillHandler = $helper->getHandler('skill');
 
 // Get operation
-$op      = isset($_REQUEST['op'])       ? $_REQUEST['op']          : 'list';
-$skillId = isset($_REQUEST['skill_id']) ? (int)$_REQUEST['skill_id'] : 0;
+$op = $_REQUEST['op'] ?? 'list';
+$skillId = isset($_REQUEST['skill_id']) ? (int) $_REQUEST['skill_id'] : 0;
 
 switch ($op) {
     case 'list':
@@ -33,9 +36,9 @@ switch ($op) {
         $xoopsTpl->assign('admin_buttons', $adminObject->renderButton());
 
         // Get filters
-        $filter_category = isset($_GET['category']) ? $_GET['category'] : '';
-        $start           = isset($_GET['start'])    ? (int)$_GET['start'] : 0;
-        $limit           = 20;
+        $filter_category = $_GET['category'] ?? '';
+        $start = isset($_GET['start']) ? (int) $_GET['start'] : 0;
+        $limit = 20;
 
         // Build criteria
         $criteria = new CriteriaCompo();
@@ -45,7 +48,7 @@ switch ($op) {
         $criteria->setLimit($limit);
 
         // Get skills
-        $skillObjs  = $skillHandler->getObjects($criteria);
+        $skillObjs = $skillHandler->getObjects($criteria);
         $skillCount = $skillHandler->getCount($criteria);
 
         // Build array for template
@@ -54,7 +57,7 @@ switch ($op) {
             $skillsArr[] = [
                 'id'            => $skill->getVar('skill_id'),
                 'name'          => Utility::sanitizeHtml($skill->getVar('name')),
-                'profile_count' => (int)$skill->getVar('profile_count'),
+                'profile_count' => (int) $skill->getVar('profile_count'),
             ];
         }
 
@@ -62,22 +65,22 @@ switch ($op) {
         $pagenavStr = '';
         if ($skillCount > $limit) {
             require_once XOOPS_ROOT_PATH . '/class/pagenav.php';
-            $extra    = 'op=list' . (!empty($filter_category) ? '&category=' . urlencode($filter_category) : '');
-            $pagenav  = new XoopsPageNav($skillCount, $limit, $start, 'start', $extra);
+            $extra = 'op=list' . (! empty($filter_category) ? '&category=' . urlencode($filter_category) : '');
+            $pagenav = new XoopsPageNav($skillCount, $limit, $start, 'start', $extra);
             $pagenavStr = $pagenav->renderNav();
         }
 
-        $xoopsTpl->assign('skills',  $skillsArr);
+        $xoopsTpl->assign('skills', $skillsArr);
         $xoopsTpl->assign('pagenav', $pagenavStr);
-        break;
 
+        break;
     case 'edit':
         $adminObject->displayNavigation(basename(__FILE__));
 
         // Get skill if editing
         if ($skillId > 0) {
             $skill = $skillHandler->get($skillId);
-            if (!$skill) {
+            if (! $skill) {
                 redirect_header('skills.php', 3, _AM_ALUMNI_ERROR_NOT_FOUND);
             }
         } else {
@@ -94,28 +97,28 @@ switch ($op) {
             true
         );
 
-        $form->addElement(new XoopsFormText(_AM_ALUMNI_SKILL_NAME,        'name',        50, 100, $skill->getVar('name',        'e')), true);
+        $form->addElement(new XoopsFormText(_AM_ALUMNI_SKILL_NAME, 'name', 50, 100, $skill->getVar('name', 'e')), true);
         $form->addElement(new XoopsFormTextArea(_AM_ALUMNI_SKILL_DESCRIPTION, 'description', $skill->getVar('description', 'e'), 3, 60));
-        $form->addElement(new XoopsFormText(_AM_ALUMNI_SKILL_CATEGORY,    'category',    50, 50,  $skill->getVar('category',    'e')));
-        $form->addElement(new XoopsFormText(_AM_ALUMNI_SKILL_WEIGHT,      'weight',      10, 10,  $skill->getVar('weight',      'e')));
+        $form->addElement(new XoopsFormText(_AM_ALUMNI_SKILL_CATEGORY, 'category', 50, 50, $skill->getVar('category', 'e')));
+        $form->addElement(new XoopsFormText(_AM_ALUMNI_SKILL_WEIGHT, 'weight', 10, 10, $skill->getVar('weight', 'e')));
 
         $form->addElement(new XoopsFormHidden('op', 'save'));
         $form->addElement(new XoopsFormHidden('skill_id', $skillId));
         $form->addElement(new XoopsFormButton('', 'submit', _AM_ALUMNI_ACTION_SAVE, 'submit'));
 
         echo $form->render();
-        break;
 
+        break;
     case 'save':
         // CSRF check
-        if (!$GLOBALS['xoopsSecurity']->check()) {
+        if (! $GLOBALS['xoopsSecurity']->check()) {
             redirect_header('skills.php', 3, _AM_ALUMNI_ERROR_GENERAL);
         }
 
         // Get skill
         if ($skillId > 0) {
             $skill = $skillHandler->get($skillId);
-            if (!$skill) {
+            if (! $skill) {
                 redirect_header('skills.php', 3, _AM_ALUMNI_ERROR_NOT_FOUND);
             }
         } else {
@@ -131,11 +134,11 @@ switch ($op) {
         } else {
             redirect_header('skills.php', 3, _AM_ALUMNI_ERROR_SAVE);
         }
-        break;
 
+        break;
     case 'delete':
         // CSRF check
-        if (!$GLOBALS['xoopsSecurity']->check()) {
+        if (! $GLOBALS['xoopsSecurity']->check()) {
             redirect_header('skills.php', 3, _AM_ALUMNI_ERROR_GENERAL);
         }
 
@@ -147,20 +150,20 @@ switch ($op) {
             }
         }
         redirect_header('skills.php', 3, _AM_ALUMNI_ERROR_INVALID_ID);
-        break;
 
+        break;
     case 'merge':
         $adminObject->displayNavigation(basename(__FILE__));
 
         // Merge skills functionality
         if (isset($_POST['source_id']) && isset($_POST['target_id'])) {
             // CSRF check
-            if (!$GLOBALS['xoopsSecurity']->check()) {
+            if (! $GLOBALS['xoopsSecurity']->check()) {
                 redirect_header('skills.php', 3, _AM_ALUMNI_ERROR_GENERAL);
             }
 
-            $sourceId = (int)$_POST['source_id'];
-            $targetId = (int)$_POST['target_id'];
+            $sourceId = (int) $_POST['source_id'];
+            $targetId = (int) $_POST['target_id'];
 
             $sourceSkill = $skillHandler->get($sourceId);
             $targetSkill = $skillHandler->get($targetId);
@@ -181,7 +184,7 @@ switch ($op) {
         require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
         $form = new XoopsThemeForm(_MD_ALUMNI_MERGE_SKILLS, 'merge_form', 'skills.php', 'post', true);
 
-        $allSkills   = $skillHandler->getObjects(null, true);
+        $allSkills = $skillHandler->getObjects(null, true);
         $skillOptions = [];
         foreach ($allSkills as $skill) {
             $skillOptions[$skill->getVar('skill_id')] = $skill->getVar('name') . ' (' . $skill->getVar('usage_count') . ')';
@@ -199,6 +202,7 @@ switch ($op) {
         $form->addElement(new XoopsFormButton('', 'submit', _SUBMIT, 'submit'));
 
         echo $form->render();
+
         break;
 }
 

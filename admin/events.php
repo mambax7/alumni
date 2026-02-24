@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
- * Alumni Management System - Event Management
+ * Alumni Management System - Event Management.
  *
  * @copyright   XOOPS Project (https://xoops.org)
  * @license     GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @author      XOOPS Development Team
  */
 
-use XoopsModules\Alumni\{Helper, Utility};
+use XoopsModules\Alumni\Helper;
+use XoopsModules\Alumni\Utility;
 
-$GLOBALS['xoopsOption']['template_main'] = 'file:' . \dirname(__DIR__) . '/templates/admin/alumni_admin_events.tpl';
+$GLOBALS['xoopsOption']['template_main'] = 'file:' . dirname(__DIR__) . '/templates/admin/alumni_admin_events.tpl';
 
 require __DIR__ . '/admin_header.php';
 
@@ -22,8 +25,8 @@ $eventHandler = $helper->getHandler('event');
 $categoryHandler = $helper->getHandler('category');
 
 // Get operation
-$op = isset($_REQUEST['op']) ? $_REQUEST['op'] : 'list';
-$eventId = isset($_REQUEST['event_id']) ? (int)$_REQUEST['event_id'] : 0;
+$op = $_REQUEST['op'] ?? 'list';
+$eventId = isset($_REQUEST['event_id']) ? (int) $_REQUEST['event_id'] : 0;
 
 switch ($op) {
     case 'list':
@@ -34,15 +37,15 @@ switch ($op) {
         $xoopsTpl->assign('admin_buttons', $adminObject->renderButton());
 
         // Get filters
-        $filter_status   = isset($_GET['status']) ? $_GET['status'] : '';
-        $filter_category = isset($_GET['category_id']) ? (int)$_GET['category_id'] : 0;
-        $filter_featured = isset($_GET['featured']) ? (int)$_GET['featured'] : -1;
-        $start           = isset($_GET['start']) ? (int)$_GET['start'] : 0;
-        $limit           = 20;
+        $filter_status = $_GET['status'] ?? '';
+        $filter_category = isset($_GET['category_id']) ? (int) $_GET['category_id'] : 0;
+        $filter_featured = isset($_GET['featured']) ? (int) $_GET['featured'] : -1;
+        $start = isset($_GET['start']) ? (int) $_GET['start'] : 0;
+        $limit = 20;
 
         // Build criteria
         $criteria = new CriteriaCompo();
-        if (!empty($filter_status)) {
+        if (! empty($filter_status)) {
             $criteria->add(new Criteria('status', $filter_status));
         }
         if ($filter_category > 0) {
@@ -57,12 +60,12 @@ switch ($op) {
         $criteria->setLimit($limit);
 
         // Get events
-        $eventsObjs  = $eventHandler->getObjects($criteria);
-        $eventCount  = $eventHandler->getCount($criteria);
+        $eventsObjs = $eventHandler->getObjects($criteria);
+        $eventCount = $eventHandler->getCount($criteria);
 
         // Get categories for filter dropdown
         $catsObjs = $categoryHandler->getObjects(null, true);
-        $catsArr  = [];
+        $catsArr = [];
         foreach ($catsObjs as $cat) {
             $catsArr[] = [
                 'id'   => $cat->getVar('category_id'),
@@ -74,10 +77,10 @@ switch ($op) {
         $eventsArr = [];
         foreach ($eventsObjs as $event) {
             $category = $categoryHandler->get($event->getVar('category_id'));
-            $status   = $event->getVar('status');
+            $status = $event->getVar('status');
             $statusLabels = [
                 'published' => defined('_MD_ALUMNI_STATUS_PUBLISHED') ? _MD_ALUMNI_STATUS_PUBLISHED : 'Published',
-                'draft'     => defined('_MD_ALUMNI_STATUS_DRAFT')     ? _MD_ALUMNI_STATUS_DRAFT     : 'Draft',
+                'draft'     => defined('_MD_ALUMNI_STATUS_DRAFT') ? _MD_ALUMNI_STATUS_DRAFT : 'Draft',
                 'cancelled' => defined('_MD_ALUMNI_STATUS_CANCELLED') ? _MD_ALUMNI_STATUS_CANCELLED : 'Cancelled',
             ];
             $eventsArr[] = [
@@ -86,10 +89,10 @@ switch ($op) {
                 'category_name' => $category ? Utility::sanitizeHtml($category->getVar('name')) : '-',
                 'start_date'    => formatTimestamp($event->getVar('start_date'), 's'),
                 'location'      => Utility::sanitizeHtml($event->getVar('location')),
-                'rsvp_count'    => (int)$event->getVar('rsvp_count'),
+                'rsvp_count'    => (int) $event->getVar('rsvp_count'),
                 'status'        => $status,
                 'status_label'  => $statusLabels[$status] ?? $status,
-                'featured'      => (int)$event->getVar('featured'),
+                'featured'      => (int) $event->getVar('featured'),
             ];
         }
 
@@ -97,27 +100,27 @@ switch ($op) {
         $pagenavStr = '';
         if ($eventCount > $limit) {
             require_once XOOPS_ROOT_PATH . '/class/pagenav.php';
-            $extra     = 'op=list'
-                . (!empty($filter_status)   ? '&status='      . urlencode($filter_status)   : '')
-                . ($filter_category > 0     ? '&category_id=' . $filter_category             : '');
-            $pagenav   = new XoopsPageNav($eventCount, $limit, $start, 'start', $extra);
+            $extra = 'op=list'
+                . (! empty($filter_status) ? '&status=' . urlencode($filter_status) : '')
+                . ($filter_category > 0 ? '&category_id=' . $filter_category : '');
+            $pagenav = new XoopsPageNav($eventCount, $limit, $start, 'start', $extra);
             $pagenavStr = $pagenav->renderNav();
         }
 
-        $xoopsTpl->assign('events',           $eventsArr);
-        $xoopsTpl->assign('categories',       $catsArr);
-        $xoopsTpl->assign('filter_status',    $filter_status);
+        $xoopsTpl->assign('events', $eventsArr);
+        $xoopsTpl->assign('categories', $catsArr);
+        $xoopsTpl->assign('filter_status', $filter_status);
         $xoopsTpl->assign('filter_category_id', $filter_category);
-        $xoopsTpl->assign('pagenav',          $pagenavStr);
-        break;
+        $xoopsTpl->assign('pagenav', $pagenavStr);
 
+        break;
     case 'edit':
         $adminObject->displayNavigation(basename(__FILE__));
 
         // Get event if editing
         if ($eventId > 0) {
             $event = $eventHandler->get($eventId);
-            if (!$event) {
+            if (! $event) {
                 redirect_header('events.php', 3, _AM_ALUMNI_ERROR_NOT_FOUND);
             }
         } else {
@@ -185,18 +188,18 @@ switch ($op) {
         $form->addElement(new XoopsFormButton('', 'submit', _AM_ALUMNI_ACTION_SAVE, 'submit'));
 
         echo $form->render();
-        break;
 
+        break;
     case 'save':
         // CSRF check
-        if (!$GLOBALS['xoopsSecurity']->check()) {
+        if (! $GLOBALS['xoopsSecurity']->check()) {
             redirect_header('events.php', 3, _AM_ALUMNI_ERROR_GENERAL);
         }
 
         // Get event
         if ($eventId > 0) {
             $event = $eventHandler->get($eventId);
-            if (!$event) {
+            if (! $event) {
                 redirect_header('events.php', 3, _AM_ALUMNI_ERROR_NOT_FOUND);
             }
         } else {
@@ -206,23 +209,23 @@ switch ($op) {
         }
 
         // Set values
-        $event->setVar('title',                 $_POST['title']);
-        $event->setVar('description',           $_POST['description']);
-        $event->setVar('category_id',           (int)$_POST['category_id']);
-        $event->setVar('location',              $_POST['location']);
-        $event->setVar('venue',                 $_POST['venue']);
-        $event->setVar('start_date',            (int)$_POST['start_date']);
-        $event->setVar('end_date',              (int)$_POST['end_date']);
-        $event->setVar('registration_deadline', (int)$_POST['registration_deadline']);
-        $event->setVar('max_attendees',         (int)$_POST['max_attendees']);
-        $event->setVar('event_type',            $_POST['event_type']);
-        $event->setVar('meeting_url',           $_POST['meeting_url']);
-        $event->setVar('contact_name',          $_POST['contact_name']);
-        $event->setVar('contact_email',         $_POST['contact_email']);
-        $event->setVar('contact_phone',         $_POST['contact_phone']);
-        $event->setVar('status',                $_POST['status']);
-        $event->setVar('featured',              (int)$_POST['featured']);
-        $event->setVar('updated',               time());
+        $event->setVar('title', $_POST['title']);
+        $event->setVar('description', $_POST['description']);
+        $event->setVar('category_id', (int) $_POST['category_id']);
+        $event->setVar('location', $_POST['location']);
+        $event->setVar('venue', $_POST['venue']);
+        $event->setVar('start_date', (int) $_POST['start_date']);
+        $event->setVar('end_date', (int) $_POST['end_date']);
+        $event->setVar('registration_deadline', (int) $_POST['registration_deadline']);
+        $event->setVar('max_attendees', (int) $_POST['max_attendees']);
+        $event->setVar('event_type', $_POST['event_type']);
+        $event->setVar('meeting_url', $_POST['meeting_url']);
+        $event->setVar('contact_name', $_POST['contact_name']);
+        $event->setVar('contact_email', $_POST['contact_email']);
+        $event->setVar('contact_phone', $_POST['contact_phone']);
+        $event->setVar('status', $_POST['status']);
+        $event->setVar('featured', (int) $_POST['featured']);
+        $event->setVar('updated', time());
 
         // Save
         if ($eventHandler->insert($event)) {
@@ -230,11 +233,11 @@ switch ($op) {
         } else {
             redirect_header('events.php', 3, _AM_ALUMNI_ERROR_SAVE);
         }
-        break;
 
+        break;
     case 'delete':
         // CSRF check
-        if (!$GLOBALS['xoopsSecurity']->check()) {
+        if (! $GLOBALS['xoopsSecurity']->check()) {
             redirect_header('events.php', 3, _AM_ALUMNI_ERROR_GENERAL);
         }
 
@@ -246,11 +249,11 @@ switch ($op) {
             }
         }
         redirect_header('events.php', 3, _AM_ALUMNI_ERROR_INVALID_ID);
-        break;
 
+        break;
     case 'feature':
         // CSRF check
-        if (!$GLOBALS['xoopsSecurity']->check()) {
+        if (! $GLOBALS['xoopsSecurity']->check()) {
             redirect_header('events.php', 3, _AM_ALUMNI_ERROR_GENERAL);
         }
 
@@ -264,11 +267,11 @@ switch ($op) {
             }
         }
         redirect_header('events.php', 3, _AM_ALUMNI_ERROR_GENERAL);
-        break;
 
+        break;
     case 'duplicate':
         // CSRF check
-        if (!$GLOBALS['xoopsSecurity']->check()) {
+        if (! $GLOBALS['xoopsSecurity']->check()) {
             redirect_header('events.php', 3, _AM_ALUMNI_ERROR_GENERAL);
         }
 
@@ -276,20 +279,20 @@ switch ($op) {
             $originalEvent = $eventHandler->get($eventId);
             if ($originalEvent) {
                 $newEvent = $eventHandler->create();
-                $newEvent->setVar('title',         $originalEvent->getVar('title') . ' (Copy)');
-                $newEvent->setVar('description',   $originalEvent->getVar('description'));
-                $newEvent->setVar('category_id',   $originalEvent->getVar('category_id'));
-                $newEvent->setVar('location',      $originalEvent->getVar('location'));
-                $newEvent->setVar('venue',         $originalEvent->getVar('venue'));
-                $newEvent->setVar('event_type',    $originalEvent->getVar('event_type'));
+                $newEvent->setVar('title', $originalEvent->getVar('title') . ' (Copy)');
+                $newEvent->setVar('description', $originalEvent->getVar('description'));
+                $newEvent->setVar('category_id', $originalEvent->getVar('category_id'));
+                $newEvent->setVar('location', $originalEvent->getVar('location'));
+                $newEvent->setVar('venue', $originalEvent->getVar('venue'));
+                $newEvent->setVar('event_type', $originalEvent->getVar('event_type'));
                 $newEvent->setVar('max_attendees', $originalEvent->getVar('max_attendees'));
-                $newEvent->setVar('contact_name',  $originalEvent->getVar('contact_name'));
+                $newEvent->setVar('contact_name', $originalEvent->getVar('contact_name'));
                 $newEvent->setVar('contact_email', $originalEvent->getVar('contact_email'));
                 $newEvent->setVar('contact_phone', $originalEvent->getVar('contact_phone'));
-                $newEvent->setVar('status',        'draft');
-                $newEvent->setVar('featured',      0);
-                $newEvent->setVar('created',       time());
-                $newEvent->setVar('created_by',    $GLOBALS['xoopsUser']->uid());
+                $newEvent->setVar('status', 'draft');
+                $newEvent->setVar('featured', 0);
+                $newEvent->setVar('created', time());
+                $newEvent->setVar('created_by', $GLOBALS['xoopsUser']->uid());
 
                 if ($eventHandler->insert($newEvent)) {
                     redirect_header('events.php?op=edit&event_id=' . $newEvent->getVar('event_id'), 3, _SUCCESS);
@@ -297,6 +300,7 @@ switch ($op) {
             }
         }
         redirect_header('events.php', 3, _AM_ALUMNI_ERROR_GENERAL);
+
         break;
 }
 

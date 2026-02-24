@@ -1,8 +1,9 @@
 <?php
+
+declare(strict_types=1);
 /**
- * Alumni Module - Block Functions
+ * Alumni Module - Block Functions.
  *
- * @package   Alumni
  * @copyright 2025 XOOPS Alumni Module
  * @license   GPL 2.0 or later
  * @author    Alumni Module Development Team
@@ -10,14 +11,16 @@
 
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
-use XoopsModules\Alumni\{Helper, Utility};
+use XoopsModules\Alumni\Helper;
+use XoopsModules\Alumni\Utility;
 
 require_once __DIR__ . '/preloads/autoloader.php';
 
 /**
- * Recent Alumni Block - Show Function
+ * Recent Alumni Block - Show Function.
  *
  * @param array $options Block options [limit, sort]
+ *
  * @return array
  */
 function alumni_block_recent_show($options)
@@ -25,7 +28,7 @@ function alumni_block_recent_show($options)
     $helper = Helper::getInstance();
     $profileHandler = $helper->getHandler('profile');
 
-    $limit = (int)($options[0] ?? 10);
+    $limit = (int) ($options[0] ?? 10);
     $sortBy = $options[1] ?? 'newest';
 
     $criteria = new CriteriaCompo();
@@ -36,21 +39,26 @@ function alumni_block_recent_show($options)
         case 'newest':
             $criteria->setSort('created');
             $criteria->setOrder('DESC');
+
             break;
         case 'oldest':
             $criteria->setSort('created');
             $criteria->setOrder('ASC');
+
             break;
         case 'name':
             $criteria->setSort('first_name');
             $criteria->setOrder('ASC');
+
             break;
         case 'year':
             $criteria->setSort('graduation_year');
             $criteria->setOrder('DESC');
+
             break;
         case 'random':
             $criteria->setSort('RAND()');
+
             break;
     }
 
@@ -85,9 +93,10 @@ function alumni_block_recent_show($options)
 }
 
 /**
- * Recent Alumni Block - Edit Function
+ * Recent Alumni Block - Edit Function.
  *
  * @param array $options Block options
+ *
  * @return string
  */
 function alumni_block_recent_edit($options)
@@ -102,7 +111,7 @@ function alumni_block_recent_edit($options)
         'oldest' => _MB_ALUMNI_SORT_OLDEST,
         'name'   => _MB_ALUMNI_SORT_NAME_ASC,
         'year'   => _MB_ALUMNI_SORT_YEAR_DESC,
-        'random' => _MB_ALUMNI_SORT_RANDOM
+        'random' => _MB_ALUMNI_SORT_RANDOM,
     ];
     foreach ($sortOptions as $key => $label) {
         $selected = (($options[1] ?? 'newest') === $key) ? ' selected' : '';
@@ -114,9 +123,10 @@ function alumni_block_recent_edit($options)
 }
 
 /**
- * Events Block - Show Function
+ * Events Block - Show Function.
  *
  * @param array $options Block options [limit, days_ahead]
+ *
  * @return array
  */
 function alumni_block_events_show($options)
@@ -124,8 +134,8 @@ function alumni_block_events_show($options)
     $helper = Helper::getInstance();
     $eventHandler = $helper->getHandler('event');
 
-    $limit = (int)($options[0] ?? 5);
-    $daysAhead = (int)($options[1] ?? 30);
+    $limit = (int) ($options[0] ?? 5);
+    $daysAhead = (int) ($options[1] ?? 30);
 
     $criteria = new CriteriaCompo();
     $criteria->add(new Criteria('status', 'published'));
@@ -147,18 +157,18 @@ function alumni_block_events_show($options)
 
     foreach ($events as $event) {
         $block['events'][] = [
-            'id'          => $event->getVar('event_id'),
-            'title'       => Utility::sanitizeHtml($event->getVar('title')),
-            'description' => Utility::truncate($event->getVar('description'), 100),
-            'event_date'  => $event->getVar('event_date'),
+            'id'                   => $event->getVar('event_id'),
+            'title'                => Utility::sanitizeHtml($event->getVar('title')),
+            'description'          => Utility::truncate($event->getVar('description'), 100),
+            'event_date'           => $event->getVar('event_date'),
             'event_date_formatted' => date('M j, Y', $event->getVar('event_date')),
-            'event_time'  => date('g:i A', $event->getVar('event_date')),
-            'location'    => Utility::sanitizeHtml($event->getVar('location')),
-            'venue'       => Utility::sanitizeHtml($event->getVar('venue')),
-            'capacity'    => $event->getVar('capacity'),
-            'attendees'   => $event->getVar('attendees'),
-            'days_until'  => ceil(($event->getVar('event_date') - time()) / 86400),
-            'url'         => XOOPS_URL . '/modules/alumni/event.php?id=' . $event->getVar('event_id'),
+            'event_time'           => date('g:i A', $event->getVar('event_date')),
+            'location'             => Utility::sanitizeHtml($event->getVar('location')),
+            'venue'                => Utility::sanitizeHtml($event->getVar('venue')),
+            'capacity'             => $event->getVar('capacity'),
+            'attendees'            => $event->getVar('attendees'),
+            'days_until'           => ceil(($event->getVar('event_date') - time()) / 86400),
+            'url'                  => XOOPS_URL . '/modules/alumni/event.php?id=' . $event->getVar('event_id'),
         ];
     }
 
@@ -166,9 +176,10 @@ function alumni_block_events_show($options)
 }
 
 /**
- * Events Block - Edit Function
+ * Events Block - Edit Function.
  *
  * @param array $options Block options
+ *
  * @return string
  */
 function alumni_block_events_edit($options)
@@ -184,7 +195,7 @@ function alumni_block_events_edit($options)
 }
 
 /**
- * Search Block - Show Function
+ * Search Block - Show Function.
  *
  * @return array
  */
@@ -217,7 +228,7 @@ function alumni_block_search_show()
 }
 
 /**
- * Search Block - Edit Function (no options)
+ * Search Block - Edit Function (no options).
  *
  * @return string
  */
@@ -227,9 +238,10 @@ function alumni_block_search_edit()
 }
 
 /**
- * Statistics Block - Show Function
+ * Statistics Block - Show Function.
  *
  * @param array $options Block options [show various stats]
+ *
  * @return array
  */
 function alumni_block_stats_show($options)
@@ -238,17 +250,17 @@ function alumni_block_stats_show($options)
     $db = XoopsDatabaseFactory::getDatabaseConnection();
 
     $block = [];
-    $block['show_profiles'] = (int)($options[0] ?? 1);
-    $block['show_events'] = (int)($options[1] ?? 1);
-    $block['show_connections'] = (int)($options[2] ?? 1);
-    $block['show_mentorships'] = (int)($options[3] ?? 1);
+    $block['show_profiles'] = (int) ($options[0] ?? 1);
+    $block['show_events'] = (int) ($options[1] ?? 1);
+    $block['show_connections'] = (int) ($options[2] ?? 1);
+    $block['show_mentorships'] = (int) ($options[3] ?? 1);
 
     // Total profiles
     if ($block['show_profiles']) {
         $sql = sprintf('SELECT COUNT(*) FROM %s WHERE status = "active"', $db->prefix('alumni_profiles'));
         $result = $db->query($sql);
         if ($result && $row = $db->fetchRow($result)) {
-            $block['total_profiles'] = (int)$row[0];
+            $block['total_profiles'] = (int) $row[0];
         }
     }
 
@@ -257,7 +269,7 @@ function alumni_block_stats_show($options)
         $sql = sprintf('SELECT COUNT(*) FROM %s WHERE status = "published"', $db->prefix('alumni_events'));
         $result = $db->query($sql);
         if ($result && $row = $db->fetchRow($result)) {
-            $block['total_events'] = (int)$row[0];
+            $block['total_events'] = (int) $row[0];
         }
 
         // Upcoming events
@@ -268,7 +280,7 @@ function alumni_block_stats_show($options)
         );
         $result = $db->query($sql);
         if ($result && $row = $db->fetchRow($result)) {
-            $block['upcoming_events'] = (int)$row[0];
+            $block['upcoming_events'] = (int) $row[0];
         }
     }
 
@@ -277,7 +289,7 @@ function alumni_block_stats_show($options)
         $sql = sprintf('SELECT COUNT(*) FROM %s WHERE status = "accepted"', $db->prefix('alumni_connections'));
         $result = $db->query($sql);
         if ($result && $row = $db->fetchRow($result)) {
-            $block['total_connections'] = (int)$row[0];
+            $block['total_connections'] = (int) $row[0];
         }
     }
 
@@ -286,7 +298,7 @@ function alumni_block_stats_show($options)
         $sql = sprintf('SELECT COUNT(*) FROM %s WHERE status = "active"', $db->prefix('alumni_mentorship'));
         $result = $db->query($sql);
         if ($result && $row = $db->fetchRow($result)) {
-            $block['total_mentorships'] = (int)$row[0];
+            $block['total_mentorships'] = (int) $row[0];
         }
     }
 
@@ -297,7 +309,7 @@ function alumni_block_stats_show($options)
     );
     $result = $db->query($sql);
     if ($result && $row = $db->fetchRow($result)) {
-        $block['countries'] = (int)$row[0];
+        $block['countries'] = (int) $row[0];
     }
 
     // Industries represented
@@ -307,7 +319,7 @@ function alumni_block_stats_show($options)
     );
     $result = $db->query($sql);
     if ($result && $row = $db->fetchRow($result)) {
-        $block['industries'] = (int)$row[0];
+        $block['industries'] = (int) $row[0];
     }
 
     // Graduation year range
@@ -324,9 +336,10 @@ function alumni_block_stats_show($options)
 }
 
 /**
- * Statistics Block - Edit Function
+ * Statistics Block - Edit Function.
  *
  * @param array $options Block options
+ *
  * @return string
  */
 function alumni_block_stats_edit($options)
