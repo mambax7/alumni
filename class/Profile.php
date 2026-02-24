@@ -1,22 +1,25 @@
 <?php
+
+declare(strict_types=1);
 /**
- * Alumni Management System - Profile Handler
+ * Alumni Management System - Profile Handler.
  *
  * @copyright   XOOPS Project (https://xoops.org)
  * @license     GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @author      XOOPS Development Team
+ *
  * @version     1.0.0
  */
 
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
 /**
- * Class AlumniProfile
+ * Class AlumniProfile.
  */
 class AlumniProfile extends XoopsObject
 {
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -59,12 +62,12 @@ class AlumniProfile extends XoopsObject
 }
 
 /**
- * Class AlumniProfileHandler
+ * Class AlumniProfileHandler.
  */
 class AlumniProfileHandler extends XoopsPersistableObjectHandler
 {
     /**
-     * Constructor
+     * Constructor.
      *
      * @param XoopsDatabase|null $db Database connection
      */
@@ -74,25 +77,27 @@ class AlumniProfileHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Get profile by user ID
+     * Get profile by user ID.
      *
      * @param int $userId User ID
+     *
      * @return AlumniProfile|null Profile object or null
      */
     public function getProfileByUserId($userId)
     {
-        $criteria = new Criteria('user_id', (int)$userId);
+        $criteria = new Criteria('user_id', (int) $userId);
         $profiles = $this->getObjects($criteria);
 
-        return !empty($profiles) ? $profiles[0] : null;
+        return ! empty($profiles) ? $profiles[0] : null;
     }
 
     /**
-     * Get public profiles
+     * Get public profiles.
      *
      * @param Criteria|null $criteria Additional criteria
-     * @param int           $limit    Limit
-     * @param int           $start    Start offset
+     * @param int $limit Limit
+     * @param int $start Start offset
+     *
      * @return array Array of profile objects
      */
     public function getPublicProfiles($criteria = null, $limit = 0, $start = 0)
@@ -115,9 +120,10 @@ class AlumniProfileHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Get featured profiles
+     * Get featured profiles.
      *
      * @param int $limit Limit
+     *
      * @return array Array of profile objects
      */
     public function getFeaturedProfiles($limit = 5)
@@ -133,12 +139,13 @@ class AlumniProfileHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Search profiles
+     * Search profiles.
      *
      * @param string $keyword Search keyword
-     * @param array  $filters Additional filters
-     * @param int    $limit   Limit
-     * @param int    $start   Start offset
+     * @param array $filters Additional filters
+     * @param int $limit Limit
+     * @param int $start Start offset
+     *
      * @return array Array of profile objects
      */
     public function searchProfiles($keyword = '', $filters = [], $limit = 0, $start = 0)
@@ -147,7 +154,7 @@ class AlumniProfileHandler extends XoopsPersistableObjectHandler
         $criteria->add(new Criteria('status', 'active'));
 
         // Keyword search
-        if (!empty($keyword)) {
+        if (! empty($keyword)) {
             $keywordCriteria = new CriteriaCompo();
             $keywordCriteria->add(new Criteria('first_name', '%' . $keyword . '%', 'LIKE'), 'OR');
             $keywordCriteria->add(new Criteria('last_name', '%' . $keyword . '%', 'LIKE'), 'OR');
@@ -158,30 +165,30 @@ class AlumniProfileHandler extends XoopsPersistableObjectHandler
         }
 
         // Graduation year filter
-        if (!empty($filters['graduation_year'])) {
-            $criteria->add(new Criteria('graduation_year', (int)$filters['graduation_year']));
+        if (! empty($filters['graduation_year'])) {
+            $criteria->add(new Criteria('graduation_year', (int) $filters['graduation_year']));
         }
 
         // Year range filter
-        if (!empty($filters['year_from'])) {
-            $criteria->add(new Criteria('graduation_year', (int)$filters['year_from'], '>='));
+        if (! empty($filters['year_from'])) {
+            $criteria->add(new Criteria('graduation_year', (int) $filters['year_from'], '>='));
         }
-        if (!empty($filters['year_to'])) {
-            $criteria->add(new Criteria('graduation_year', (int)$filters['year_to'], '<='));
+        if (! empty($filters['year_to'])) {
+            $criteria->add(new Criteria('graduation_year', (int) $filters['year_to'], '<='));
         }
 
         // Industry filter
-        if (!empty($filters['industry'])) {
+        if (! empty($filters['industry'])) {
             $criteria->add(new Criteria('industry', $filters['industry']));
         }
 
         // Location filter
-        if (!empty($filters['location'])) {
+        if (! empty($filters['location'])) {
             $criteria->add(new Criteria('location', '%' . $filters['location'] . '%', 'LIKE'));
         }
 
         // Department filter
-        if (!empty($filters['department'])) {
+        if (! empty($filters['department'])) {
             $criteria->add(new Criteria('department', $filters['department']));
         }
 
@@ -197,15 +204,16 @@ class AlumniProfileHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Increment profile views
+     * Increment profile views.
      *
      * @param int $profileId Profile ID
+     *
      * @return bool True on success
      */
     public function incrementViews($profileId)
     {
         $profile = $this->get($profileId);
-        if (!$profile) {
+        if (! $profile) {
             return false;
         }
 
@@ -216,20 +224,21 @@ class AlumniProfileHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Update connections count
+     * Update connections count.
      *
      * @param int $profileId Profile ID
+     *
      * @return bool True on success
      */
     public function updateConnectionsCount($profileId)
     {
         $connectionHandler = xoops_getModuleHandler('connection', 'alumni');
-        if (!$connectionHandler) {
+        if (! $connectionHandler) {
             return false;
         }
 
         $profile = $this->get($profileId);
-        if (!$profile) {
+        if (! $profile) {
             return false;
         }
 
@@ -250,17 +259,18 @@ class AlumniProfileHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Get profiles by graduation year
+     * Get profiles by graduation year.
      *
-     * @param int $year  Graduation year
+     * @param int $year Graduation year
      * @param int $limit Limit
+     *
      * @return array Array of profile objects
      */
     public function getProfilesByYear($year, $limit = 0)
     {
         $criteria = new CriteriaCompo();
         $criteria->add(new Criteria('status', 'active'));
-        $criteria->add(new Criteria('graduation_year', (int)$year));
+        $criteria->add(new Criteria('graduation_year', (int) $year));
         $criteria->setSort('created');
         $criteria->setOrder('DESC');
 
@@ -272,10 +282,11 @@ class AlumniProfileHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Get available mentors
+     * Get available mentors.
      *
      * @param int $limit Limit
      * @param int $start Start offset
+     *
      * @return array Array of profile objects
      */
     public function getAvailableMentors($limit = 0, $start = 0)
@@ -295,9 +306,10 @@ class AlumniProfileHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Get recent profiles
+     * Get recent profiles.
      *
      * @param int $limit Limit
+     *
      * @return array Array of profile objects
      */
     public function getRecentProfiles($limit = 10)
@@ -312,7 +324,7 @@ class AlumniProfileHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Get profiles awaiting approval
+     * Get profiles awaiting approval.
      *
      * @return array Array of profile objects
      */

@@ -16,11 +16,11 @@ declare(strict_types=1);
 use Xmf\Module\Admin;
 use XoopsModules\Alumni\Helper;
 
-require \dirname(__DIR__) . '/preloads/autoloader.php';
-require \dirname(__DIR__, 3) . '/include/cp_header.php';
-require \dirname(__DIR__) . '/include/common.php';
+require dirname(__DIR__) . '/preloads/autoloader.php';
+require dirname(__DIR__, 3) . '/include/cp_header.php';
+require dirname(__DIR__) . '/include/common.php';
 
-$moduleDirName      = \basename(\dirname(__DIR__));
+$moduleDirName = basename(dirname(__DIR__));
 $moduleDirNameUpper = mb_strtoupper($moduleDirName);
 
 $adminObject = Admin::getInstance();
@@ -31,7 +31,7 @@ $helper->loadLanguage('modinfo');
 $helper->loadLanguage('common');
 $helper->loadLanguage('main');
 
-if (!isset($GLOBALS['xoopsTpl']) || !($GLOBALS['xoopsTpl'] instanceof \XoopsTpl)) {
+if (! isset($GLOBALS['xoopsTpl']) || ! ($GLOBALS['xoopsTpl'] instanceof XoopsTpl)) {
     require $GLOBALS['xoops']->path('class/template.php');
-    $xoopsTpl = new \XoopsTpl();
+    $xoopsTpl = new XoopsTpl();
 }

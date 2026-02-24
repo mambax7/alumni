@@ -1,22 +1,25 @@
 <?php
+
+declare(strict_types=1);
 /**
- * Alumni Management System - Category Handler
+ * Alumni Management System - Category Handler.
  *
  * @copyright   XOOPS Project (https://xoops.org)
  * @license     GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @author      XOOPS Development Team
+ *
  * @version     1.0.0
  */
 
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
 /**
- * Class AlumniCategory
+ * Class AlumniCategory.
  */
 class AlumniCategory extends XoopsObject
 {
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -35,12 +38,12 @@ class AlumniCategory extends XoopsObject
 }
 
 /**
- * Class AlumniCategoryHandler
+ * Class AlumniCategoryHandler.
  */
 class AlumniCategoryHandler extends XoopsPersistableObjectHandler
 {
     /**
-     * Constructor
+     * Constructor.
      *
      * @param XoopsDatabase|null $db Database connection
      */
@@ -50,9 +53,10 @@ class AlumniCategoryHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Get categories by type
+     * Get categories by type.
      *
      * @param string $type Category type (event|general)
+     *
      * @return array Array of category objects
      */
     public function getByType($type = 'event')
@@ -65,20 +69,21 @@ class AlumniCategoryHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Update event count for category
+     * Update event count for category.
      *
      * @param int $categoryId Category ID
+     *
      * @return bool True on success
      */
     public function updateEventCount($categoryId)
     {
         $eventHandler = xoops_getModuleHandler('event', 'alumni');
-        if (!$eventHandler) {
+        if (! $eventHandler) {
             return false;
         }
 
         $category = $this->get($categoryId);
-        if (!$category) {
+        if (! $category) {
             return false;
         }
 
@@ -93,7 +98,7 @@ class AlumniCategoryHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Get all categories ordered
+     * Get all categories ordered.
      *
      * @return array Array of category objects
      */

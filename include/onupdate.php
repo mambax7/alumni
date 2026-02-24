@@ -1,8 +1,9 @@
 <?php
+
+declare(strict_types=1);
 /**
- * Alumni Module - Update Handler
+ * Alumni Module - Update Handler.
  *
- * @package   Alumni
  * @author    XOOPS Development Team
  * @copyright (c) 2025 XOOPS Project
  * @license   GPL 2.0 or later
@@ -11,10 +12,11 @@
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
 /**
- * Update handler for Alumni module
+ * Update handler for Alumni module.
  *
  * @param XoopsModule $module
- * @param mixed       $previousVersion
+ * @param mixed $previousVersion
+ *
  * @return bool
  */
 function xoops_module_update_alumni(XoopsModule $module, $previousVersion = null)
@@ -41,8 +43,8 @@ function xoops_module_update_alumni(XoopsModule $module, $previousVersion = null
     $directories = [$uploadPath, $photosPath, $eventsPath];
 
     foreach ($directories as $dir) {
-        if (!is_dir($dir)) {
-            if (!mkdir($dir, 0755, true)) {
+        if (! is_dir($dir)) {
+            if (! mkdir($dir, 0755, true)) {
                 $errors[] = sprintf('Failed to create directory: %s', $dir);
                 $success = false;
             } else {
@@ -71,7 +73,7 @@ function xoops_module_update_alumni(XoopsModule $module, $previousVersion = null
     verifyIndexes($db);
 
     // Report results
-    if (!empty($errors)) {
+    if (! empty($errors)) {
         error_log('Alumni module update errors: ' . implode('; ', $errors));
     }
 
@@ -79,10 +81,11 @@ function xoops_module_update_alumni(XoopsModule $module, $previousVersion = null
 }
 
 /**
- * Update to version 1.0.0
+ * Update to version 1.0.0.
  *
  * @param XoopsDatabase $db
- * @param array         $errors
+ * @param array $errors
+ *
  * @return bool
  */
 function updateTo100($db, &$errors)
@@ -110,51 +113,50 @@ function updateTo100($db, &$errors)
 }
 
 /**
- * Verify and create missing indexes
+ * Verify and create missing indexes.
  *
  * @param XoopsDatabase $db
- * @return void
  */
-function verifyIndexes($db)
+function verifyIndexes($db): void
 {
     $tables = [
         'alumni_profiles' => [
             'idx_graduation_year' => 'graduation_year',
-            'idx_department' => 'department',
-            'idx_visibility' => 'visibility',
-            'idx_created_at' => 'created_at'
+            'idx_department'      => 'department',
+            'idx_visibility'      => 'visibility',
+            'idx_created_at'      => 'created_at',
         ],
         'alumni_events' => [
             'idx_category_id' => 'category_id',
-            'idx_start_date' => 'start_date',
-            'idx_status' => 'status',
-            'idx_is_online' => 'is_online'
+            'idx_start_date'  => 'start_date',
+            'idx_status'      => 'status',
+            'idx_is_online'   => 'is_online',
         ],
         'alumni_event_rsvp' => [
             'idx_event_id' => 'event_id',
-            'idx_user_id' => 'user_id',
-            'idx_status' => 'status'
+            'idx_user_id'  => 'user_id',
+            'idx_status'   => 'status',
         ],
         'alumni_connections' => [
             'idx_from_alumni' => 'from_alumni_id',
-            'idx_to_alumni' => 'to_alumni_id',
-            'idx_status' => 'status'
+            'idx_to_alumni'   => 'to_alumni_id',
+            'idx_status'      => 'status',
         ],
         'alumni_mentorship' => [
             'idx_mentee' => 'mentee_id',
             'idx_mentor' => 'mentor_id',
-            'idx_status' => 'status'
+            'idx_status' => 'status',
         ],
         'alumni_skills' => [
-            'idx_name' => 'name'
-        ]
+            'idx_name' => 'name',
+        ],
     ];
 
     foreach ($tables as $tableName => $indexes) {
         $fullTableName = $db->prefix($tableName);
 
         // Get existing indexes
-        $sql    = "SHOW INDEX FROM " . $fullTableName;
+        $sql = 'SHOW INDEX FROM ' . $fullTableName;
         $result = $db->query($sql);
 
         $existingIndexes = [];
@@ -165,9 +167,9 @@ function verifyIndexes($db)
         }
         // Create missing indexes
         foreach ($indexes as $indexName => $column) {
-            if (!in_array($indexName, $existingIndexes)) {
+            if (! in_array($indexName, $existingIndexes, true)) {
                 $sql = sprintf(
-                    "ALTER TABLE %s ADD INDEX %s (%s)",
+                    'ALTER TABLE %s ADD INDEX %s (%s)',
                     $fullTableName,
                     $indexName,
                     $column
@@ -180,10 +182,11 @@ function verifyIndexes($db)
 
 /**
  * Migrate data from old structure to new structure
- * (Placeholder for future version updates)
+ * (Placeholder for future version updates).
  *
  * @param XoopsDatabase $db
- * @param array         $errors
+ * @param array $errors
+ *
  * @return bool
  */
 function migrateData($db, &$errors)

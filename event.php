@@ -1,15 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Alumni Management System - Single Event Detail
+ * Alumni Management System - Single Event Detail.
  *
  * @copyright   XOOPS Project (https://xoops.org)
  * @license     GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @author      XOOPS Development Team
+ *
  * @version     1.0.0
  */
 
-use XoopsModules\Alumni\{Helper, Utility};
+use XoopsModules\Alumni\Helper;
+use XoopsModules\Alumni\Utility;
 
 require_once __DIR__ . '/../../mainfile.php';
 require_once __DIR__ . '/include/common.php';
@@ -20,7 +24,7 @@ $rsvpHandler = $helper->getHandler('rsvp');
 $categoryHandler = $helper->getHandler('category');
 
 // Get event ID
-$eventId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+$eventId = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
 if ($eventId === 0) {
     redirect_header('events.php', 3, _MD_ALUMNI_ERROR_INVALID_EVENT);
@@ -30,7 +34,7 @@ if ($eventId === 0) {
 // Get event object
 $event = $eventHandler->get($eventId);
 
-if (!$event || $event->isNew()) {
+if (! $event || $event->isNew()) {
     redirect_header('events.php', 3, _MD_ALUMNI_ERROR_EVENT_NOT_FOUND);
     exit();
 }
@@ -38,7 +42,7 @@ if (!$event || $event->isNew()) {
 // Check if event is active
 if ($event->getVar('status') !== 'active') {
     $isAdmin = Utility::isModuleAdmin();
-    if (!$isAdmin) {
+    if (! $isAdmin) {
         redirect_header('events.php', 3, _MD_ALUMNI_ERROR_EVENT_NOT_AVAILABLE);
         exit();
     }
@@ -52,7 +56,7 @@ $userRsvpStatus = null;
 $userRsvp = null;
 $canRsvp = false;
 
-$currentUserId =Utility::getCurrentUserId();
+$currentUserId = Utility::getCurrentUserId();
 
 if ($currentUserId > 0) {
     $rsvpCriteria = new CriteriaCompo();
@@ -60,7 +64,7 @@ if ($currentUserId > 0) {
     $rsvpCriteria->add(new Criteria('user_id', $currentUserId));
     $rsvps = $rsvpHandler->getObjects($rsvpCriteria);
 
-    if (!empty($rsvps)) {
+    if (! empty($rsvps)) {
         $userRsvp = $rsvps[0];
         $userRsvpStatus = $userRsvp->getVar('status');
     } else {
@@ -96,16 +100,16 @@ foreach ($attendees as $rsvp) {
     $attendeeProfileCriteria->add(new Criteria('user_id', $rsvp->getVar('user_id')));
     $profiles = $profileHandler->getObjects($attendeeProfileCriteria);
 
-    if (!empty($profiles)) {
+    if (! empty($profiles)) {
         $profile = $profiles[0];
         $attendeesArray[] = [
-            'user_id'    => $rsvp->getVar('user_id'),
-            'name'       => Utility::sanitizeHtml($profile->getVar('first_name') . ' ' . $profile->getVar('last_name')),
-            'photo_url'  => !empty($profile->getVar('photo'))
+            'user_id'   => $rsvp->getVar('user_id'),
+            'name'      => Utility::sanitizeHtml($profile->getVar('first_name') . ' ' . $profile->getVar('last_name')),
+            'photo_url' => ! empty($profile->getVar('photo'))
                             ? ALUMNI_UPLOAD_URL . '/photos/' . $profile->getVar('photo')
                             : ALUMNI_URL . '/assets/images/default-avatar.png',
             'profile_url' => ALUMNI_URL . '/profile.php?id=' . $profile->getVar('profile_id'),
-            'rsvp_date'  => Utility::formatDate($rsvp->getVar('created'))
+            'rsvp_date'   => Utility::formatDate($rsvp->getVar('created')),
         ];
     }
 }
@@ -124,13 +128,13 @@ $similarEvents = $eventHandler->getObjects($similarCriteria);
 
 foreach ($similarEvents as $similarEvent) {
     $similarEventsArray[] = [
-        'id'                => $similarEvent->getVar('event_id'),
-        'title'             => Utility::sanitizeHtml($similarEvent->getVar('title')),
-        'location'          => Utility::sanitizeHtml($similarEvent->getVar('location')),
-        'start_date'        => $similarEvent->getVar('start_date'),
+        'id'                   => $similarEvent->getVar('event_id'),
+        'title'                => Utility::sanitizeHtml($similarEvent->getVar('title')),
+        'location'             => Utility::sanitizeHtml($similarEvent->getVar('location')),
+        'start_date'           => $similarEvent->getVar('start_date'),
         'start_date_formatted' => Utility::formatDate($similarEvent->getVar('start_date'), 'M j, Y'),
-        'event_type'        => $similarEvent->getVar('event_type'),
-        'url'               => ALUMNI_URL . '/event.php?id=' . $similarEvent->getVar('event_id')
+        'event_type'           => $similarEvent->getVar('event_type'),
+        'url'                  => ALUMNI_URL . '/event.php?id=' . $similarEvent->getVar('event_id'),
     ];
 }
 
@@ -151,7 +155,7 @@ $xoopsTpl->assign('event', $eventData);
 $xoopsTpl->assign('attendees', $attendeesArray);
 $xoopsTpl->assign('similar_events', $similarEventsArray);
 $xoopsTpl->assign('user_rsvp_status', $userRsvpStatus);
-$xoopsTpl->assign('can_rsvp', $canRsvp && !$isFull && !$registrationClosed);
+$xoopsTpl->assign('can_rsvp', $canRsvp && ! $isFull && ! $registrationClosed);
 $xoopsTpl->assign('is_full', $isFull);
 $xoopsTpl->assign('registration_closed', $registrationClosed);
 $xoopsTpl->assign('is_logged_in', $currentUserId > 0);

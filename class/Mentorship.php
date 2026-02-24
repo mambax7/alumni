@@ -1,22 +1,25 @@
 <?php
+
+declare(strict_types=1);
 /**
- * Alumni Management System - Mentorship Handler
+ * Alumni Management System - Mentorship Handler.
  *
  * @copyright   XOOPS Project (https://xoops.org)
  * @license     GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @author      XOOPS Development Team
+ *
  * @version     1.0.0
  */
 
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
 /**
- * Class AlumniMentorship
+ * Class AlumniMentorship.
  */
 class AlumniMentorship extends XoopsObject
 {
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -36,12 +39,12 @@ class AlumniMentorship extends XoopsObject
 }
 
 /**
- * Class AlumniMentorshipHandler
+ * Class AlumniMentorshipHandler.
  */
 class AlumniMentorshipHandler extends XoopsPersistableObjectHandler
 {
     /**
-     * Constructor
+     * Constructor.
      *
      * @param XoopsDatabase|null $db Database connection
      */
@@ -51,17 +54,18 @@ class AlumniMentorshipHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Get mentorship requests received by mentor
+     * Get mentorship requests received by mentor.
      *
-     * @param int    $mentorId Mentor user ID
-     * @param string $status   Status filter
+     * @param int $mentorId Mentor user ID
+     * @param string $status Status filter
+     *
      * @return array Array of mentorship objects
      */
     public function getMentorRequests($mentorId, $status = '')
     {
-        $criteria = new Criteria('mentor_id', (int)$mentorId);
+        $criteria = new Criteria('mentor_id', (int) $mentorId);
 
-        if (!empty($status)) {
+        if (! empty($status)) {
             $criteria->add(new Criteria('status', $status));
         }
 
@@ -72,17 +76,18 @@ class AlumniMentorshipHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Get mentorship requests sent by mentee
+     * Get mentorship requests sent by mentee.
      *
-     * @param int    $menteeId Mentee user ID
-     * @param string $status   Status filter
+     * @param int $menteeId Mentee user ID
+     * @param string $status Status filter
+     *
      * @return array Array of mentorship objects
      */
     public function getMenteeRequests($menteeId, $status = '')
     {
-        $criteria = new Criteria('mentee_id', (int)$menteeId);
+        $criteria = new Criteria('mentee_id', (int) $menteeId);
 
-        if (!empty($status)) {
+        if (! empty($status)) {
             $criteria->add(new Criteria('status', $status));
         }
 
@@ -93,9 +98,10 @@ class AlumniMentorshipHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Get active mentorships for user (as mentor or mentee)
+     * Get active mentorships for user (as mentor or mentee).
      *
      * @param int $userId User ID
+     *
      * @return array Array of mentorship objects
      */
     public function getActiveMentorships($userId)
@@ -103,8 +109,8 @@ class AlumniMentorshipHandler extends XoopsPersistableObjectHandler
         $criteria = new CriteriaCompo();
 
         $userCriteria = new CriteriaCompo();
-        $userCriteria->add(new Criteria('mentor_id', (int)$userId), 'OR');
-        $userCriteria->add(new Criteria('mentee_id', (int)$userId), 'OR');
+        $userCriteria->add(new Criteria('mentor_id', (int) $userId), 'OR');
+        $userCriteria->add(new Criteria('mentee_id', (int) $userId), 'OR');
 
         $criteria->add($userCriteria);
         $criteria->add(new Criteria('status', 'active'));
@@ -115,19 +121,21 @@ class AlumniMentorshipHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Check if mentorship exists between two users
+     * Check if mentorship exists between two users.
      *
      * @param int $mentorId Mentor user ID
      * @param int $menteeId Mentee user ID
+     *
      * @return AlumniMentorship|null Mentorship object or null
      */
     public function getMentorship($mentorId, $menteeId)
     {
         $criteria = new CriteriaCompo();
-        $criteria->add(new Criteria('mentor_id', (int)$mentorId));
-        $criteria->add(new Criteria('mentee_id', (int)$menteeId));
+        $criteria->add(new Criteria('mentor_id', (int) $mentorId));
+        $criteria->add(new Criteria('mentee_id', (int) $menteeId));
 
         $mentorships = $this->getObjects($criteria);
-        return !empty($mentorships) ? $mentorships[0] : null;
+
+        return ! empty($mentorships) ? $mentorships[0] : null;
     }
 }

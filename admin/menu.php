@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Alumni Module — Admin Menu
+ * Alumni Module — Admin Menu.
  *
  * @copyright XOOPS Project (https://xoops.org)
  * @license   GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
@@ -14,13 +14,13 @@ defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 use Xmf\Module\Admin;
 use XoopsModules\Alumni\Helper;
 
-require \dirname(__DIR__) . '/preloads/autoloader.php';
+require dirname(__DIR__) . '/preloads/autoloader.php';
 
 $helper = Helper::getInstance();
 $helper->loadLanguage('admin');
 $helper->loadLanguage('modinfo');
 
-$pathIcon32    = Admin::menuIconPath('');
+$pathIcon32 = Admin::menuIconPath('');
 $pathModIcon32 = $helper->url('assets/images/icons/32/');
 
 $adminmenu = [];

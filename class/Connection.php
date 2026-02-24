@@ -1,22 +1,25 @@
 <?php
+
+declare(strict_types=1);
 /**
- * Alumni Management System - Connection Handler
+ * Alumni Management System - Connection Handler.
  *
  * @copyright   XOOPS Project (https://xoops.org)
  * @license     GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @author      XOOPS Development Team
+ *
  * @version     1.0.0
  */
 
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
 /**
- * Class AlumniConnection
+ * Class AlumniConnection.
  */
 class AlumniConnection extends XoopsObject
 {
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -33,12 +36,12 @@ class AlumniConnection extends XoopsObject
 }
 
 /**
- * Class AlumniConnectionHandler
+ * Class AlumniConnectionHandler.
  */
 class AlumniConnectionHandler extends XoopsPersistableObjectHandler
 {
     /**
-     * Constructor
+     * Constructor.
      *
      * @param XoopsDatabase|null $db Database connection
      */
@@ -48,11 +51,12 @@ class AlumniConnectionHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Get user connections by status
+     * Get user connections by status.
      *
-     * @param int    $userId User ID
+     * @param int $userId User ID
      * @param string $status Connection status
-     * @param int    $limit  Limit
+     * @param int $limit Limit
+     *
      * @return array Array of connection objects
      */
     public function getUserConnections($userId, $status = 'accepted', $limit = 0)
@@ -60,12 +64,12 @@ class AlumniConnectionHandler extends XoopsPersistableObjectHandler
         $criteria = new CriteriaCompo();
 
         $userCriteria = new CriteriaCompo();
-        $userCriteria->add(new Criteria('requester_id', (int)$userId), 'OR');
-        $userCriteria->add(new Criteria('recipient_id', (int)$userId), 'OR');
+        $userCriteria->add(new Criteria('requester_id', (int) $userId), 'OR');
+        $userCriteria->add(new Criteria('recipient_id', (int) $userId), 'OR');
 
         $criteria->add($userCriteria);
 
-        if (!empty($status)) {
+        if (! empty($status)) {
             $criteria->add(new Criteria('status', $status));
         }
 
@@ -80,15 +84,16 @@ class AlumniConnectionHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Get pending connection requests received by user
+     * Get pending connection requests received by user.
      *
      * @param int $userId User ID
+     *
      * @return array Array of connection objects
      */
     public function getPendingRequests($userId)
     {
         $criteria = new CriteriaCompo();
-        $criteria->add(new Criteria('recipient_id', (int)$userId));
+        $criteria->add(new Criteria('recipient_id', (int) $userId));
         $criteria->add(new Criteria('status', 'pending'));
         $criteria->setSort('created');
         $criteria->setOrder('DESC');
@@ -97,15 +102,16 @@ class AlumniConnectionHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Get pending connection requests sent by user
+     * Get pending connection requests sent by user.
      *
      * @param int $userId User ID
+     *
      * @return array Array of connection objects
      */
     public function getSentRequests($userId)
     {
         $criteria = new CriteriaCompo();
-        $criteria->add(new Criteria('requester_id', (int)$userId));
+        $criteria->add(new Criteria('requester_id', (int) $userId));
         $criteria->add(new Criteria('status', 'pending'));
         $criteria->setSort('created');
         $criteria->setOrder('DESC');
@@ -114,10 +120,11 @@ class AlumniConnectionHandler extends XoopsPersistableObjectHandler
     }
 
     /**
-     * Check if two users are connected
+     * Check if two users are connected.
      *
      * @param int $userId1 First user ID
      * @param int $userId2 Second user ID
+     *
      * @return bool True if connected
      */
     public function areConnected($userId1, $userId2)
@@ -127,12 +134,12 @@ class AlumniConnectionHandler extends XoopsPersistableObjectHandler
         $pairCriteria = new CriteriaCompo();
 
         $pair1 = new CriteriaCompo();
-        $pair1->add(new Criteria('requester_id', (int)$userId1));
-        $pair1->add(new Criteria('recipient_id', (int)$userId2));
+        $pair1->add(new Criteria('requester_id', (int) $userId1));
+        $pair1->add(new Criteria('recipient_id', (int) $userId2));
 
         $pair2 = new CriteriaCompo();
-        $pair2->add(new Criteria('requester_id', (int)$userId2));
-        $pair2->add(new Criteria('recipient_id', (int)$userId1));
+        $pair2->add(new Criteria('requester_id', (int) $userId2));
+        $pair2->add(new Criteria('recipient_id', (int) $userId1));
 
         $pairCriteria->add($pair1, 'OR');
         $pairCriteria->add($pair2, 'OR');
@@ -141,14 +148,16 @@ class AlumniConnectionHandler extends XoopsPersistableObjectHandler
         $criteria->add(new Criteria('status', 'accepted'));
 
         $count = $this->getCount($criteria);
+
         return $count > 0;
     }
 
     /**
-     * Get connection between two users
+     * Get connection between two users.
      *
      * @param int $userId1 First user ID
      * @param int $userId2 Second user ID
+     *
      * @return AlumniConnection|null Connection object or null
      */
     public function getConnection($userId1, $userId2)
@@ -158,12 +167,12 @@ class AlumniConnectionHandler extends XoopsPersistableObjectHandler
         $pairCriteria = new CriteriaCompo();
 
         $pair1 = new CriteriaCompo();
-        $pair1->add(new Criteria('requester_id', (int)$userId1));
-        $pair1->add(new Criteria('recipient_id', (int)$userId2));
+        $pair1->add(new Criteria('requester_id', (int) $userId1));
+        $pair1->add(new Criteria('recipient_id', (int) $userId2));
 
         $pair2 = new CriteriaCompo();
-        $pair2->add(new Criteria('requester_id', (int)$userId2));
-        $pair2->add(new Criteria('recipient_id', (int)$userId1));
+        $pair2->add(new Criteria('requester_id', (int) $userId2));
+        $pair2->add(new Criteria('recipient_id', (int) $userId1));
 
         $pairCriteria->add($pair1, 'OR');
         $pairCriteria->add($pair2, 'OR');
@@ -171,6 +180,7 @@ class AlumniConnectionHandler extends XoopsPersistableObjectHandler
         $criteria->add($pairCriteria);
 
         $connections = $this->getObjects($criteria);
-        return !empty($connections) ? $connections[0] : null;
+
+        return ! empty($connections) ? $connections[0] : null;
     }
 }

@@ -1,23 +1,36 @@
-<?php namespace XoopsModules\Alumni;
+<?php
+
+declare(strict_types=1);
+
+namespace XoopsModules\Alumni;
+
+use Criteria;
+use XoopsDatabase;
+use XoopsObject;
+use XoopsPersistableObjectHandler;
+
+use function defined;
+use function sprintf;
 
 /**
- * Alumni Management System - Skill Handler
+ * Alumni Management System - Skill Handler.
  *
  * @copyright   XOOPS Project (https://xoops.org)
  * @license     GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @author      XOOPS Development Team
+ *
  * @version     1.0.0
  */
 
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
 /**
- * Class Skill
+ * Class Skill.
  */
-class Skill extends \XoopsObject
+class Skill extends XoopsObject
 {
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -31,39 +44,41 @@ class Skill extends \XoopsObject
 }
 
 /**
- * Class SkillHandler
+ * Class SkillHandler.
  */
-class SkillHandler extends \XoopsPersistableObjectHandler
+class SkillHandler extends XoopsPersistableObjectHandler
 {
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param \XoopsDatabase|null $db Database connection
+     * @param XoopsDatabase|null $db Database connection
      * @param Helper|null $helper Helper instance
      */
-    public function __construct(?\XoopsDatabase $db = null, ?Helper $helper = null)
+    public function __construct(?XoopsDatabase $db = null, ?Helper $helper = null)
     {
         parent::__construct($db, 'alumni_skills', Skill::class, 'skill_id', 'name');
     }
 
     /**
-     * Get or create skill by name
+     * Get or create skill by name.
      *
      * @param string $name Skill name
+     *
      * @return Skill|null Skill object
      */
     public function getByName($name)
     {
-        $criteria = new \Criteria('name', trim($name));
+        $criteria = new Criteria('name', trim($name));
         $skills = $this->getObjects($criteria);
 
-        return !empty($skills) ? $skills[0] : null;
+        return ! empty($skills) ? $skills[0] : null;
     }
 
     /**
-     * Get profile skills
+     * Get profile skills.
      *
      * @param int $profileId Profile ID
+     *
      * @return array Array of skill objects
      */
     public function getProfileSkills($profileId)
@@ -75,11 +90,11 @@ class SkillHandler extends \XoopsPersistableObjectHandler
              ORDER BY s.name ASC',
             $this->db->prefix('alumni_skills'),
             $this->db->prefix('alumni_profile_skill_link'),
-            (int)$profileId
+            (int) $profileId
         );
 
         $result = $this->db->query($sql);
-        if (!$result) {
+        if (! $result) {
             return [];
         }
 
@@ -94,14 +109,15 @@ class SkillHandler extends \XoopsPersistableObjectHandler
     }
 
     /**
-     * Get popular skills
+     * Get popular skills.
      *
      * @param int $limit Limit
+     *
      * @return array Array of skill objects
      */
     public function getPopularSkills($limit = 20)
     {
-        $criteria = new \Criteria('profile_count', 0, '>');
+        $criteria = new Criteria('profile_count', 0, '>');
         $criteria->setSort('profile_count');
         $criteria->setOrder('DESC');
         $criteria->setLimit($limit);
@@ -110,10 +126,11 @@ class SkillHandler extends \XoopsPersistableObjectHandler
     }
 
     /**
-     * Add skill to profile
+     * Add skill to profile.
      *
-     * @param int    $profileId Profile ID
+     * @param int $profileId Profile ID
      * @param string $skillName Skill name
+     *
      * @return bool True on success
      */
     public function addSkillToProfile($profileId, $skillName)
@@ -125,12 +142,12 @@ class SkillHandler extends \XoopsPersistableObjectHandler
 
         // Get or create skill
         $skill = $this->getByName($skillName);
-        if (!$skill) {
+        if (! $skill) {
             $skill = $this->create();
             $skill->setVar('name', $skillName);
             $skill->setVar('created', time());
 
-            if (!$this->insert($skill)) {
+            if (! $this->insert($skill)) {
                 return false;
             }
         }
@@ -139,16 +156,16 @@ class SkillHandler extends \XoopsPersistableObjectHandler
         $sql = sprintf(
             'SELECT COUNT(*) FROM %s WHERE profile_id = %u AND skill_id = %u',
             $this->db->prefix('alumni_profile_skill_link'),
-            (int)$profileId,
+            (int) $profileId,
             $skill->getVar('skill_id')
         );
 
         $result = $this->db->query($sql);
-        if (!$result) {
+        if (! $result) {
             return false;
         }
 
-        list($count) = $this->db->fetchRow($result);
+        [$count] = $this->db->fetchRow($result);
         if ($count > 0) {
             return true; // Already exists
         }
@@ -157,11 +174,11 @@ class SkillHandler extends \XoopsPersistableObjectHandler
         $sql = sprintf(
             'INSERT INTO %s (profile_id, skill_id) VALUES (%u, %u)',
             $this->db->prefix('alumni_profile_skill_link'),
-            (int)$profileId,
+            (int) $profileId,
             $skill->getVar('skill_id')
         );
 
-        if (!$this->db->queryF($sql)) {
+        if (! $this->db->queryF($sql)) {
             return false;
         }
 
@@ -172,10 +189,11 @@ class SkillHandler extends \XoopsPersistableObjectHandler
     }
 
     /**
-     * Remove skill from profile
+     * Remove skill from profile.
      *
      * @param int $profileId Profile ID
-     * @param int $skillId   Skill ID
+     * @param int $skillId Skill ID
+     *
      * @return bool True on success
      */
     public function removeSkillFromProfile($profileId, $skillId)
@@ -183,11 +201,11 @@ class SkillHandler extends \XoopsPersistableObjectHandler
         $sql = sprintf(
             'DELETE FROM %s WHERE profile_id = %u AND skill_id = %u',
             $this->db->prefix('alumni_profile_skill_link'),
-            (int)$profileId,
-            (int)$skillId
+            (int) $profileId,
+            (int) $skillId
         );
 
-        if (!$this->db->queryF($sql)) {
+        if (! $this->db->queryF($sql)) {
             return false;
         }
 
@@ -198,40 +216,42 @@ class SkillHandler extends \XoopsPersistableObjectHandler
     }
 
     /**
-     * Update profile count for skill
+     * Update profile count for skill.
      *
      * @param int $skillId Skill ID
+     *
      * @return bool True on success
      */
     public function updateProfileCount($skillId)
     {
         $skill = $this->get($skillId);
-        if (!$skill) {
+        if (! $skill) {
             return false;
         }
 
         $sql = sprintf(
             'SELECT COUNT(*) FROM %s WHERE skill_id = %u',
             $this->db->prefix('alumni_profile_skill_link'),
-            (int)$skillId
+            (int) $skillId
         );
 
         $result = $this->db->query($sql);
-        if (!$result) {
+        if (! $result) {
             return false;
         }
 
-        list($count) = $this->db->fetchRow($result);
+        [$count] = $this->db->fetchRow($result);
         $skill->setVar('profile_count', $count);
 
         return $this->insert($skill, true);
     }
 
     /**
-     * Get profiles with skill
+     * Get profiles with skill.
      *
      * @param int $skillId Skill ID
-     * @param int $limit   Limit
+     * @param int $limit Limit
+     *
      * @return array Array of profile IDs
      */
     public function getProfilesWithSkill($skillId, $limit = 0)
@@ -239,15 +259,15 @@ class SkillHandler extends \XoopsPersistableObjectHandler
         $sql = sprintf(
             'SELECT profile_id FROM %s WHERE skill_id = %u',
             $this->db->prefix('alumni_profile_skill_link'),
-            (int)$skillId
+            (int) $skillId
         );
 
         if ($limit > 0) {
-            $sql .= ' LIMIT ' . (int)$limit;
+            $sql .= ' LIMIT ' . (int) $limit;
         }
 
         $result = $this->db->query($sql);
-        if (!$result) {
+        if (! $result) {
             return [];
         }
 
@@ -260,9 +280,10 @@ class SkillHandler extends \XoopsPersistableObjectHandler
     }
 
     /**
-     * Clear all skills from profile
+     * Clear all skills from profile.
      *
      * @param int $profileId Profile ID
+     *
      * @return bool True on success
      */
     public function clearProfileSkills($profileId)
@@ -271,11 +292,11 @@ class SkillHandler extends \XoopsPersistableObjectHandler
         $sql = sprintf(
             'SELECT skill_id FROM %s WHERE profile_id = %u',
             $this->db->prefix('alumni_profile_skill_link'),
-            (int)$profileId
+            (int) $profileId
         );
 
         $result = $this->db->query($sql);
-        if (!$result) {
+        if (! $result) {
             return false;
         }
 
@@ -288,10 +309,10 @@ class SkillHandler extends \XoopsPersistableObjectHandler
         $sql = sprintf(
             'DELETE FROM %s WHERE profile_id = %u',
             $this->db->prefix('alumni_profile_skill_link'),
-            (int)$profileId
+            (int) $profileId
         );
 
-        if (!$this->db->queryF($sql)) {
+        if (! $this->db->queryF($sql)) {
             return false;
         }
 

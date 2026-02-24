@@ -1,23 +1,36 @@
-<?php namespace XoopsModules\Alumni;
+<?php
+
+declare(strict_types=1);
+
+namespace XoopsModules\Alumni;
+
+use Criteria;
+use CriteriaCompo;
+use XoopsDatabase;
+use XoopsObject;
+use XoopsPersistableObjectHandler;
+
+use function defined;
 
 /**
- * Alumni Management System - Category Handler
+ * Alumni Management System - Category Handler.
  *
  * @copyright   XOOPS Project (https://xoops.org)
  * @license     GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @author      XOOPS Development Team
+ *
  * @version     1.0.0
  */
 
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
 /**
- * Class Category
+ * Class Category.
  */
-class Category extends \XoopsObject
+class Category extends XoopsObject
 {
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -36,30 +49,31 @@ class Category extends \XoopsObject
 }
 
 /**
- * Class CategoryHandler
+ * Class CategoryHandler.
  */
-class CategoryHandler extends \XoopsPersistableObjectHandler
+class CategoryHandler extends XoopsPersistableObjectHandler
 {
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param \XoopsDatabase|null $db Database connection
+     * @param XoopsDatabase|null $db Database connection
      * @param Helper|null $helper Helper instance
      */
-    public function __construct(?\XoopsDatabase $db = null, ?Helper $helper = null)
+    public function __construct(?XoopsDatabase $db = null, ?Helper $helper = null)
     {
         parent::__construct($db, 'alumni_categories', Category::class, 'category_id', 'name');
     }
 
     /**
-     * Get categories by type
+     * Get categories by type.
      *
      * @param string $type Category type (event|general)
+     *
      * @return array Array of category objects
      */
     public function getByType($type = 'event')
     {
-        $criteria = new \Criteria('type', $type);
+        $criteria = new Criteria('type', $type);
         $criteria->setSort('display_order');
         $criteria->setOrder('ASC');
 
@@ -67,26 +81,27 @@ class CategoryHandler extends \XoopsPersistableObjectHandler
     }
 
     /**
-     * Update event count for category
+     * Update event count for category.
      *
      * @param int $categoryId Category ID
+     *
      * @return bool True on success
      */
     public function updateEventCount($categoryId)
     {
         $eventHandler = xoops_getModuleHandler('event', 'alumni');
-        if (!$eventHandler) {
+        if (! $eventHandler) {
             return false;
         }
 
         $category = $this->get($categoryId);
-        if (!$category) {
+        if (! $category) {
             return false;
         }
 
-        $criteria = new \CriteriaCompo();
-        $criteria->add(new \Criteria('category_id', $categoryId));
-        $criteria->add(new \Criteria('status', 'active'));
+        $criteria = new CriteriaCompo();
+        $criteria->add(new Criteria('category_id', $categoryId));
+        $criteria->add(new Criteria('status', 'active'));
 
         $count = $eventHandler->getCount($criteria);
         $category->setVar('event_count', $count);
@@ -95,13 +110,13 @@ class CategoryHandler extends \XoopsPersistableObjectHandler
     }
 
     /**
-     * Get all categories ordered
+     * Get all categories ordered.
      *
      * @return array Array of category objects
      */
     public function getAllOrdered()
     {
-        $criteria = new \Criteria('category_id', 0, '>');
+        $criteria = new Criteria('category_id', 0, '>');
         $criteria->setSort('display_order');
         $criteria->setOrder('ASC');
 

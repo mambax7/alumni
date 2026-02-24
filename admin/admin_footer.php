@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Alumni Admin Footer
+ * Alumni Admin Footer.
  *
  * @copyright XOOPS Project (https://xoops.org)
  * @license   GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)

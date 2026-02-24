@@ -1,23 +1,37 @@
-<?php namespace XoopsModules\Alumni;
+<?php
+
+declare(strict_types=1);
+
+namespace XoopsModules\Alumni;
+
+use Criteria;
+use CriteriaCompo;
+use XoopsDatabase;
+use XoopsObject;
+use XoopsPersistableObjectHandler;
+
+use function defined;
+use function sprintf;
 
 /**
- * Alumni Management System - RSVP Handler
+ * Alumni Management System - RSVP Handler.
  *
  * @copyright   XOOPS Project (https://xoops.org)
  * @license     GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @author      XOOPS Development Team
+ *
  * @version     1.0.0
  */
 
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
 /**
- * Class Rsvp
+ * Class Rsvp.
  */
-class Rsvp extends \XoopsObject
+class Rsvp extends XoopsObject
 {
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -35,52 +49,55 @@ class Rsvp extends \XoopsObject
 }
 
 /**
- * Class RsvpHandler
+ * Class RsvpHandler.
  */
-class RsvpHandler extends \XoopsPersistableObjectHandler
+class RsvpHandler extends XoopsPersistableObjectHandler
 {
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param \XoopsDatabase|null $db Database connection
+     * @param XoopsDatabase|null $db Database connection
      * @param Helper|null $helper Helper instance
      */
-    public function __construct(?\XoopsDatabase $db = null, ?Helper $helper = null)
+    public function __construct(?XoopsDatabase $db = null, ?Helper $helper = null)
     {
         parent::__construct($db, 'alumni_rsvps', Rsvp::class, 'rsvp_id', 'rsvp_id');
     }
 
     /**
-     * Get user RSVP for event
+     * Get user RSVP for event.
      *
      * @param int $eventId Event ID
-     * @param int $userId  User ID
+     * @param int $userId User ID
+     *
      * @return Rsvp|null RSVP object or null
      */
     public function getUserRsvp($eventId, $userId)
     {
-        $criteria = new \CriteriaCompo();
-        $criteria->add(new \Criteria('event_id', (int)$eventId));
-        $criteria->add(new \Criteria('user_id', (int)$userId));
+        $criteria = new CriteriaCompo();
+        $criteria->add(new Criteria('event_id', (int) $eventId));
+        $criteria->add(new Criteria('user_id', (int) $userId));
 
         $rsvps = $this->getObjects($criteria);
-        return !empty($rsvps) ? $rsvps[0] : null;
+
+        return ! empty($rsvps) ? $rsvps[0] : null;
     }
 
     /**
-     * Get event RSVPs by status
+     * Get event RSVPs by status.
      *
-     * @param int    $eventId Event ID
-     * @param string $status  RSVP status (attending|maybe|declined)
-     * @param int    $limit   Limit
+     * @param int $eventId Event ID
+     * @param string $status RSVP status (attending|maybe|declined)
+     * @param int $limit Limit
+     *
      * @return array Array of RSVP objects
      */
     public function getEventRsvps($eventId, $status = '', $limit = 0)
     {
-        $criteria = new \Criteria('event_id', (int)$eventId);
+        $criteria = new Criteria('event_id', (int) $eventId);
 
-        if (!empty($status)) {
-            $criteria->add(new \Criteria('status', $status));
+        if (! empty($status)) {
+            $criteria->add(new Criteria('status', $status));
         }
 
         $criteria->setSort('created');
@@ -94,10 +111,11 @@ class RsvpHandler extends \XoopsPersistableObjectHandler
     }
 
     /**
-     * Get user's upcoming RSVPs
+     * Get user's upcoming RSVPs.
      *
      * @param int $userId User ID
-     * @param int $limit  Limit
+     * @param int $limit Limit
+     *
      * @return array Array of RSVP objects
      */
     public function getUserUpcomingRsvps($userId, $limit = 0)
@@ -112,16 +130,16 @@ class RsvpHandler extends \XoopsPersistableObjectHandler
              ORDER BY e.start_date ASC',
             $this->db->prefix('alumni_rsvps'),
             $this->db->prefix('alumni_events'),
-            (int)$userId,
+            (int) $userId,
             time()
         );
 
         if ($limit > 0) {
-            $sql .= ' LIMIT ' . (int)$limit;
+            $sql .= ' LIMIT ' . (int) $limit;
         }
 
         $result = $this->db->query($sql);
-        if (!$result) {
+        if (! $result) {
             return [];
         }
 
@@ -136,14 +154,16 @@ class RsvpHandler extends \XoopsPersistableObjectHandler
     }
 
     /**
-     * Delete RSVPs for event
+     * Delete RSVPs for event.
      *
      * @param int $eventId Event ID
+     *
      * @return bool True on success
      */
     public function deleteByEvent($eventId)
     {
-        $criteria = new \Criteria('event_id', (int)$eventId);
+        $criteria = new Criteria('event_id', (int) $eventId);
+
         return $this->deleteAll($criteria);
     }
 }

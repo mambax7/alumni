@@ -1,26 +1,30 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Alumni Management System - User Dashboard
+ * Alumni Management System - User Dashboard.
  *
  * @copyright   XOOPS Project (https://xoops.org)
  * @license     GNU GPL 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @author      XOOPS Development Team
+ *
  * @version     1.0.0
  */
 
-use XoopsModules\Alumni\{Helper, Utility};
+use XoopsModules\Alumni\Helper;
+use XoopsModules\Alumni\Utility;
 
 require_once __DIR__ . '/../../mainfile.php';
 require_once __DIR__ . '/include/common.php';
 
 // Must be logged in
-if (!Utility::isUserLoggedIn()) {
+if (! Utility::isUserLoggedIn()) {
     redirect_header('user.php', 3, _MD_ALUMNI_ERROR_LOGIN_REQUIRED);
     exit();
 }
 
-$currentUserId =Utility::getCurrentUserId();
+$currentUserId = Utility::getCurrentUserId();
 
 $helper = Helper::getInstance();
 $profileHandler = $helper->getHandler('profile');
@@ -33,15 +37,15 @@ $mentorshipHandler = $helper->getHandler('mentorship');
 $profileCriteria = new CriteriaCompo();
 $profileCriteria->add(new Criteria('user_id', $currentUserId));
 $profiles = $profileHandler->getObjects($profileCriteria);
-$profile = !empty($profiles) ? $profiles[0] : null;
+$profile = ! empty($profiles) ? $profiles[0] : null;
 
 // Get profile summary
 $profileSummary = [];
 if ($profile) {
     $profileSummary = [
-        'id'                => $profile->getVar('profile_id'),
-        'full_name'         => Utility::sanitizeHtml($profile->getVar('first_name') . ' ' . $profile->getVar('last_name')),
-        'photo_url'         => !empty($profile->getVar('photo'))
+        'id'        => $profile->getVar('profile_id'),
+        'full_name' => Utility::sanitizeHtml($profile->getVar('first_name') . ' ' . $profile->getVar('last_name')),
+        'photo_url' => ! empty($profile->getVar('photo'))
                                ? ALUMNI_UPLOAD_URL . '/photos/' . $profile->getVar('photo')
                                : ALUMNI_URL . '/assets/images/default-avatar.png',
         'current_position'  => Utility::sanitizeHtml($profile->getVar('current_position')),
@@ -49,7 +53,7 @@ if ($profile) {
         'graduation_year'   => $profile->getVar('graduation_year'),
         'views'             => $profile->getVar('views'),
         'connections_count' => $profile->getVar('connections_count'),
-        'url'               => ALUMNI_URL . '/profile.php?id=' . $profile->getVar('profile_id')
+        'url'               => ALUMNI_URL . '/profile.php?id=' . $profile->getVar('profile_id'),
     ];
 }
 
@@ -60,7 +64,7 @@ $connections = $connectionHandler->getUserConnections($currentUserId, 'accepted'
 $connectionsArray = [];
 foreach ($connections as $connection) {
     // Determine the other user in the connection
-    $connectedUserId = ($connection->getVar('requester_id') == $currentUserId)
+    $connectedUserId = ($connection->getVar('requester_id') === $currentUserId)
         ? $connection->getVar('recipient_id')
         : $connection->getVar('requester_id');
 
@@ -68,16 +72,16 @@ foreach ($connections as $connection) {
 
     if ($connProfile) {
         $connectionsArray[] = [
-            'connection_id'  => $connection->getVar('connection_id'),
-            'user_id'        => $connectedUserId,
-            'name'           => Utility::sanitizeHtml($connProfile->getVar('first_name') . ' ' . $connProfile->getVar('last_name')),
-            'photo_url'      => !empty($connProfile->getVar('photo'))
+            'connection_id' => $connection->getVar('connection_id'),
+            'user_id'       => $connectedUserId,
+            'name'          => Utility::sanitizeHtml($connProfile->getVar('first_name') . ' ' . $connProfile->getVar('last_name')),
+            'photo_url'     => ! empty($connProfile->getVar('photo'))
                                 ? ALUMNI_UPLOAD_URL . '/photos/' . $connProfile->getVar('photo')
                                 : ALUMNI_URL . '/assets/images/default-avatar.png',
             'position'       => Utility::sanitizeHtml($connProfile->getVar('current_position')),
             'company'        => Utility::sanitizeHtml($connProfile->getVar('current_company')),
             'profile_url'    => ALUMNI_URL . '/profile.php?id=' . $connProfile->getVar('profile_id'),
-            'connected_date' => Utility::formatDate($connection->getVar('updated'))
+            'connected_date' => Utility::formatDate($connection->getVar('updated')),
         ];
     }
 }
@@ -88,7 +92,7 @@ $totalConnections = count($connectionHandler->getUserConnections($currentUserId,
 // Get pending connection requests received by current user
 // getPendingRequests() uses recipient_id correctly
 $pendingRequests = $connectionHandler->getPendingRequests($currentUserId);
-$pendingRequests  = array_slice($pendingRequests, 0, 5);
+$pendingRequests = array_slice($pendingRequests, 0, 5);
 
 $pendingRequestsArray = [];
 foreach ($pendingRequests as $request) {
@@ -98,16 +102,16 @@ foreach ($pendingRequests as $request) {
 
     if ($requesterProfile) {
         $pendingRequestsArray[] = [
-            'connection_id'  => $request->getVar('connection_id'),
-            'user_id'        => $requesterId,
-            'name'           => Utility::sanitizeHtml($requesterProfile->getVar('first_name') . ' ' . $requesterProfile->getVar('last_name')),
-            'photo_url'      => !empty($requesterProfile->getVar('photo'))
+            'connection_id' => $request->getVar('connection_id'),
+            'user_id'       => $requesterId,
+            'name'          => Utility::sanitizeHtml($requesterProfile->getVar('first_name') . ' ' . $requesterProfile->getVar('last_name')),
+            'photo_url'     => ! empty($requesterProfile->getVar('photo'))
                                 ? ALUMNI_UPLOAD_URL . '/photos/' . $requesterProfile->getVar('photo')
                                 : ALUMNI_URL . '/assets/images/default-avatar.png',
-            'position'       => Utility::sanitizeHtml($requesterProfile->getVar('current_position')),
-            'company'        => Utility::sanitizeHtml($requesterProfile->getVar('current_company')),
-            'profile_url'    => ALUMNI_URL . '/profile.php?id=' . $requesterProfile->getVar('profile_id'),
-            'request_date'   => Utility::formatDate($request->getVar('created'))  // correct column
+            'position'     => Utility::sanitizeHtml($requesterProfile->getVar('current_position')),
+            'company'      => Utility::sanitizeHtml($requesterProfile->getVar('current_company')),
+            'profile_url'  => ALUMNI_URL . '/profile.php?id=' . $requesterProfile->getVar('profile_id'),
+            'request_date' => Utility::formatDate($request->getVar('created')),  // correct column
         ];
     }
 }
@@ -126,7 +130,7 @@ $currentTime = time();
 foreach ($rsvps as $rsvp) {
     $event = $eventHandler->get($rsvp->getVar('event_id'));
 
-    if ($event && !$event->isNew() && $event->getVar('start_date') >= $currentTime) {
+    if ($event && ! $event->isNew() && $event->getVar('start_date') >= $currentTime) {
         $upcomingEventsArray[] = [
             'rsvp_id'              => $rsvp->getVar('rsvp_id'),
             'event_id'             => $event->getVar('event_id'),
@@ -135,16 +139,16 @@ foreach ($rsvps as $rsvp) {
             'start_date'           => $event->getVar('start_date'),
             'start_date_formatted' => Utility::formatDate($event->getVar('start_date'), 'M j, Y g:i A'),
             'event_type'           => $event->getVar('event_type'),
-            'image_url'            => !empty($event->getVar('image'))
+            'image_url'            => ! empty($event->getVar('image'))
                                       ? ALUMNI_UPLOAD_URL . '/events/' . $event->getVar('image')
                                       : ALUMNI_URL . '/assets/images/default-event.png',
-            'url'                  => ALUMNI_URL . '/event.php?id=' . $event->getVar('event_id')
+            'url' => ALUMNI_URL . '/event.php?id=' . $event->getVar('event_id'),
         ];
     }
 }
 
 // Sort upcoming events by start date
-usort($upcomingEventsArray, function($a, $b) {
+usort($upcomingEventsArray, function ($a, $b) {
     return $a['start_date'] - $b['start_date'];
 });
 
@@ -167,18 +171,18 @@ if ($profile && $profile->getVar('allow_mentorship')) {
         $menteeProfileCriteria->add(new Criteria('user_id', $menteeId));
         $menteeProfiles = $profileHandler->getObjects($menteeProfileCriteria);
 
-        if (!empty($menteeProfiles)) {
+        if (! empty($menteeProfiles)) {
             $menteeProfile = $menteeProfiles[0];
             $mentorshipRequestsArray[] = [
                 'mentorship_id' => $mentorship->getVar('mentorship_id'),
                 'mentee_id'     => $menteeId,
                 'name'          => Utility::sanitizeHtml($menteeProfile->getVar('first_name') . ' ' . $menteeProfile->getVar('last_name')),
-                'photo_url'     => !empty($menteeProfile->getVar('photo'))
+                'photo_url'     => ! empty($menteeProfile->getVar('photo'))
                                    ? ALUMNI_UPLOAD_URL . '/photos/' . $menteeProfile->getVar('photo')
                                    : ALUMNI_URL . '/assets/images/default-avatar.png',
-                'message'       => Utility::sanitizeHtml($mentorship->getVar('message')),
-                'profile_url'   => ALUMNI_URL . '/profile.php?id=' . $menteeProfile->getVar('profile_id'),
-                'request_date'  => Utility::formatDate($mentorship->getVar('created'))
+                'message'      => Utility::sanitizeHtml($mentorship->getVar('message')),
+                'profile_url'  => ALUMNI_URL . '/profile.php?id=' . $menteeProfile->getVar('profile_id'),
+                'request_date' => Utility::formatDate($mentorship->getVar('created')),
             ];
         }
     }
@@ -196,7 +200,7 @@ $userProfile = $profileSummary ? [
     'name'                => $profileSummary['full_name'],
     'photo'               => $profileSummary['photo_url'],
     'graduation_year'     => $profileSummary['graduation_year'],
-    'available_as_mentor' => $profile ? (bool)$profile->getVar('allow_mentorship') : false,
+    'available_as_mentor' => $profile ? (bool) $profile->getVar('allow_mentorship') : false,
 ] : [];
 
 // Stats widget
@@ -222,9 +226,10 @@ $connectionRequests = array_map(static function ($r) {
 }, $pendingRequestsArray);
 
 // my_events — template needs 'date_formatted', 'days_until', 'rsvp_status'
-$nowTs   = time();
+$nowTs = time();
 $myEvents = array_map(static function ($e) use ($nowTs) {
-    $daysUntil = max(0, (int)(($e['start_date'] - $nowTs) / 86400));
+    $daysUntil = max(0, (int) (($e['start_date'] - $nowTs) / 86400));
+
     return $e + [
         'date_formatted' => $e['start_date_formatted'],
         'days_until'     => $daysUntil,
@@ -233,21 +238,21 @@ $myEvents = array_map(static function ($e) use ($nowTs) {
 }, $upcomingEventsArray);
 
 // Assign data to template
-$xoopsTpl->assign('stats',               $stats);
-$xoopsTpl->assign('user_profile',        $userProfile);
-$xoopsTpl->assign('my_connections',      $myConnections);
+$xoopsTpl->assign('stats', $stats);
+$xoopsTpl->assign('user_profile', $userProfile);
+$xoopsTpl->assign('my_connections', $myConnections);
 $xoopsTpl->assign('connection_requests', $connectionRequests);
-$xoopsTpl->assign('my_events',           $myEvents);
+$xoopsTpl->assign('my_events', $myEvents);
 $xoopsTpl->assign('mentorship_requests', $mentorshipRequestsArray);
-$xoopsTpl->assign('recent_activity',     []);
+$xoopsTpl->assign('recent_activity', []);
 // Back-compat aliases (kept in case any block template references them)
-$xoopsTpl->assign('profile',             $profileSummary);
-$xoopsTpl->assign('has_profile',         $profile !== null);
-$xoopsTpl->assign('connections',         $connectionsArray);
-$xoopsTpl->assign('total_connections',   $totalConnections);
-$xoopsTpl->assign('pending_requests',    $pendingRequestsArray);
-$xoopsTpl->assign('upcoming_events',     $upcomingEventsArray);
-$xoopsTpl->assign('user_name',           $GLOBALS['xoopsUser']->getVar('name'));
+$xoopsTpl->assign('profile', $profileSummary);
+$xoopsTpl->assign('has_profile', $profile !== null);
+$xoopsTpl->assign('connections', $connectionsArray);
+$xoopsTpl->assign('total_connections', $totalConnections);
+$xoopsTpl->assign('pending_requests', $pendingRequestsArray);
+$xoopsTpl->assign('upcoming_events', $upcomingEventsArray);
+$xoopsTpl->assign('user_name', $GLOBALS['xoopsUser']->getVar('name'));
 
 // SEO
 $xoopsTpl->assign('xoops_pagetitle', _MD_ALUMNI_MY_DASHBOARD . ' - ' . $xoopsConfig['sitename']);
