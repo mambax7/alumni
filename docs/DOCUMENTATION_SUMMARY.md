@@ -1,3 +1,4 @@
+![XOOPS CMS](https://xoops.org/images/logoXoops4GithubRepository.png)
 # Alumni Module - Documentation Summary
 
 ## Documentation Files Created
@@ -32,7 +33,7 @@ All comprehensive documentation has been created for the Alumni Network Manageme
 - 🎓 Profile Management
 - 🤝 Networking & Connections
 - 📅 Event Management
-- 👨‍🏫 Mentorship Program
+- 👨🏫 Mentorship Program
 - 🔍 Advanced Search
 - 📊 Dashboard & Analytics
 - 🧩 Blocks & Widgets

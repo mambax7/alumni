@@ -1,3 +1,4 @@
+![XOOPS CMS](https://xoops.org/images/logoXoops4GithubRepository.png)
 # Job Search Module - Developer Quick Reference
 
 ## Module Structure Overview

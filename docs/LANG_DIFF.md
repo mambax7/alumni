@@ -1,3 +1,4 @@
+![XOOPS CMS](https://xoops.org/images/logoXoops4GithubRepository.png)
 # Language Differences
 
 ## Alumni Network Management System - Language Constant Changes Between Versions

@@ -3,7 +3,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/XoopsModules25x/alumni/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/XoopsModules25x/alumni/?branch=main)
 [![GitHub Actions](https://github.com/XoopsModules25x/alumni/workflows/CodeQL/badge.svg)](https://github.com/XoopsModules25x/alumni/actions)
 ![XOOPS Module](https://img.shields.io/badge/XOOPS-2.5.12-blue.svg)
-![PHP Version](https://img.shields.io/badge/PHP-7.4%2B-brightgreen.svg)
+![PHP Version](https://img.shields.io/badge/PHP-8.2%2B-brightgreen.svg)
 ![License](https://img.shields.io/badge/License-GPL%202.0-red.svg)
 ![Version](https://img.shields.io/badge/Version-1.0.0-orange.svg)
 
@@ -103,14 +103,14 @@ A comprehensive alumni network management system for XOOPS 2.5.12 that enables e
 
 ### System Requirements
 
-| Component | Minimum Version | Recommended |
-|-----------|----------------|-------------|
-| **XOOPS** | 2.5.11 | 2.5.12 |
-| **PHP** | 7.4.0 | 8.0+ |
-| **MySQL** | 5.5 | 5.7+ / 8.0+ |
+| Component | Minimum Version         | Recommended              |
+|-----------|-------------------------|--------------------------|
+| **XOOPS** | 2.5.12                  | 2.5.12                   |
+| **PHP** | 8.2.0                   | 8.2+                    |
+| **MySQL** | 5.7                    | 5.7+ / 8.0+              |
 | **Web Server** | Apache 2.2 / Nginx 1.10 | Apache 2.4 / Nginx 1.18+ |
-| **PHP Memory** | 128M | 256M+ |
-| **Upload Max** | 8M | 16M+ |
+| **PHP Memory** | 128M                    | 256M+                    |
+| **Upload Max** | 8M                      | 16M+                     |
 
 ### PHP Extensions Required
 
@@ -768,7 +768,7 @@ Submit feature requests with:
 ### Built With
 
 - **XOOPS 2.5.12**: Content management system
-- **PHP 7.4+**: Server-side language
+- **PHP 8.2+**: Server-side language
 - **MySQL 5.5+**: Database system
 - **Bootstrap 5**: Frontend framework
 - **Font Awesome 6**: Icon library
@@ -826,9 +826,7 @@ See `CHANGELOG.md` for version history.
 ---
 
 **Module Version**: 1.0.0
-**Last Updated**: 2026-02-16
-**Compatibility**: XOOPS 2.5.11+ | PHP 7.4+ | MySQL 5.5+
+**Last Updated**: 2026-02-23
+**Compatibility**: XOOPS 2.5.11+ | PHP 8.2+ | MySQL 5.5+
 
 ---
-
-**For developers**: See [CLAUDE.md](CLAUDE.md) for development patterns and guidelines.

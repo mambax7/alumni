@@ -1,3 +1,4 @@
+![XOOPS CMS](https://xoops.org/images/logoXoops4GithubRepository.png)
 # Language Constants Fixed - Alumni Module
 
 ## Summary of Missing Constants Added

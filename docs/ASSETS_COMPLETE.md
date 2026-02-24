@@ -1,3 +1,4 @@
+![XOOPS CMS](https://xoops.org/images/logoXoops4GithubRepository.png)
 # Alumni Module Assets - Completion Report
 
 ## ✅ Task Completion Summary

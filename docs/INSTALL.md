@@ -1,4 +1,5 @@
-# Installation Guide
+
+![XOOPS CMS](https://xoops.org/images/logoXoops4GithubRepository.png)# Installation Guide
 
 ## Alumni Network Management System for XOOPS 2.5.12
 

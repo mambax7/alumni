@@ -1,3 +1,4 @@
+![XOOPS CMS](https://xoops.org/images/logoXoops4GithubRepository.png)
 # Jobs Module - Consistency Standards
 
 **CRITICAL**: All files in this module MUST follow these patterns consistently.
